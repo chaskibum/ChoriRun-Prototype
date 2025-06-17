@@ -26,11 +26,11 @@ public class ObstacleGroupBehavior : MonoBehaviour
             int index = transform.GetSiblingIndex();
             if (index - 1 >= 0)
             {
-                transform.position = new Vector2(transform.parent.GetChild(index - 1).transform.position.x + GameManager.SpaceBetweenObstaclesGroup + transform.parent.GetChild(index - 1).GetComponent<BoxCollider2D>().bounds.size.x, transform.parent.GetChild(index).transform.position.y);
+                transform.position = new Vector2(transform.parent.GetChild(index - 1).transform.position.x + GameManager.SpaceBetweenObstaclesGroup + transform.parent.GetChild(index - 1).GetComponent<BoxCollider2D>().bounds.size.x, transform.position.y);
             }
             else
             {
-                transform.position = new Vector2(transform.parent.GetChild(transform.parent.childCount - 1).transform.position.x + GameManager.SpaceBetweenObstaclesGroup + transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<BoxCollider2D>().bounds.size.x, transform.parent.GetChild(index).transform.position.y);
+                transform.position = new Vector2(transform.parent.GetChild(transform.parent.childCount - 1).transform.position.x + GameManager.SpaceBetweenObstaclesGroup + transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<BoxCollider2D>().bounds.size.x, transform.position.y);
             }
         }
     }
