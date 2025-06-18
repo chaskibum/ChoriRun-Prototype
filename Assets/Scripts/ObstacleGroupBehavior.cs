@@ -2,24 +2,18 @@ using UnityEngine;
 
 public class ObstacleGroupBehavior : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    GameManager GameManager;
+    GameManager _gameManager;
     void Awake() 
     {
-        GameManager = FindFirstObjectByType<GameManager>();
+        _gameManager = FindFirstObjectByType<GameManager>();
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        transform.position += Vector3.left * GameManager.Speed * Time.deltaTime;
+        transform.position += Vector3.left * (_gameManager.Speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    /*private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Limit"))
         {
@@ -33,5 +27,5 @@ public class ObstacleGroupBehavior : MonoBehaviour
                 transform.position = new Vector2(transform.parent.GetChild(transform.parent.childCount - 1).transform.position.x + GameManager.SpaceBetweenObstaclesGroup + transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<BoxCollider2D>().bounds.size.x, transform.position.y);
             }
         }
-    }
+    }*/
 }

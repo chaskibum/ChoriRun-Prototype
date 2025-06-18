@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject creditsMenu;
     
-    private readonly string _level = "Level";
+    private readonly string _level = "LevelFinal";
 
     private void Awake()
     {

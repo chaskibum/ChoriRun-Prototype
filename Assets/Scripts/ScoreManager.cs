@@ -10,9 +10,14 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         _score = 0;
-        InvokeRepeating("AddTimeScore", 3, 0.1f);
+        InvokeRepeating(nameof(AddTimeScore), 0, 0.1f);
     }
 
+    public void AddScore(int points = 1)
+    {
+        _score += points;
+        scoreText.text = _score.ToString();
+    }
 
     private void AddTimeScore()
     {

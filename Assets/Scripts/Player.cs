@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     bool isMoving;
     int LaneToBe;
     Transform TargetTransform;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         isMoving = true;
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (isMoving)
@@ -63,13 +63,14 @@ public class Player : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) 
+    
+    /*private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Obstacle"))
         {
             other.GetComponent<SpriteRenderer>().color = Color.red;
         }
-    }
+    }*/
 
     public void ChangeHp(int amount = -1)
     {

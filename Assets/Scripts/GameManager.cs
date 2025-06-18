@@ -1,29 +1,27 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int SpaceBetweenObstaclesGroup = 5;
+    // public int SpaceBetweenObstaclesGroup = 5;
     public float Speed;
     [SerializeField] int MaxSpeed;
     [SerializeField] float SpeedIncreseAmount = 1;
     [SerializeField] int TimeTillIncrese = 1;
-    [SerializeField] Transform ObstaclesContainer;
+    // [SerializeField] Transform ObstaclesContainer;
     public GameObject gameOverText;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject restartButton;
+    
     void Start()
     {
-        SortObstacles();
+        // SortObstacles();
+        gameOverText.SetActive(false);
+        restartButton.SetActive(false);
         StartCoroutine(GraduallyIncreaseSpeed());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    void SortObstacles()
+    /*void SortObstacles()
     {
         for (int i = 0; i < ObstaclesContainer.childCount; i++)
         {
@@ -32,7 +30,8 @@ public class GameManager : MonoBehaviour
                 ObstaclesContainer.GetChild(i).transform.position = new Vector2(ObstaclesContainer.GetChild(i - 1).transform.position.x + SpaceBetweenObstaclesGroup + ObstaclesContainer.GetChild(i).GetComponent<BoxCollider2D>().bounds.size.x, ObstaclesContainer.GetChild(i).transform.position.y);
             }
         }
-    }
+    }*/
+    
     IEnumerator GraduallyIncreaseSpeed()
     {
         while (Speed != MaxSpeed)
@@ -46,10 +45,17 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(TimeTillIncrese);
         }   
     }
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("LevelFinal");
+        Time.timeScale = 1;
+    }
 
     public void EndGame()
     {
         Time.timeScale = 0;
         gameOverText.SetActive(true);
+        restartButton.SetActive(true);
     }
 }
