@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float SpeedIncreseAmount = 1;
     [SerializeField] int TimeTillIncrese = 1;
     // [SerializeField] Transform ObstaclesContainer;
+    public Transform livesContainer;
     public GameObject gameOverText;
     public GameObject restartButton;
     
@@ -57,5 +58,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
+    }
+
+    public void HpFeedback(int hp)
+    {
+        livesContainer.GetChild(hp).gameObject.SetActive(false);
     }
 }
