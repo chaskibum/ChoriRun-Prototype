@@ -28,7 +28,10 @@ public class ObstaclesManager : MonoBehaviour
             if (type == ObstacleType.Obstacle)
                 player.ChangeHp();
             else if (type == ObstacleType.Ingredient)
+            {
                 scoreManager.AddScore(50);
+                InstantiateObstacle();
+            }
         }
         else if (other.CompareTag("Limit"))
         {
