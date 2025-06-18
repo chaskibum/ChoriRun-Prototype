@@ -10,7 +10,7 @@ public class ObstacleGroupBehavior : MonoBehaviour
     
     void Update()
     {
-        transform.position += Vector3.left * (_gameManager.Speed * Time.deltaTime);
+        transform.position += Vector3.left * (_gameManager.speed * Time.deltaTime);
     }
 
     /*private void OnTriggerEnter2D(Collider2D other) 

@@ -4,42 +4,42 @@ public class Player : MonoBehaviour
 {
     private int _hp = 2;
     public GameManager manager;
-    [SerializeField] Transform TopLane;
-    [SerializeField] Transform MiddleLane;
-    [SerializeField] Transform BottomLane;
-    [SerializeField] int Speed = 1;
-    bool isMoving;
-    int LaneToBe;
-    Transform TargetTransform;
+    [SerializeField] Transform topLane;
+    [SerializeField] Transform middleLane;
+    [SerializeField] Transform bottomLane;
+    [SerializeField] int speed = 1;
+    private bool _isMoving;
+    private int _laneToBe;
+    private Transform _targetTransform;
 
     void Start()
     {
-        isMoving = true;
+        _isMoving = true;
     }
 
 
     void FixedUpdate()
     {
-        if (isMoving)
+        if (_isMoving)
         {
-            if (LaneToBe == 1)
+            if (_laneToBe == 1)
             {
-                TargetTransform = TopLane;
+                _targetTransform = topLane;
             }
-            else if (LaneToBe == 0)
+            else if (_laneToBe == 0)
             {
-                TargetTransform = MiddleLane;
+                _targetTransform = middleLane;
             }
-            else if (LaneToBe == -1)
+            else if (_laneToBe == -1)
             {
-                TargetTransform = BottomLane;
+                _targetTransform = bottomLane;
             }
 
-            transform.position = Vector3.Lerp(transform.position, TargetTransform.position, Speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, _targetTransform.position, speed * Time.deltaTime);
 
-            if (transform.position == TargetTransform.position)
+            if (transform.position == _targetTransform.position)
             {
-                isMoving = false;
+                _isMoving = false;
             }
         }
     }
@@ -47,19 +47,19 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (LaneToBe < 1)
+            if (_laneToBe < 1)
             {
-                LaneToBe++;
-                isMoving = true;
+                _laneToBe++;
+                _isMoving = true;
             }
             
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (LaneToBe > -1)
+            if (_laneToBe > -1)
             {
-                LaneToBe--;
-                isMoving = true;
+                _laneToBe--;
+                _isMoving = true;
             }
         }
     }

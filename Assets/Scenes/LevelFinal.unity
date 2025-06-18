@@ -662,10 +662,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1773219567}
-  TopLane: {fileID: 27797798}
-  MiddleLane: {fileID: 747306925}
-  BottomLane: {fileID: 1676032692}
-  Speed: 5
+  topLane: {fileID: 27797798}
+  middleLane: {fileID: 747306925}
+  bottomLane: {fileID: 1676032692}
+  speed: 5
 --- !u!4 &300041470
 Transform:
   m_ObjectHideFlags: 0
@@ -3154,10 +3154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234413d46c2835b458e760cf5e74f8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  MaxSpeed: 15
-  SpeedIncreseAmount: 0.5
-  TimeTillIncrese: 2
+  speed: 0
+  maxSpeed: 0
+  speedIncreaseAmount: 1
+  timeTillIncrease: 1
   livesContainer: {fileID: 1596559684}
   gameOverText: {fileID: 1799693174}
   restartButton: {fileID: 571944352}

@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // public int SpaceBetweenObstaclesGroup = 5;
-    public float Speed;
-    [SerializeField] int MaxSpeed;
-    [SerializeField] float SpeedIncreseAmount = 1;
-    [SerializeField] int TimeTillIncrese = 1;
+    public float speed;
+    [SerializeField] int maxSpeed;
+    [SerializeField] float speedIncreaseAmount = 1;
+    [SerializeField] int timeTillIncrease = 1;
     // [SerializeField] Transform ObstaclesContainer;
     public Transform livesContainer;
     public GameObject gameOverText;
@@ -35,15 +35,15 @@ public class GameManager : MonoBehaviour
     
     IEnumerator GraduallyIncreaseSpeed()
     {
-        while (Speed != MaxSpeed)
+        while (!Mathf.Approximately(speed, maxSpeed))
         {
-            float ActualSpeed = Speed;
-            while (!Mathf.Approximately(Speed, ActualSpeed + SpeedIncreseAmount))
+            float actualSpeed = speed;
+            while (!Mathf.Approximately(speed, actualSpeed + speedIncreaseAmount))
             {
-                Speed = Mathf.MoveTowards(Speed, ActualSpeed + SpeedIncreseAmount, Time.deltaTime);
+                speed = Mathf.MoveTowards(speed, actualSpeed + speedIncreaseAmount, Time.deltaTime);
                 yield return null;
             }
-            yield return new WaitForSeconds(TimeTillIncrese);
+            yield return new WaitForSeconds(timeTillIncrease);
         }   
     }
     
