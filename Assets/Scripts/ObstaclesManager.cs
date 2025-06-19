@@ -9,6 +9,7 @@ public class ObstaclesManager : MonoBehaviour
     public AudioSource hitSound;
     public AudioSource pickupSound;
     public float moveSpeed = 3.0f;
+    public float maxSpeed = 50.0f;
     // public float randomSpawnMin = 8.0f;
     // public float randomSpawnMax = 12.0f;
 
@@ -76,10 +77,19 @@ public class ObstaclesManager : MonoBehaviour
     {
         // StartCoroutine(RepeatObstacle());
         InstantiateObstacle();
+        InvokeRepeating(nameof(IncreaseSpeed), 1.0f, 1.0f);
     }
 
     private void Update()
     {
         Move();
+    }
+
+    public void IncreaseSpeed()
+    {
+        if (moveSpeed < maxSpeed)
+        {
+            moveSpeed += 0.2f;
+        }
     }
 }
