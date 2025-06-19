@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
     public Transform livesContainer;
     public GameObject gameOverText;
     public GameObject restartButton;
+    public AudioSource music;
     
     void Start()
     {
         // SortObstacles();
+        music.volume = 1;
         gameOverText.SetActive(false);
         restartButton.SetActive(false);
         StartCoroutine(GraduallyIncreaseSpeed());
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Time.timeScale = 0;
+        music.volume = 0.2f;
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
     }

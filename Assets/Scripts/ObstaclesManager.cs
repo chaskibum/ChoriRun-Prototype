@@ -6,7 +6,8 @@ public class ObstaclesManager : MonoBehaviour
 {
     // private int _objectsOnScreen = 0;
     // public float spawnLocation = 24;
-
+    public AudioSource hitSound;
+    public AudioSource pickupSound;
     public float moveSpeed = 3.0f;
     // public float randomSpawnMin = 8.0f;
     // public float randomSpawnMax = 12.0f;
@@ -26,10 +27,14 @@ public class ObstaclesManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (type == ObstacleType.Obstacle)
+            {
                 player.ChangeHp();
+                hitSound.Play();
+            }
             else if (type == ObstacleType.Ingredient)
             {
                 scoreManager.AddScore(50);
+                pickupSound.Play();
                 InstantiateObstacle();
             }
         }

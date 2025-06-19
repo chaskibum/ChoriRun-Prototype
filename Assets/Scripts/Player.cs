@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int _hp = 2;
     public GameManager manager;
+    public AudioSource crashSound;
+    public AudioSource motorbikeSound;
     [SerializeField] Transform topLane;
     [SerializeField] Transform middleLane;
     [SerializeField] Transform bottomLane;
     [SerializeField] int speed = 1;
+    
+    private int _hp = 2;
     private bool _isMoving;
     private int _laneToBe;
     private Transform _targetTransform;
@@ -78,6 +81,8 @@ public class Player : MonoBehaviour
         manager.HpFeedback(_hp);
         if (_hp <= 0)
         {
+            motorbikeSound.Stop();
+            crashSound.Play();
             manager.EndGame();
         }
     }
