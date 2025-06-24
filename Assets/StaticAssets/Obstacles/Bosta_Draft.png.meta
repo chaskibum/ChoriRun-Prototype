@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bosta_Draft_0: 3385313724717428317
+      Bosta_Draft_1: -2259795510406178763
+      Bosta_Draft_2: 7889786321520186956
+      Bosta_Draft_3: -3197738188321483946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

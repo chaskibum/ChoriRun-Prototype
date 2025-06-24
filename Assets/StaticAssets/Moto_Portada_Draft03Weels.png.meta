@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d444ed62a41bf2a42afd248a9c3dda32
+guid: c5448ca02962b8849939d73ba31b0e42
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7840048719732164658
-    second: Pozo_Draft_0
+      213: 3623557402060382961
+    second: Moto_Portada_Draft03Weels_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pozo_Draft_0
+      name: Moto_Portada_Draft03Weels_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 21
-        width: 44
-        height: 22
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+        x: 0
+        y: 0
+        width: 300
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec7bb9e4a3d823390800000000000000
-      internalID: -7840048719732164658
+      spriteID: 1f2eb0d3246794230800000000000000
+      internalID: 3623557402060382961
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3d59dddaf806e644ab359fff3c75ad7a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Pozo_Draft_0: -7840048719732164658
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

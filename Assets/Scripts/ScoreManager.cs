@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         _score = 0;
-        InvokeRepeating(nameof(AddTimeScore), 0, 0.1f);
+        InvokeRepeating(nameof(AddTimeScore), 0, 0.5f);
     }
 
     public void AddScore(int points = 1)

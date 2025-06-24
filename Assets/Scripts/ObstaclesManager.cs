@@ -89,7 +89,7 @@ public class ObstaclesManager : MonoBehaviour
     {
         if (moveSpeed < maxSpeed)
         {
-            moveSpeed += 0.2f;
+            moveSpeed += 0.1f;
         }
     }
 }
