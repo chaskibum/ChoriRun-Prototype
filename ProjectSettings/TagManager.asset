@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Obstacle
   - Limit
+  - Oil
+  - Pothole
+  - Cone
+  - Chorizo
+  - Lettuce
+  - Bread
+  - Tomato
   layers:
   - Default
   - TransparentFX
