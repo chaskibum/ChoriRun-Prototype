@@ -688,8 +688,8 @@ BoxCollider2D:
   m_Offset: {x: -0.05, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.44, y: 0.22}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.53}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -741,7 +741,7 @@ SpriteRenderer:
   m_SortingLayerID: -2101031889
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7840048719732164658, guid: d444ed62a41bf2a42afd248a9c3dda32, type: 3}
+  m_Sprite: {fileID: -4737420686693725163, guid: 9eb5240fa09f03342acc8f704ae10bb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -762,7 +762,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.48309, y: -7.20144, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1073110840}
@@ -1400,7 +1400,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.51, y: 0.36}
+    oldSize: {x: 0.49, y: 0.34}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1858,7 +1858,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.34}
+    oldSize: {x: 1.17, y: 1.38}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1910,7 +1910,7 @@ SpriteRenderer:
   m_SortingLayerID: -2101031889
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1271318651018336110, guid: 930db4f5e2569d34b81f7c5b4ab71246, type: 3}
+  m_Sprite: {fileID: -4036936230656541703, guid: 9f40a1508627db741a259757c523de7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1931,7 +1931,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.48309, y: -3.62144, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1073110840}
@@ -3757,7 +3757,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 8f5434db8cc53574491c69c00492ddcb, type: 3}
   m_Resource: {fileID: 8300000, guid: 8f5434db8cc53574491c69c00492ddcb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3886,7 +3886,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: cc198e0dfa2b27e49ad3e0c6524890f2, type: 3}
   m_Resource: {fileID: 8300000, guid: cc198e0dfa2b27e49ad3e0c6524890f2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

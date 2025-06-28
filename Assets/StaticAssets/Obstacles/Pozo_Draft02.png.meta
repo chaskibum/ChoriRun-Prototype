@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85829296d1d24334eb4800b9d9e0cb26
+guid: 9eb5240fa09f03342acc8f704ae10bb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8462098789022437932
-    second: Tomato_Draft_0
+      213: -4737420686693725163
+    second: Pozo_Draft02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tomato_Draft_0
+      name: Pozo_Draft02_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 13
-        width: 49
-        height: 34
+        x: 16
+        y: 29
+        width: 96
+        height: 53
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4dded0a4cf5909a80800000000000000
-      internalID: -8462098789022437932
+      spriteID: 51c88024cfc414eb0800000000000000
+      internalID: -4737420686693725163
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cb2e5413849069c4283ce155cb896deb
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Tomato_Draft_0: -8462098789022437932
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
