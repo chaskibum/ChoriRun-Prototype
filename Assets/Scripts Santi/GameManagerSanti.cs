@@ -19,12 +19,7 @@ public class GameManagerSanti : MonoBehaviour
         SortObstacles();
         StartCoroutine(GraduallyIncreaseSpeed());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     void SortObstacles()
     {
         float currentX = 0f;

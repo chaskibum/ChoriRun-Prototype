@@ -9,6 +9,8 @@ public class PlayerSanti : MonoBehaviour
     bool isMoving;
     int LaneToBe;
     Transform TargetTransform;
+    public Transform ingredientContainer;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,9 +73,32 @@ public class PlayerSanti : MonoBehaviour
         {
             Debug.Log("Collided with Pothole/Cone"  + other.tag);
         }
-        else if (other.CompareTag("Chorizo") || other.CompareTag("Lettuce") || other.CompareTag("Tomato") || other.CompareTag("Bread"))
+        /*else if (other.CompareTag("Chorizo") || other.CompareTag("Lettuce") || other.CompareTag("Tomato") || other.CompareTag("Bread"))
         {
             Debug.Log("Collided with ingredient" + other.tag);
+        }*/
+        else if (other.CompareTag("Bread"))
+        {
+            if (ingredientContainer.GetChild(0).gameObject.activeInHierarchy)
+            {
+                ingredientContainer.GetChild(4).gameObject.SetActive(true);
+            }
+            else
+            {
+                ingredientContainer.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+        else if (other.CompareTag("Chorizo"))
+        {
+            ingredientContainer.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (other.CompareTag("Lettuce"))
+        {
+            ingredientContainer.GetChild(2).gameObject.SetActive(true);
+        }
+        else if (other.CompareTag("Tomato"))
+        {
+            ingredientContainer.GetChild(3).gameObject.SetActive(true);
         }
     }
 }
