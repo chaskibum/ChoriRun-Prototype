@@ -19,8 +19,7 @@ public class Player : MonoBehaviour
     {
         _isMoving = true;
     }
-
-
+    
     void FixedUpdate()
     {
         if (_isMoving)
@@ -66,15 +65,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
-    /*private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if (other.CompareTag("Obstacle"))
-        {
-            other.GetComponent<SpriteRenderer>().color = Color.red;
-        }
-    }*/
-
     public void ChangeHp(int amount = -1)
     {
         _hp += amount;
@@ -86,4 +76,8 @@ public class Player : MonoBehaviour
             manager.EndGame();
         }
     }
+    /*public void InvulnerabilityStart()
+    {
+        
+    }*/
 }

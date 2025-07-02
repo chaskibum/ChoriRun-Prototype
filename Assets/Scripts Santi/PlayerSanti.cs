@@ -73,7 +73,7 @@ public class PlayerSanti : MonoBehaviour
         }
         else if (other.CompareTag("Chorizo") || other.CompareTag("Lettuce") || other.CompareTag("Tomato") || other.CompareTag("Bread"))
         {
-            Debug.Log("Collided with ingrdient" + other.tag);
+            Debug.Log("Collided with ingredient" + other.tag);
         }
     }
 }

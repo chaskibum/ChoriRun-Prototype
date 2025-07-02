@@ -10,16 +10,12 @@ public class ObstacleGroupBehaviorSanti : MonoBehaviour
     public int MaxIngredientsPerGroup;
     [SerializeField] bool isRandomizable;
     [SerializeField] bool destroyOnLimit;
+    
     void Awake() 
     {
         GameManager = FindFirstObjectByType<GameManagerSanti>();
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         transform.position += Vector3.left * GameManager.Speed * Time.deltaTime;

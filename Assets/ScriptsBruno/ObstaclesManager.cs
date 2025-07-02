@@ -4,18 +4,15 @@ using Random = UnityEngine.Random;
 
 public class ObstaclesManager : MonoBehaviour
 {
-    // private int _objectsOnScreen = 0;
-    // public float spawnLocation = 24;
     public AudioSource hitSound;
     public AudioSource pickupSound;
-    public float moveSpeed = 3.0f;
-    public float maxSpeed = 50.0f;
-    // public float randomSpawnMin = 8.0f;
-    // public float randomSpawnMax = 12.0f;
+    public float moveSpeed = 10.0f;
+    public float maxSpeed = 30.0f;
 
     public Player player;
     public ObstacleType type;
     public ScoreManager scoreManager;
+    private GameManager _gameManager;
 
     public enum ObstacleType
     {
@@ -56,26 +53,19 @@ public class ObstaclesManager : MonoBehaviour
         var y = randomPosition;
         transform.position = new Vector3(x, y);
     }
-
-    /*// Instantiates the obstacle with a randomized spawn timer.
-    IEnumerator RepeatObstacle()
-    {
-        while (true)
-        {
-            InstantiateObstacle();
-            float randomWait = Random.Range(randomSpawnMin, randomSpawnMax);
-            yield return new WaitForSeconds(randomWait);
-        }
-    }*/
     
     private void Move()
     {
         transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
     }
-    
+
+    private void Awake()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     private void Start()
     {
-        // StartCoroutine(RepeatObstacle());
         InstantiateObstacle();
         InvokeRepeating(nameof(IncreaseSpeed), 1.0f, 1.0f);
     }
@@ -90,6 +80,36 @@ public class ObstaclesManager : MonoBehaviour
         if (moveSpeed < maxSpeed)
         {
             moveSpeed += 0.1f;
+        }
+    }
+
+    /*private void MakeChori(IngredientType type)
+    {
+        CleanInventory();
+
+        var potions = _playerInventory.GetPotions();
+
+        int index = 1;
+        foreach (var potion in potions)
+        {
+            GameObject go = Instantiate(inventorySlot, Vector3.zero, Quaternion.identity, transform);
+            if (go)
+            {
+                if (go.TryGetComponent(out InventorySlot slot))
+                {
+                    slot.Setup(potion);
+                    slot.keyNumber = index;
+                }
+            }
+            index++;
+        }
+    }*/
+    
+    private void CleanInventory()
+    {
+        foreach (Transform item in transform)
+        {
+            Destroy(item.gameObject);
         }
     }
 }

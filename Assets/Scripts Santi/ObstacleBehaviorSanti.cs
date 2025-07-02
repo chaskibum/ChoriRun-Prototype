@@ -11,7 +11,7 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     [SerializeField] List<Sprite> ObstaclesSprites;
     [SerializeField] List<Sprite> IngredientsSprites;
     bool RefreshSubType = false;
-    bool RefreshColissionType = false;
+    bool RefreshCollisionType = false;
     int RandomInt = 0;
     float randomValue(float total)
     {
@@ -52,7 +52,7 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     {
         if (collisionType == CollisionType.Random)
         {
-            RefreshColissionType = true;
+            RefreshCollisionType = true;
         }
         else if (obstacleType == ObstacleType.Random || ingredientType == IngredientType.Random)
         {
@@ -192,7 +192,7 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     }
     public void SetRandomCollisionType()
     {
-        if (RefreshColissionType)
+        if (RefreshCollisionType)
         {
             collisionType = CollisionType.Random;
         }

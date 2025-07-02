@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleAmount: 0
   IngredientsAmount: 0
-  MaxObstaclesPerGroup: 3
-  MaxIngredientsPerGroup: 3
+  MaxObstaclesPerGroup: 4
+  MaxIngredientsPerGroup: 2
   isRandomizable: 1
   destroyOnLimit: 0
 --- !u!1 &27797797
@@ -330,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: -8.14
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -394,18 +394,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 25930532}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -466,6 +454,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -484,18 +484,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -560,6 +548,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -578,18 +578,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 235966730}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -604,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -4.16
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -649,6 +637,18 @@ PrefabInstance:
     - target: {fileID: 3985060610333734900, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_Name
       value: Collider (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -760,7 +760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 4.47
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -824,14 +824,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 462452050}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -892,6 +884,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -910,14 +910,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1823683050}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -977,6 +969,14 @@ PrefabInstance:
     - target: {fileID: 3985060610333734900, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_Name
       value: Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1086,8 +1086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleAmount: 0
   IngredientsAmount: 0
-  MaxObstaclesPerGroup: 3
-  MaxIngredientsPerGroup: 3
+  MaxObstaclesPerGroup: 2
+  MaxIngredientsPerGroup: 4
   isRandomizable: 1
   destroyOnLimit: 0
 --- !u!4 &236448269 stripped
@@ -1273,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1337,18 +1337,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1413,6 +1401,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1431,18 +1431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1511,6 +1499,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1524,14 +1524,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 589661750}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1546,7 +1538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1592,6 +1584,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1610,18 +1610,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1690,6 +1678,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1703,18 +1703,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1782,6 +1770,18 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1976,18 +1976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1737041593}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2048,6 +2036,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2066,14 +2066,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 25930532}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2088,7 +2080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2134,6 +2126,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2166,7 +2166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2230,14 +2230,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2252,7 +2244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -4.95
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2301,6 +2293,14 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2547,8 +2547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleAmount: 0
   IngredientsAmount: 0
-  MaxObstaclesPerGroup: 3
-  MaxIngredientsPerGroup: 3
+  MaxObstaclesPerGroup: 4
+  MaxIngredientsPerGroup: 2
   isRandomizable: 1
   destroyOnLimit: 0
 --- !u!1001 &551910026
@@ -2559,14 +2559,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 545446550}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2581,7 +2573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -3.28
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2626,6 +2618,14 @@ PrefabInstance:
     - target: {fileID: 3985060610333734900, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_Name
       value: Collider (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2752,18 +2752,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1823683050}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2778,7 +2766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2823,6 +2811,18 @@ PrefabInstance:
     - target: {fileID: 3985060610333734900, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_Name
       value: Collider (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2926,14 +2926,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3002,6 +2994,14 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3020,18 +3020,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3099,6 +3087,18 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3336,10 +3336,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3401,6 +3397,10 @@ PrefabInstance:
       value: Collider (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
@@ -3514,7 +3514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3570,6 +3570,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
   m_PrefabInstance: {fileID: 838785960}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &909735369 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+  m_PrefabInstance: {fileID: 1260654416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &931901945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3623,18 +3628,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3703,6 +3696,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3721,18 +3726,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3801,6 +3794,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3814,14 +3819,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -3890,6 +3887,14 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3939,14 +3944,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4015,6 +4012,14 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4047,7 +4052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: 7.37
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4125,7 +4130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4189,18 +4194,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4269,6 +4262,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4282,18 +4287,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 462452050}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4308,7 +4301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -7.26
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4354,6 +4347,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4372,14 +4377,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1737041593}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4440,6 +4437,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4472,7 +4477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4567,18 +4572,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4647,6 +4640,91 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+--- !u!1001 &1260654416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1737041593}
+    m_Modifications:
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985060610333734900, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
+      propertyPath: m_Name
+      value: Collider (5)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4674,7 +4752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4773,18 +4851,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4853,6 +4919,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4866,18 +4944,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4946,6 +5012,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4993,18 +5071,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5072,6 +5138,18 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5184,7 +5262,7 @@ MonoBehaviour:
   ObstacleAmount: 0
   IngredientsAmount: 0
   MaxObstaclesPerGroup: 5
-  MaxIngredientsPerGroup: 5
+  MaxIngredientsPerGroup: 3
   isRandomizable: 1
   destroyOnLimit: 0
 --- !u!1001 &1423296751
@@ -5195,18 +5273,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5275,6 +5341,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5293,14 +5371,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 235966730}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5315,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -6.32
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5361,6 +5431,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5379,18 +5457,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5459,6 +5525,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5482,18 +5560,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5562,6 +5628,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5580,22 +5658,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5610,7 +5672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5900021
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5659,6 +5721,22 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5775,18 +5853,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5855,6 +5921,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5873,18 +5951,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 545446550}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -5899,7 +5965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5945,6 +6011,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5977,7 +6055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6055,7 +6133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 6.07
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6121,7 +6199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734952913}
   - component: {fileID: 1734952912}
-  - component: {fileID: 1734952915}
+  - component: {fileID: 1734952917}
   - component: {fileID: 1734952914}
   - component: {fileID: 1734952916}
   m_Layer: 0
@@ -6228,8 +6306,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1734952915
-BoxCollider2D:
+--- !u!114 &1734952916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734952911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfb02ac9788ca74ca7ef2d86fddffcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TopLane: {fileID: 1210844527}
+  MiddleLane: {fileID: 1063248111}
+  BottomLane: {fileID: 1924948839}
+  Speed: 10
+--- !u!58 &1734952917
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6262,34 +6356,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.08}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.49, y: 0.48}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.3, y: 0.3}
-  m_EdgeRadius: 0
---- !u!114 &1734952916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734952911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdfb02ac9788ca74ca7ef2d86fddffcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TopLane: {fileID: 1210844527}
-  MiddleLane: {fileID: 1063248111}
-  BottomLane: {fileID: 1924948839}
-  Speed: 10
+  m_Offset: {x: 0.14, y: -0.14}
+  m_Radius: 0.1
 --- !u!1 &1737041592
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,6 +6394,7 @@ Transform:
   - {fileID: 1159390919}
   - {fileID: 1699733873}
   - {fileID: 1128471065}
+  - {fileID: 909735369}
   m_Father: {fileID: 931901946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1737041595
@@ -6388,8 +6457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleAmount: 0
   IngredientsAmount: 0
-  MaxObstaclesPerGroup: 3
-  MaxIngredientsPerGroup: 3
+  MaxObstaclesPerGroup: 4
+  MaxIngredientsPerGroup: 2
   isRandomizable: 1
   destroyOnLimit: 0
 --- !u!1001 &1737271550
@@ -6400,18 +6469,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 589661750}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -6426,7 +6483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6472,6 +6529,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collider
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6504,7 +6573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40999794
+      value: 7.17
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6568,18 +6637,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -6647,6 +6704,18 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6792,18 +6861,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -6871,6 +6928,18 @@ PrefabInstance:
     - target: {fileID: 7630118648889370526, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: collisionType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7001,11 +7070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 3.79
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7070,18 +7139,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: ingredientType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7149,6 +7206,18 @@ PrefabInstance:
     - target: {fileID: 8218338020881716993, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: ingredientType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7371,18 +7440,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7451,6 +7508,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7483,7 +7552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7547,18 +7616,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7627,6 +7684,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7645,18 +7714,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7725,6 +7782,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7743,18 +7812,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771981192}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7823,6 +7880,18 @@ PrefabInstance:
       propertyPath: collisionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7855,7 +7924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.590002
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7919,18 +7988,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413632700}
     m_Modifications:
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: obstacleType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collisionType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
-      propertyPath: collectableType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -7945,7 +8002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.409998
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 3228637029359539650, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8026,6 +8083,18 @@ PrefabInstance:
     - target: {fileID: 8218338020881716993, guid: 00e712ea2b4a7434986ce0c19eeed0f9, type: 3}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: obstacleType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630118648889370526, guid: 51a988ac50a3f2149b159dbd1783beef, type: 3}
+      propertyPath: collectableType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
