@@ -5,16 +5,19 @@ public class PlayerSanti : MonoBehaviour
     [SerializeField] Transform TopLane;
     [SerializeField] Transform MiddleLane;
     [SerializeField] Transform BottomLane;
+    Vector2 StartPos;
+
     [SerializeField] int Speed = 1;
     bool isMoving;
     int LaneToBe;
     Transform TargetTransform;
     public Transform ingredientContainer;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isMoving = true;
+        StartPos = transform.position;
     }
 
     // Update is called once per frame
@@ -52,7 +55,7 @@ public class PlayerSanti : MonoBehaviour
                 LaneToBe++;
                 isMoving = true;
             }
-            
+
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -67,16 +70,12 @@ public class PlayerSanti : MonoBehaviour
     {
         if (other.CompareTag("Oil"))
         {
-            Debug.Log("Collided with oil"  + other.tag);
+            Debug.Log("Collided with oil" + other.tag);
         }
         else if (other.CompareTag("Pothole") || other.CompareTag("Cone"))
         {
-            Debug.Log("Collided with Pothole/Cone"  + other.tag);
+            Debug.Log("Collided with Pothole/Cone" + other.tag);
         }
-        /*else if (other.CompareTag("Chorizo") || other.CompareTag("Lettuce") || other.CompareTag("Tomato") || other.CompareTag("Bread"))
-        {
-            Debug.Log("Collided with ingredient" + other.tag);
-        }*/
         else if (other.CompareTag("Bread"))
         {
             if (ingredientContainer.GetChild(0).gameObject.activeInHierarchy)
@@ -100,5 +99,11 @@ public class PlayerSanti : MonoBehaviour
         {
             ingredientContainer.GetChild(3).gameObject.SetActive(true);
         }
+    }
+    public void PositionOnRestart()
+    {
+        transform.position = StartPos;
+        LaneToBe = 0;
+        isMoving = true;
     }
 }

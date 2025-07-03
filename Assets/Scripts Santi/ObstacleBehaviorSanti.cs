@@ -10,12 +10,12 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     [SerializeField] IngredientType ingredientType;
     [SerializeField] List<Sprite> ObstaclesSprites;
     [SerializeField] List<Sprite> IngredientsSprites;
-    bool RefreshSubType = false;
-    bool RefreshCollisionType = false;
-    int RandomInt = 0;
-    float randomValue(float total)
+    bool refreshSubType = false;
+    bool refreshColissionType = false;
+    int randomInt = 0;
+    float randomValue(float MaxValue)
     {
-        float Value = Random.Range(0f, total);
+        float Value = Random.Range(0f, MaxValue);
         return Value;
     } 
 
@@ -52,11 +52,11 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     {
         if (collisionType == CollisionType.Random)
         {
-            RefreshCollisionType = true;
+            refreshColissionType = true;
         }
         else if (obstacleType == ObstacleType.Random || ingredientType == IngredientType.Random)
         {
-            RefreshSubType = true;
+            refreshSubType = true;
         }
         PickObstacleType();
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -80,11 +80,11 @@ public class ObstacleBehaviorSanti : MonoBehaviour
             {
                 float TotalProb = gameManager.ingredientProbability + gameManager.powerUpProbability;
 
-                float CollectableProb = gameManager.ingredientProbability / TotalProb * 100;
+                float IngredientProb = gameManager.ingredientProbability / TotalProb * 100;
 
                 float PowerUpProb = gameManager.powerUpProbability / TotalProb * 100;
 
-                if (randomValue(CollectableProb + PowerUpProb) <= CollectableProb)
+                if (randomValue(IngredientProb + PowerUpProb) <= IngredientProb)
                 {
                     collisionType = CollisionType.Ingredient;
                 }
@@ -109,7 +109,7 @@ public class ObstacleBehaviorSanti : MonoBehaviour
 
                 float SecondProb = gameManager.powerUpProbability / TotalProb * 100;
 
-                if (randomValue(gameManager.obstacleProbability + gameManager.ingredientProbability) <= FirstProb)
+                if (randomValue(FirstProb + SecondProb) <= FirstProb)
                 {
                     collisionType = CollisionType.Obstacle;
                 }
@@ -124,17 +124,17 @@ public class ObstacleBehaviorSanti : MonoBehaviour
         {
             // collisionType = CollisionType.PowerUp;
         }
+        
 
         switch (collisionType)
         {
-
             case CollisionType.Obstacle:
 
-                RandomInt = Random.Range(0, ObstaclesSprites.Count);
+                randomInt = Random.Range(0, ObstaclesSprites.Count);
 
-                obstacleType = (ObstacleType)RandomInt;
+                obstacleType = (ObstacleType)randomInt;
 
-                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ObstaclesSprites[(int)obstacleType];
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ObstaclesSprites[randomInt];
 
                 transform.tag = obstacleType.ToString();
 
@@ -142,24 +142,20 @@ public class ObstacleBehaviorSanti : MonoBehaviour
                 break;
 
             case CollisionType.Ingredient:
+                
+                randomInt = Random.Range(0, IngredientsSprites.Count);
 
-                RandomInt = Random.Range(0, IngredientsSprites.Count);
+                ingredientType = (IngredientType)randomInt;
 
-                ingredientType = (IngredientType)RandomInt;
-
-                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = IngredientsSprites[(int)ingredientType];
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = IngredientsSprites[randomInt];
 
                 transform.tag = ingredientType.ToString();
 
                 obstacleGroupBehavior.IngredientsAmount++;
-
                 break;
 
             case CollisionType.PowerUp:
-                Debug.Log("Soy un powerup, voy a elegir cual");
-                GetComponent<SpriteRenderer>().color = Color.blue;
                 break;
-
         }
     }
     public void PickObstacleType()
@@ -173,8 +169,8 @@ public class ObstacleBehaviorSanti : MonoBehaviour
         {
             if (obstacleType == ObstacleType.Random)
             {
-                RandomInt = Random.Range(0, ObstaclesSprites.Count);
-                obstacleType = (ObstacleType)RandomInt;
+                randomInt = Random.Range(0, ObstaclesSprites.Count);
+                obstacleType = (ObstacleType)randomInt;
             }
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ObstaclesSprites[(int)obstacleType];
             transform.tag = obstacleType.ToString();
@@ -183,20 +179,20 @@ public class ObstacleBehaviorSanti : MonoBehaviour
         {
             if (ingredientType == IngredientType.Random)
             {
-                RandomInt = Random.Range(0, IngredientsSprites.Count);
-                ingredientType = (IngredientType)RandomInt;
+                randomInt = Random.Range(0, IngredientsSprites.Count);
+                ingredientType = (IngredientType)randomInt;
             }
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = IngredientsSprites[(int)ingredientType];
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = IngredientsSprites[(int)ingredientType]; 
             transform.tag = ingredientType.ToString();
         }
     }
     public void SetRandomCollisionType()
     {
-        if (RefreshCollisionType)
+        if (refreshColissionType)
         {
             collisionType = CollisionType.Random;
         }
-        else if(RefreshSubType)
+        else if(refreshSubType)
         {
             obstacleType = ObstacleType.Random;
             ingredientType = IngredientType.Random;

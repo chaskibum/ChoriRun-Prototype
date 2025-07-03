@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3048628964557745060}
   - component: {fileID: 7982965428072698828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ColliderSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1251887667
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,11 +97,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3228637029359539650}
   - component: {fileID: 8218338020881716993}
-  - component: {fileID: 8940788974579871257}
   - component: {fileID: 7630118648889370526}
-  m_Layer: 0
+  - component: {fileID: 3540788742646002264}
+  m_Layer: 6
   m_Name: Collider
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,8 +116,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3048628964557745060}
   m_Father: {fileID: 0}
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 4294967295
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,7 +177,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8940788974579871257
+--- !u!114 &7630118648889370526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985060610333734900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aba832c61f39564780b4c200b2c2a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionType: 3
+  obstacleType: 3
+  ingredientType: 4
+  ObstaclesSprites:
+  - {fileID: 8576275787230956244, guid: 033a19d8a99d5d643974f51c5166143f, type: 3}
+  - {fileID: -7840048719732164658, guid: d444ed62a41bf2a42afd248a9c3dda32, type: 3}
+  - {fileID: 1271318651018336110, guid: 930db4f5e2569d34b81f7c5b4ab71246, type: 3}
+  IngredientsSprites:
+  - {fileID: 274069337478802123, guid: 282bd246ad005dc44b5775244ee7a5c0, type: 3}
+  - {fileID: -6431196456796081799, guid: ba1cb602a984c6540849d489485c892d, type: 3}
+  - {fileID: 3348635779594101101, guid: a11777b93f51d5643bb3f170632d5204, type: 3}
+  - {fileID: -8462098789022437932, guid: 85829296d1d24334eb4800b9d9e0cb26, type: 3}
+--- !u!58 &3540788742646002264
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,29 +235,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.00000047683716}
   m_Radius: 0.5
---- !u!114 &7630118648889370526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3985060610333734900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aba832c61f39564780b4c200b2c2a0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionType: 3
-  obstacleType: 3
-  ingredientType: 4
-  ObstaclesSprites:
-  - {fileID: 8576275787230956244, guid: 033a19d8a99d5d643974f51c5166143f, type: 3}
-  - {fileID: -7840048719732164658, guid: d444ed62a41bf2a42afd248a9c3dda32, type: 3}
-  - {fileID: 1271318651018336110, guid: 930db4f5e2569d34b81f7c5b4ab71246, type: 3}
-  IngredientsSprites:
-  - {fileID: 274069337478802123, guid: 282bd246ad005dc44b5775244ee7a5c0, type: 3}
-  - {fileID: -6431196456796081799, guid: ba1cb602a984c6540849d489485c892d, type: 3}
-  - {fileID: 3348635779594101101, guid: a11777b93f51d5643bb3f170632d5204, type: 3}
-  - {fileID: -8462098789022437932, guid: 85829296d1d24334eb4800b9d9e0cb26, type: 3}

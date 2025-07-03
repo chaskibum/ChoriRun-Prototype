@@ -13,6 +13,7 @@ TagManager:
   - Lettuce
   - Bread
   - Tomato
+  - ObstacleGroup
   layers:
   - Default
   - TransparentFX
@@ -47,17 +48,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2020580185
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Street
-    uniqueID: 3114613883
     locked: 0
   - name: Obstacles
     uniqueID: 2193935407
     locked: 0
   - name: Player
-    uniqueID: 2707805059
+    uniqueID: 964420759
     locked: 0
   - name: UI
     uniqueID: 2567535013

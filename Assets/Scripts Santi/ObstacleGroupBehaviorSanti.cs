@@ -2,56 +2,86 @@ using UnityEngine;
 
 public class ObstacleGroupBehaviorSanti : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    GameManagerSanti GameManager;
+     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameManagerSanti gameManager;
     public int ObstacleAmount;
     public int IngredientsAmount;
     public int MaxObstaclesPerGroup;
     public int MaxIngredientsPerGroup;
+    [SerializeField] Transform RareGroupContainer;
     [SerializeField] bool isRandomizable;
+    [SerializeField] bool isRareGroup;
     [SerializeField] bool destroyOnLimit;
-    
     void Awake() 
     {
-        GameManager = FindFirstObjectByType<GameManagerSanti>();
+        gameManager = FindFirstObjectByType<GameManagerSanti>();
     }
-    
-    void Update()
+    void Start()
     {
-        transform.position += Vector3.left * GameManager.Speed * Time.deltaTime;
+        
     }
 
-    private void OnTriggerExit2D(Collider2D other) 
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += Vector3.left * gameManager.ObstaclesSpeed * Time.deltaTime;
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("ObstacleGroup"))
+        {
+            SetPosition(transform.GetSiblingIndex());
+        }            
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Limit"))
         {
-            int index = transform.GetSiblingIndex();
-            if (index - 1 >= 0)
+            if (!isRareGroup)
             {
-                float previousRightEdge = transform.parent.GetChild(index - 1).localPosition.x + transform.parent.GetChild(index - 1).GetComponent<BoxCollider2D>().offset.x + (transform.parent.GetChild(index - 1).GetComponent<BoxCollider2D>().size.x /2f) ;
-
-                float newXPos = previousRightEdge + GameManager.SpaceBetweenObstaclesGroup + (transform.parent.GetChild(index).GetComponent<BoxCollider2D>().size.x / 2f) - transform.parent.GetChild(index).GetComponent<BoxCollider2D>().offset.x;
-
-
-                transform.localPosition = new Vector2( newXPos, 0);
-
-                RefreshObstacles();
+                int index = Random.Range(4, transform.parent.childCount);
+                transform.SetSiblingIndex(index);
+                SetPosition(index);
             }
             else
             {
-                float previousRightEdge = transform.parent.GetChild(transform.parent.childCount - 1).localPosition.x + transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<BoxCollider2D>().offset.x + (transform.parent.GetChild(transform.parent.childCount - 1).GetComponent<BoxCollider2D>().size.x /2f) ;
-
-                float newXPos = previousRightEdge + GameManager.SpaceBetweenObstaclesGroup + (transform.parent.GetChild(index).GetComponent<BoxCollider2D>().size.x / 2f) - transform.parent.GetChild(index).GetComponent<BoxCollider2D>().offset.x;
-
-
-                transform.localPosition = new Vector2( newXPos, 0);
-                
-                RefreshObstacles();
+                transform.parent = RareGroupContainer;
+                transform.gameObject.SetActive(false);
             }
+            RefreshObstacles();
         }
     }
 
-    private void RefreshObstacles()
+    private void SetPosition(int index)
+    {
+        float GetPreviousRightEdge(int currentIndex)
+        {
+            Transform ChildTransform = transform.parent.GetChild(currentIndex - 1);
+
+            return ChildTransform.localPosition.x + ChildTransform.GetComponent<BoxCollider2D>().offset.x + (ChildTransform.GetComponent<BoxCollider2D>().size.x / 2f);
+        }
+        Vector2 CalculateNewPosition(float PreviousRightEdge)
+        {
+            float newXPos = PreviousRightEdge + gameManager.SpaceBetweenObstaclesGroup + (transform.parent.GetChild(index).GetComponent<BoxCollider2D>().size.x / 2f) - transform.parent.GetChild(index).GetComponent<BoxCollider2D>().offset.x;
+
+
+            return new Vector2(newXPos, 0);
+        }
+
+        if (index - 1 >= 0)
+        {
+            transform.localPosition = CalculateNewPosition(GetPreviousRightEdge(index));
+
+        }
+        else
+        {
+            transform.localPosition = CalculateNewPosition(GetPreviousRightEdge(transform.parent.childCount));
+
+        }
+    }
+
+    public void RefreshObstacles()
     {
         if (isRandomizable)
         {
