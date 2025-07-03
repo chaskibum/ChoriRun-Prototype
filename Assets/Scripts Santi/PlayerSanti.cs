@@ -6,7 +6,6 @@ public class PlayerSanti : MonoBehaviour
     [SerializeField] Transform MiddleLane;
     [SerializeField] Transform BottomLane;
     Vector2 StartPos;
-
     [SerializeField] int Speed = 1;
     bool isMoving;
     int LaneToBe;
@@ -100,7 +99,7 @@ public class PlayerSanti : MonoBehaviour
             ingredientContainer.GetChild(3).gameObject.SetActive(true);
         }
     }
-    public void PositionOnRestart()
+    public void SetPositionOnRestart()
     {
         transform.position = StartPos;
         LaneToBe = 0;

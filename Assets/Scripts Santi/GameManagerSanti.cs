@@ -152,7 +152,7 @@ public class GameManagerSanti : MonoBehaviour
         SortForeground();
         SortBackground();
         SortObstacles();
-        player.PositionOnRestart();
+        player.SetPositionOnRestart(); 
         foreach (Transform rareGroup in RareGroupsList)
         {
             rareGroup.parent = RareObstaclesContainer;
