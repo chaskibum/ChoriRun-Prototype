@@ -93,8 +93,8 @@ namespace ScriptsAlpha
         public void IncreaseSpeed()
         {
             if (gameSpeed >= MaxGameSpeed) return;
-
-            gameSpeed += 0.1f;
+            
+            gameSpeed += 0.2f;
         }
 
         public void TimeScore()
