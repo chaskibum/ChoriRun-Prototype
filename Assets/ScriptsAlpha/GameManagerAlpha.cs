@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ScriptsAlpha
 {
@@ -50,6 +51,7 @@ namespace ScriptsAlpha
             mainMenuPanel.gameObject.SetActive(false);
             animator.SetBool(GameStarted, true);
             motorbikeSound.Play();
+            ingredientsContainer.gameObject.SetActive(true);
         }
 
         private void Update()
@@ -100,14 +102,14 @@ namespace ScriptsAlpha
 
         public void ChoriFeedback(int ingredient)
         {
-            if (ingredientsContainer.GetChild(0).gameObject.activeInHierarchy && ingredient == 0)
-                ingredientsContainer.GetChild(4).gameObject.SetActive(true);
-            ingredientsContainer.GetChild(ingredient).gameObject.SetActive(true);
+            if (ingredientsContainer.GetChild(0).gameObject.GetComponent<Image>().color == Color.white && ingredient == 0)
+                ingredientsContainer.GetChild(4).gameObject.GetComponent<Image>().color = Color.white;
+            ingredientsContainer.GetChild(ingredient).gameObject.GetComponent<Image>().color = Color.white;
             ingredientSound.Play();
 
             foreach (Transform child in ingredientsContainer)
             {
-                if (!child.gameObject.activeInHierarchy)
+                if (child.gameObject.GetComponent<Image>().color == Color.black)
                 {
                     _hasAllIngredients = false;
                     break;
@@ -126,7 +128,7 @@ namespace ScriptsAlpha
         {
             foreach (Transform child in ingredientsContainer)
             {
-                child.gameObject.SetActive(false);
+                child.gameObject.GetComponent<Image>().color = Color.black;
             }
             AddScore(250);
             choriSound.Play();
@@ -139,6 +141,7 @@ namespace ScriptsAlpha
             Time.timeScale = 0;
             motorbikeSound.Stop();
             music.volume = 0.2f;
+            ingredientsContainer.gameObject.SetActive(false);
         }
 
         public void Restart()
@@ -154,11 +157,11 @@ namespace ScriptsAlpha
             music.volume = 1f;
             motorbikeSound.Play();
             objectsManager.ClearScreen();
-            ingredientsContainer.GetChild(0).gameObject.SetActive(false);
-            ingredientsContainer.GetChild(1).gameObject.SetActive(false);
-            ingredientsContainer.GetChild(2).gameObject.SetActive(false);
-            ingredientsContainer.GetChild(3).gameObject.SetActive(false);
-            ingredientsContainer.GetChild(4).gameObject.SetActive(false);
+            ingredientsContainer.gameObject.SetActive(true);
+            foreach (Transform child in ingredientsContainer)
+            {
+                child.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            }
         }
         
         public PlayerAlpha GetPlayer => player;
