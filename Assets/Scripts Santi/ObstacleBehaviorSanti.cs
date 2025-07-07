@@ -17,7 +17,7 @@ public class ObstacleBehaviorSanti : MonoBehaviour
     {
         float Value = Random.Range(0f, MaxValue);
         return Value;
-    } 
+    }
 
     enum CollisionType
     {

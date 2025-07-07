@@ -51,8 +51,6 @@ public class GameManager : MonoBehaviour
         livesContainer.GetChild(hp).gameObject.SetActive(false);
     }
     
-    
-    
     /*public void IncreaseSpeed()
     {
         if (_moveSpeed < MaxSpeed)
