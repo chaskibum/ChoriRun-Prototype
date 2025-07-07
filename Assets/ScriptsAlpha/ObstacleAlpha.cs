@@ -31,14 +31,14 @@ namespace ScriptsAlpha
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!_gameManager.isPlayerInvincible)
+            if (!_gameManager.GetisPlayerInvincible)
             {
                 _gameManager.GetPlayer.LooseHp();
                 _gameManager.gameSpeed -= 3f;
             }
             else
             {
-                animator.Play("ThrowObstacleAway");
+                animator.Play("ThrowObjectAway",0,0);
             }
 
         }

@@ -1,4 +1,5 @@
 using System.Collections;
+using ScriptsAlpha;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject Menu;
     [SerializeField] int ResumeDelay;
     [SerializeField] Animator ResumeTextAnim;
-    GameManagerSanti gameManager;
+    GameManagerAlpha gameManager;
     bool canOpenMenu = true;
     bool waitTillEnd;
     void Awake()
     {
-        gameManager = FindFirstObjectByType<GameManagerSanti>();
+        gameManager = FindFirstObjectByType<GameManagerAlpha>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,9 +24,12 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (gameManager.GetGameState)
         {
-            OpenCloseMenu();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OpenCloseMenu();
+            }            
         }
     }
 

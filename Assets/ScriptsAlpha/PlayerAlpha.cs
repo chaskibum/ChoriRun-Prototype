@@ -6,14 +6,14 @@ namespace ScriptsAlpha
     {
         public Transform playerPositions;
         public GameObject velocityParticles;
-    
+
         public float movementSpeed = 10.0f;
         public float rotationSpeed = 10.0f;
-        
+
         [Header("Audio")]
         public AudioSource hitSound;
         public AudioSource crashSound;
-    
+
         private int _currentPosition;
         private float _currentRotation;
 
@@ -21,14 +21,14 @@ namespace ScriptsAlpha
         private float _increaseSpeedCooldown;
 
         public int hp = 2;
-    
+
         private GameManagerAlpha _gameManager;
-    
+
         private void Awake()
         {
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
         }
-        
+
         private void Start()
         {
             velocityParticles.SetActive(false);
@@ -56,14 +56,14 @@ namespace ScriptsAlpha
         {
             bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
             bool down = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
-        
+
             if (up)
                 _currentPosition += 1;
             else if (down)
                 _currentPosition -= 1;
-        
+
             _currentPosition = Mathf.Clamp(_currentPosition, 0, playerPositions.childCount - 1);
-        
+
             Transform positionTransform = playerPositions.GetChild(_currentPosition);
             transform.position = Vector3.Lerp(transform.position, positionTransform.position, movementSpeed * Time.deltaTime);
         }
@@ -71,7 +71,7 @@ namespace ScriptsAlpha
         private void CheckForWheelie()
         {
             bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
-        
+
             if (left)
             {
                 _currentRotation += rotationSpeed * Time.deltaTime;
@@ -97,9 +97,14 @@ namespace ScriptsAlpha
                     velocityParticles.SetActive(false);
                 }
             }
-        
+
             _currentRotation = Mathf.Clamp(_currentRotation, 0, 25.0f);
             transform.eulerAngles = new Vector3(0.0f, 0.0f, _currentRotation);
+        }
+
+        public void ResetPosition()
+        {
+            _currentPosition = 1;
         }
     }
 }

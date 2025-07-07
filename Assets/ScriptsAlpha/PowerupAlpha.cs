@@ -21,6 +21,6 @@ public class PowerupAlpha : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         placeholder.SetActive(false);
-        _gameManager.isPlayerInvincible = true; 
+        _gameManager.ActivatePowerUp();
     }
 }

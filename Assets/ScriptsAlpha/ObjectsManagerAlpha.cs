@@ -7,6 +7,7 @@ namespace ScriptsAlpha
         public ObstacleAlpha obstaclePrefab;
         public PowerupAlpha powerupPrefab;
         public IngredientAlpha ingredientPrefab;
+        public BadIngredientAlpha badIngredientPrefab;
         public Transform objectSpawner;
         public Transform despawnTransform;
 
@@ -21,7 +22,13 @@ namespace ScriptsAlpha
         {
             InvokeRepeating(nameof(SpawnObstacle), 2.0f, 1f);
             InvokeRepeating(nameof(SpawnIngredient), 2.5f, 1f);
-           // InvokeRepeating(nameof(SpawnPowerup), 20f, 1.3f);
+            InvokeRepeating(nameof(SpawnPowerup), 1.3f, 20f);
+            InvokeRepeating(nameof(SpawnBadIngredient), 1f, 10.7f);
+        }
+
+        public void StopGame()
+        {
+            CancelInvoke();
         }
 
         private void Update()
@@ -29,7 +36,7 @@ namespace ScriptsAlpha
             foreach (Transform obst in transform)
             {
                 obst.position -= obst.right * (_gameManager.GameSpeed * Time.deltaTime);
-                
+
                 if (obst.position.x < despawnTransform.position.x)
                     Destroy(obst.gameObject);
             }
@@ -56,6 +63,13 @@ namespace ScriptsAlpha
             if (!powerup) return;
             powerup.transform.parent = transform;
             powerup.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
+        }
+        void SpawnBadIngredient()
+        {
+            BadIngredientAlpha badIngredient = Instantiate(badIngredientPrefab, transform.position, Quaternion.identity);
+            if (!badIngredient) return;
+            badIngredient.transform.parent = transform;
+            badIngredient.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
         }
 
         public void ClearScreen()

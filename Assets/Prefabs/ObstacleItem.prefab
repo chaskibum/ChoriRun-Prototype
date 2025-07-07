@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2637151966638374750}
   - component: {fileID: 5198070806485984978}
   m_Layer: 0
-  m_Name: Cone
+  m_Name: ColliderSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 5722275475788918164}
   - component: {fileID: 6562489852878861774}
   - component: {fileID: 160162279046762092}
+  - component: {fileID: 6147838438979534998}
   m_Layer: 0
   m_Name: ObstacleItem
   m_TagString: Untagged
@@ -434,3 +435,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeholder: {fileID: 8079169569269913048}
+--- !u!95 &6147838438979534998
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629949236685402919}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9b383a203e140040bdfd59761c3a40c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
