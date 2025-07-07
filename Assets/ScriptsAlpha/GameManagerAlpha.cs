@@ -71,7 +71,7 @@ namespace ScriptsAlpha
         {
             if (gameSpeed >= MaxGameSpeed) return;
             
-            gameSpeed += 0.1f;
+            gameSpeed += 0.2f;
         }
 
         public void TimeScore()
@@ -160,7 +160,7 @@ namespace ScriptsAlpha
             ingredientsContainer.gameObject.SetActive(true);
             foreach (Transform child in ingredientsContainer)
             {
-                child.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                child.gameObject.GetComponent<Image>().color = Color.black;
             }
         }
         
