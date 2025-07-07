@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pan_03_overlay_0: 5578837020355462374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

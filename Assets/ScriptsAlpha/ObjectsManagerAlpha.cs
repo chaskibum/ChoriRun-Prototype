@@ -5,6 +5,7 @@ namespace ScriptsAlpha
     public class ObjectsManagerAlpha : MonoBehaviour
     {
         public ObstacleAlpha obstaclePrefab;
+        public PowerupAlpha powerupPrefab;
         public IngredientAlpha ingredientPrefab;
         public Transform objectSpawner;
         public Transform despawnTransform;
@@ -20,6 +21,7 @@ namespace ScriptsAlpha
         {
             InvokeRepeating(nameof(SpawnObstacle), 2.0f, 1f);
             InvokeRepeating(nameof(SpawnIngredient), 2.5f, 1f);
+           // InvokeRepeating(nameof(SpawnPowerup), 20f, 1.3f);
         }
 
         private void Update()
@@ -47,6 +49,13 @@ namespace ScriptsAlpha
             if (!ingredient) return;
             ingredient.transform.parent = transform;
             ingredient.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
+        }
+        void SpawnPowerup()
+        {
+            PowerupAlpha powerup = Instantiate(powerupPrefab, transform.position, Quaternion.identity);
+            if (!powerup) return;
+            powerup.transform.parent = transform;
+            powerup.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
         }
 
         public void ClearScreen()

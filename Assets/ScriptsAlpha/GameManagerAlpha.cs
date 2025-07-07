@@ -20,6 +20,7 @@ namespace ScriptsAlpha
         public GameObject mainMenuPanel;
         public Transform livesContainer;
         public Transform ingredientsContainer;
+        public Animator ChoriPanAnimator;
         
         [Header("Audio")]
         public AudioSource motorbikeSound;
@@ -39,6 +40,7 @@ namespace ScriptsAlpha
         
         private int _score;
         private bool _hasAllIngredients;
+        public bool isPlayerInvincible;
         
         public Animator animator;
 
@@ -130,10 +132,17 @@ namespace ScriptsAlpha
             {
                 child.gameObject.GetComponent<Image>().color = Color.black;
             }
+            ChoriPanAnimator.Play("ChoriPanCompleted", 0, 0);
+            AnimatorStateInfo stateInfo = ChoriPanAnimator.GetCurrentAnimatorStateInfo(0);
+            Invoke("AddScoreAfterAnim", stateInfo.length);
+        }
+
+        private void AddScoreAfterAnim()
+        {
             AddScore(250);
             choriSound.Play();
         }
-        
+
         public void GameOver()
         {
             gameOver = true;
