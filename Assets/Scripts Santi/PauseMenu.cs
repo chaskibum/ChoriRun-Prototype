@@ -27,10 +27,6 @@ public class PauseMenu : MonoBehaviour
         {
             OpenCloseMenu();
         }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            gameManager.Restart();
-        }
     }
 
     public void OpenCloseMenu()

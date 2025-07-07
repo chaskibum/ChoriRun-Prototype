@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Moto-Rider_Draft_0: 3257959485471256687
+      Moto-Rider_Draft_1: -1689377458048393673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

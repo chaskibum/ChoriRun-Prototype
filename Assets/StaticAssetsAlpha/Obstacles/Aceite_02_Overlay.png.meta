@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Aceite_02_Overlay_0: -8459554342495459711
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

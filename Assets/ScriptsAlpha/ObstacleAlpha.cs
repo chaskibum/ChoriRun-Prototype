@@ -8,10 +8,12 @@ namespace ScriptsAlpha
         public GameObject placeholder;
 
         private GameManagerAlpha _gameManager;
-    
+        Animator animator;
+
         private void Awake()
         {
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
+            animator = GetComponent<Animator>();
         }
 
         private enum Type
@@ -29,8 +31,16 @@ namespace ScriptsAlpha
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _gameManager.GetPlayer.LooseHp();
-            _gameManager.gameSpeed -= 3f;
+            if (!_gameManager.isPlayerInvincible)
+            {
+                _gameManager.GetPlayer.LooseHp();
+                _gameManager.gameSpeed -= 3f;
+            }
+            else
+            {
+                animator.Play("ThrowObstacleAway");
+            }
+
         }
     }
 }
