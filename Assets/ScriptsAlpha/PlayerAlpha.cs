@@ -20,7 +20,7 @@ namespace ScriptsAlpha
         private bool _particlesActive;
         private float _increaseSpeedCooldown;
 
-        private int _hp = 2;
+        public int hp = 2;
     
         private GameManagerAlpha _gameManager;
     
@@ -43,9 +43,9 @@ namespace ScriptsAlpha
         public void LooseHp()
         {
             hitSound.Play();
-            _hp -= 1;
-            _gameManager.HpFeedback(_hp);
-            if (_hp <= 0)
+            hp -= 1;
+            _gameManager.HpFeedback(hp);
+            if (hp <= 0)
             {
                 crashSound.Play();
                 _gameManager.GameOver();

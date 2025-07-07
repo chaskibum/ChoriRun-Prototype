@@ -34,6 +34,7 @@ namespace ScriptsAlpha
         {
             _gameManager.AddScore(50);
             _gameManager.ChoriFeedback(_child - 1);
+            Destroy(gameObject);
         }
     }
 }

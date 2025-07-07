@@ -8,9 +8,9 @@ namespace ScriptsAlpha
         public IngredientAlpha ingredientPrefab;
         public Transform objectSpawner;
         public Transform despawnTransform;
-    
+
         private GameManagerAlpha _gameManager;
-    
+
         private void Awake()
         {
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
@@ -27,7 +27,7 @@ namespace ScriptsAlpha
             foreach (Transform obst in transform)
             {
                 obst.position -= obst.right * (_gameManager.GameSpeed * Time.deltaTime);
-            
+                
                 if (obst.position.x < despawnTransform.position.x)
                     Destroy(obst.gameObject);
             }
@@ -40,13 +40,21 @@ namespace ScriptsAlpha
             obstacle.transform.parent = transform;
             obstacle.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
         }
-        
+
         void SpawnIngredient()
         {
             IngredientAlpha ingredient = Instantiate(ingredientPrefab, transform.position, Quaternion.identity);
             if (!ingredient) return;
             ingredient.transform.parent = transform;
             ingredient.transform.position = objectSpawner.GetChild(Random.Range(0, 3)).position;
+        }
+
+        public void ClearScreen()
+        {
+            foreach (Transform obst in transform)
+            {
+                Destroy(obst.gameObject);
+            }
         }
     }
 }

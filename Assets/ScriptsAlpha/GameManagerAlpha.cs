@@ -29,7 +29,7 @@ namespace ScriptsAlpha
         [Header("Properties")] 
         public float gameSpeed = 10f;
         [SerializeField] private float backgroundSpeed = 1f;
-        private bool _gameOver;
+        public bool gameOver;
         
         private const float MaxGameSpeed = 30.0f;
         
@@ -54,8 +54,6 @@ namespace ScriptsAlpha
 
         private void Update()
         {
-            if (_gameOver) return;
-            
             background.position -= transform.right * (gameSpeed * Time.deltaTime);
             
             if (background.position.x < BackgroundLimit)
@@ -136,7 +134,7 @@ namespace ScriptsAlpha
         
         public void GameOver()
         {
-            _gameOver = true;
+            gameOver = true;
             gameOverPanel.SetActive(true);
             Time.timeScale = 0;
             motorbikeSound.Stop();
@@ -145,12 +143,22 @@ namespace ScriptsAlpha
 
         public void Restart()
         {
+            player.hp = 2;
             _score = 0;
             scoreText.text = _score.ToString();
             gameOverPanel.SetActive(false);
+            livesContainer.GetChild(0).gameObject.SetActive(true);
+            livesContainer.GetChild(1).gameObject.SetActive(true);
             Time.timeScale = 1;
+            gameSpeed = 10f;
             music.volume = 1f;
             motorbikeSound.Play();
+            objectsManager.ClearScreen();
+            ingredientsContainer.GetChild(0).gameObject.SetActive(false);
+            ingredientsContainer.GetChild(1).gameObject.SetActive(false);
+            ingredientsContainer.GetChild(2).gameObject.SetActive(false);
+            ingredientsContainer.GetChild(3).gameObject.SetActive(false);
+            ingredientsContainer.GetChild(4).gameObject.SetActive(false);
         }
         
         public PlayerAlpha GetPlayer => player;
