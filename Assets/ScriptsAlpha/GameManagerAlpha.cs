@@ -33,7 +33,7 @@ namespace ScriptsAlpha
         public float gameSpeed = 10f;
         [SerializeField] private float backgroundSpeed = 1f;
         public bool gameOver;
-        [SerializeField] float powerUpDuration;
+        [SerializeField] private float powerUpDuration = 5f;
         private const float MaxGameSpeed = 30.0f;
 
         private const float BackgroundLimit = -30.0f;
@@ -41,9 +41,9 @@ namespace ScriptsAlpha
 
         private int _score;
         private bool _hasAllIngredients;
-        bool isPlayerInvincible;
+        private bool isPlayerInvincible;
         public bool isGamePaused;
-        bool gameStarted;
+        private bool gameStarted;
         public Animator animator;
 
         public void StartGame()
@@ -71,7 +71,9 @@ namespace ScriptsAlpha
             Invoke("TurnMainMenuOn", stateInfo.length);
             ingredientsContainer.gameObject.SetActive(false);
             scoreText.gameObject.SetActive(false);
+            motorbikeSound.Stop();
         }
+        
         void TurnMainMenuOn()
         {
             mainMenuPanel.SetActive(true);
@@ -166,12 +168,14 @@ namespace ScriptsAlpha
         public void ActivatePowerUp()
         {
             isPlayerInvincible = true;
+            gameSpeed += 5f;
             StartCoroutine(DisablePowerupAfterTime());
         }
         IEnumerator DisablePowerupAfterTime()
         {
             yield return new WaitForSeconds(powerUpDuration);
             isPlayerInvincible = false;
+            gameSpeed -= 5f;
         }
 
         public void GameOver()

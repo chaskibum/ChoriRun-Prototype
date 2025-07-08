@@ -1,8 +1,9 @@
-using ScriptsAlpha;
 using UnityEngine;
 
-public class BadIngredientAlpha : MonoBehaviour
+namespace ScriptsAlpha
 {
+    public class BadIngredientAlpha : MonoBehaviour
+    {
         private GameManagerAlpha _gameManager;
         private void Awake()
         {
@@ -23,3 +24,4 @@ public class BadIngredientAlpha : MonoBehaviour
             Destroy(gameObject);
         }
     }
+}

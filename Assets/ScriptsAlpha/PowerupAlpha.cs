@@ -1,26 +1,28 @@
-using ScriptsAlpha;
 using UnityEngine;
 
-public class PowerupAlpha : MonoBehaviour
+namespace ScriptsAlpha
 {
-    public GameObject placeholder;
-
-    private GameManagerAlpha _gameManager;
-
-    private void Awake()
+    public class PowerupAlpha : MonoBehaviour
     {
-        _gameManager = FindAnyObjectByType<GameManagerAlpha>();
-    }
+        public GameObject placeholder;
 
-    private void Start()
-    {
-        // placeholder.SetActive(false);
-        // transform.GetChild(Random.Range(1, 4)).gameObject.SetActive(true);
-    }
+        private GameManagerAlpha _gameManager;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        placeholder.SetActive(false);
-        _gameManager.ActivatePowerUp();
+        private void Awake()
+        {
+            _gameManager = FindAnyObjectByType<GameManagerAlpha>();
+        }
+
+        private void Start()
+        {
+            // placeholder.SetActive(false);
+            // transform.GetChild(Random.Range(1, 4)).gameObject.SetActive(true);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            placeholder.SetActive(false);
+            _gameManager.ActivatePowerUp();
+        }
     }
 }

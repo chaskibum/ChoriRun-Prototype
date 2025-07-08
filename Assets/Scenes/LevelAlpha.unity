@@ -7071,7 +7071,7 @@ MonoBehaviour:
   gameSpeed: 10
   backgroundSpeed: 1
   gameOver: 0
-  powerUpDuration: 15
+  powerUpDuration: 5
   isGamePaused: 0
   animator: {fileID: 496284920}
 --- !u!4 &1278464919
