@@ -8,12 +8,12 @@ namespace ScriptsAlpha
         public GameObject placeholder;
 
         private GameManagerAlpha _gameManager;
-        Animator animator;
+        private Animator _objectAnimator;
 
         private void Awake()
         {
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
-            animator = GetComponent<Animator>();
+            _objectAnimator = GetComponent<Animator>();
         }
 
         private enum Type
@@ -38,7 +38,7 @@ namespace ScriptsAlpha
             }
             else
             {
-                animator.Play("ThrowObjectAway",0,0);
+                _objectAnimator.Play("ThrowObjectAway",0,0);
             }
 
         }

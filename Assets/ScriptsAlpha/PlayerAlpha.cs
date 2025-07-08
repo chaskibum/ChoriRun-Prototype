@@ -23,9 +23,11 @@ namespace ScriptsAlpha
         public int hp = 2;
 
         private GameManagerAlpha _gameManager;
+        private Animator _animator;
 
         private void Awake()
         {
+            _animator = GetComponent<Animator>();
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
         }
 
@@ -42,6 +44,7 @@ namespace ScriptsAlpha
 
         public void LooseHp()
         {
+            _animator.SetTrigger("LooseHp");
             hitSound.Play();
             hp -= 1;
             _gameManager.HpFeedback(hp);
