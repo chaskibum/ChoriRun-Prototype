@@ -22,8 +22,8 @@ namespace ScriptsAlpha
         {
             InvokeRepeating(nameof(SpawnObstacle), 2.0f, 1f);
             InvokeRepeating(nameof(SpawnIngredient), 2.5f, 1f);
-            InvokeRepeating(nameof(SpawnPowerup), 1.3f, 20f);
-            InvokeRepeating(nameof(SpawnBadIngredient), 1f, 10.7f);
+            InvokeRepeating(nameof(SpawnPowerup), 3.3f, 20f);
+            InvokeRepeating(nameof(SpawnBadIngredient), 3f, 10.7f);
         }
 
         public void StopGame()
