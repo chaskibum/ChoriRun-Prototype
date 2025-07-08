@@ -44,7 +44,6 @@ namespace ScriptsAlpha
 
         public void LooseHp()
         {
-            _animator.SetTrigger("LooseHp");
             hitSound.Play();
             hp -= 1;
             _gameManager.HpFeedback(hp);
@@ -52,7 +51,9 @@ namespace ScriptsAlpha
             {
                 crashSound.Play();
                 _gameManager.GameOver();
+                return;
             }
+            _animator.SetTrigger("LooseHp");
         }
 
         private void CheckVerticalMovement()
