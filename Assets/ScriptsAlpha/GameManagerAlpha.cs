@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace ScriptsAlpha
@@ -28,6 +30,9 @@ namespace ScriptsAlpha
         public AudioSource music;
         public AudioSource ingredientSound;
         public AudioSource choriSound;
+        public AudioMixer mixer;
+        public Slider musicSlider;
+        public Slider sfxSlider;
 
         [Header("Properties")]
         public float gameSpeed = 10f;
@@ -58,6 +63,7 @@ namespace ScriptsAlpha
             animator.SetBool(GameStarted, true);
             Restart();
         }
+        
         public void BackToMenu()
         {
             gameStarted = false;
@@ -90,6 +96,11 @@ namespace ScriptsAlpha
 
             if (background2.position.x < BackgroundLimit)
                 background2.position = new Vector3(0, background2.position.y, background2.position.z);
+
+            /*if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ChangeMusicVolume();
+            }*/
         }
 
         public void IncreaseSpeed()
@@ -165,12 +176,14 @@ namespace ScriptsAlpha
             AddScore(250);
             choriSound.Play();
         }
+        
         public void ActivatePowerUp()
         {
             isPlayerInvincible = true;
             gameSpeed += 5f;
             StartCoroutine(DisablePowerupAfterTime());
         }
+        
         IEnumerator DisablePowerupAfterTime()
         {
             yield return new WaitForSeconds(powerUpDuration);
@@ -214,7 +227,24 @@ namespace ScriptsAlpha
         public PlayerAlpha GetPlayer => player;
 
         public float GameSpeed => gameSpeed;
+        
         public bool GetisPlayerInvincible => isPlayerInvincible;
+        
         public bool GetGameState => gameStarted;
+        
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+
+        public void ChangeMusicVolume()
+        {
+			mixer.SetFloat("MusicVolume", musicSlider.value);
+        }
+
+        public void ChangeSfxVolume()
+        {
+            mixer.SetFloat("SFXVolume", sfxSlider.value);
+        }
     }
 }
