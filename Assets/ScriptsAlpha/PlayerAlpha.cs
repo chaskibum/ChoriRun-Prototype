@@ -5,6 +5,7 @@ namespace ScriptsAlpha
     public class PlayerAlpha : MonoBehaviour
     {
         public Transform playerPositions;
+        public Transform playerVisuals;
         public GameObject velocityParticles;
 
         public float movementSpeed = 10.0f;
@@ -16,6 +17,9 @@ namespace ScriptsAlpha
 
         private int _currentPosition;
         private float _currentRotation;
+		private CircleCollider2D _hitbox;
+		private float _offsetX;
+		private float _offsetY;
 
         private bool _particlesActive;
         private float _increaseSpeedCooldown;
@@ -29,17 +33,20 @@ namespace ScriptsAlpha
         {
             _animator = GetComponent<Animator>();
             _gameManager = FindAnyObjectByType<GameManagerAlpha>();
+			_hitbox = GetComponent<CircleCollider2D>();
         }
 
         private void Start()
         {
             velocityParticles.SetActive(false);
+			_offsetX = _hitbox.offset.x;
+			_offsetY = _hitbox.offset.y;
         }
 
         private void Update()
         {
             CheckVerticalMovement();
-            // CheckForWheelie();
+            CheckForWheelie();
         }
 
         public void LooseHp()
@@ -83,6 +90,7 @@ namespace ScriptsAlpha
                 {
                     _particlesActive = true;
                     velocityParticles.SetActive(true);
+					_hitbox.offset = new Vector2(_offsetX -= 2f, _offsetY);
                 }
 
                 if (_increaseSpeedCooldown <= 0f)
@@ -99,11 +107,12 @@ namespace ScriptsAlpha
                 {
                     _particlesActive = false;
                     velocityParticles.SetActive(false);
+					_hitbox.offset = new Vector2(_offsetX += 2f, _offsetY);
                 }
             }
 
             _currentRotation = Mathf.Clamp(_currentRotation, 0, 25.0f);
-            transform.eulerAngles = new Vector3(0.0f, 0.0f, _currentRotation);
+            playerVisuals.eulerAngles = new Vector3(0.0f, 0.0f, _currentRotation);
         }
 
         public void ResetPosition()
