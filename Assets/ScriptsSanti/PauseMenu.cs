@@ -1,5 +1,4 @@
 using System.Collections;
-using ScriptsAlpha;
 using TMPro;
 using UnityEngine;
 
@@ -7,30 +6,42 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject Menu;
     [SerializeField] int ResumeDelay;
-    [SerializeField] Animator ResumeTextAnim;
-    GameManagerAlpha gameManager;
+    [SerializeField] Animator CountdownAnim;
+    GameManagerBeta gameManager;
     bool canOpenMenu = true;
     bool waitTillEnd;
+    TMP_Text CountdownText;
+    bool gameStarted = false;
     void Awake()
     {
-        gameManager = FindFirstObjectByType<GameManagerAlpha>();
+        gameManager = FindFirstObjectByType<GameManagerBeta>();
+        CountdownText = CountdownAnim.gameObject.GetComponent<TMP_Text>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
     }
+    public void OnStart()
+    {
+        gameStarted = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetGameState)
+        if (gameStarted)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    OpenCloseMenu();
+                }
+            if (Input.GetKeyDown(KeyCode.H))
             {
-                OpenCloseMenu();
+                gameManager.Restart();
             }            
         }
+
     }
 
     public void OpenCloseMenu()
@@ -58,13 +69,14 @@ public class PauseMenu : MonoBehaviour
         Menu.SetActive(false);
     }
 
+
     IEnumerator ResumeGame()
     {
         int SecondsLeft = ResumeDelay;
         while (true)
         {
-            ResumeTextAnim.gameObject.GetComponent<TMP_Text>().text = SecondsLeft.ToString();
-            ResumeTextAnim.Play("ResumeTextGrowing", 0, 0);
+            CountdownText.text = SecondsLeft.ToString();
+            CountdownAnim.Play("ResumeTextGrowing", 0, 0);
             SecondsLeft--;
             yield return new WaitForSecondsRealtime(1);
             if (SecondsLeft <= 0)
