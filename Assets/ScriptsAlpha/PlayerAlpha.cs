@@ -96,7 +96,7 @@ namespace ScriptsAlpha
                 if (_increaseSpeedCooldown <= 0f)
                 {
                     _gameManager.IncreaseSpeed();
-                    _increaseSpeedCooldown = 0.2f;
+                    _increaseSpeedCooldown = 1f;
                 }
                 _increaseSpeedCooldown -= Time.deltaTime;
             }

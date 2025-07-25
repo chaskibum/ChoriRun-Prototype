@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ScriptsAlpha
@@ -17,29 +19,31 @@ namespace ScriptsAlpha
 
         public PlayerAlpha player;
 
-        [Header("UI")]
-        public TextMeshProUGUI scoreText;
+        [Header("UI")] public TextMeshProUGUI scoreText;
         public GameObject gameOverPanel;
         public GameObject mainMenuPanel;
         public Transform livesContainer;
         public Transform ingredientsContainer;
         public Animator ChoriPanAnimator;
 
-        [Header("Audio")]
-        public AudioSource motorbikeSound;
-        public AudioSource music;
+        [Header("Audio")] public AudioSource motorbikeSound;
         public AudioSource ingredientSound;
         public AudioSource choriSound;
         public AudioMixer mixer;
         public Slider musicSlider;
         public Slider sfxSlider;
+        public AudioSource startLoop;
+        public AudioSource mainMenuSong;
+        public AudioSource startSong;
+        public AudioSource songLoop;
+        public AudioSource melodyLoop;
+        public AudioSource fastMelodyLoop;
 
-        [Header("Properties")]
-        public float gameSpeed = 10f;
+        [Header("Properties")] public float gameSpeed = 10f;
         [SerializeField] private float backgroundSpeed = 1f;
         public bool gameOver;
         [SerializeField] private float powerUpDuration = 5f;
-        private const float MaxGameSpeed = 30.0f;
+        private const float MaxGameSpeed = 35.0f;
 
         private const float BackgroundLimit = -30.0f;
         private float _timeScoreRepeatRate = 0.5f;
@@ -50,6 +54,8 @@ namespace ScriptsAlpha
         public bool isGamePaused;
         private bool gameStarted;
         public Animator animator;
+        
+        public bool fastLoopActivated = false;
 
         public void StartGame()
         {
@@ -63,7 +69,7 @@ namespace ScriptsAlpha
             animator.SetBool(GameStarted, true);
             Restart();
         }
-        
+
         public void BackToMenu()
         {
             gameStarted = false;
@@ -78,8 +84,9 @@ namespace ScriptsAlpha
             ingredientsContainer.gameObject.SetActive(false);
             scoreText.gameObject.SetActive(false);
             motorbikeSound.Stop();
+            BackToMenuMusic();
         }
-        
+
         void TurnMainMenuOn()
         {
             mainMenuPanel.SetActive(true);
@@ -96,17 +103,18 @@ namespace ScriptsAlpha
 
             if (background2.position.x < BackgroundLimit)
                 background2.position = new Vector3(0, background2.position.y, background2.position.z);
-
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ChangeMusicVolume();
-            }*/
         }
 
         public void IncreaseSpeed()
         {
-            if (gameSpeed >= MaxGameSpeed) return;
+            if (fastLoopActivated) return;
             
+            if (gameSpeed >= MaxGameSpeed)
+            {
+                FastLoop();
+                return;
+            }
+
             gameSpeed += 0.2f;
         }
 
@@ -122,6 +130,7 @@ namespace ScriptsAlpha
                 _score++;
                 _timeScoreRepeatRate = 0.2f;
             }
+
             scoreText.text = _score.ToString();
         }
 
@@ -138,7 +147,8 @@ namespace ScriptsAlpha
 
         public void ChoriFeedback(int ingredient)
         {
-            if (ingredientsContainer.GetChild(0).gameObject.GetComponent<Image>().color == Color.white && ingredient == 0)
+            if (ingredientsContainer.GetChild(0).gameObject.GetComponent<Image>().color == Color.white &&
+                ingredient == 0)
                 ingredientsContainer.GetChild(4).gameObject.GetComponent<Image>().color = Color.white;
             ingredientsContainer.GetChild(ingredient).gameObject.GetComponent<Image>().color = Color.white;
             ingredientSound.Play();
@@ -150,6 +160,7 @@ namespace ScriptsAlpha
                     _hasAllIngredients = false;
                     break;
                 }
+
                 _hasAllIngredients = true;
             }
 
@@ -166,6 +177,7 @@ namespace ScriptsAlpha
             {
                 child.gameObject.GetComponent<Image>().color = Color.black;
             }
+
             ChoriPanAnimator.Play("ChoriPanCompleted", 0, 0);
             AnimatorStateInfo stateInfo = ChoriPanAnimator.GetCurrentAnimatorStateInfo(0);
             Invoke("AddScoreAfterAnim", stateInfo.length);
@@ -176,14 +188,14 @@ namespace ScriptsAlpha
             AddScore(250);
             choriSound.Play();
         }
-        
+
         public void ActivatePowerUp()
         {
             isPlayerInvincible = true;
             gameSpeed += 5f;
             StartCoroutine(DisablePowerupAfterTime());
         }
-        
+
         IEnumerator DisablePowerupAfterTime()
         {
             yield return new WaitForSeconds(powerUpDuration);
@@ -197,8 +209,8 @@ namespace ScriptsAlpha
             gameOverPanel.SetActive(true);
             Time.timeScale = 0;
             motorbikeSound.Stop();
-            music.volume = 0.2f;
             ingredientsContainer.gameObject.SetActive(false);
+            StopMusic();
         }
 
         public void Restart()
@@ -212,7 +224,6 @@ namespace ScriptsAlpha
             livesContainer.GetChild(1).gameObject.SetActive(true);
             Time.timeScale = 1;
             gameSpeed = 10f;
-            music.volume = 1f;
             motorbikeSound.Play();
             objectsManager.ClearScreen();
             isPlayerInvincible = false;
@@ -222,29 +233,111 @@ namespace ScriptsAlpha
             {
                 child.gameObject.GetComponent<Image>().color = Color.black;
             }
+            StopMusic();
+            CueMusic();
         }
 
         public PlayerAlpha GetPlayer => player;
 
         public float GameSpeed => gameSpeed;
-        
+
         public bool GetisPlayerInvincible => isPlayerInvincible;
-        
+
         public bool GetGameState => gameStarted;
-        
+
         public void ExitGame()
         {
             Application.Quit();
         }
+        
+        #region Audio
 
         public void ChangeMusicVolume()
         {
-			mixer.SetFloat("MusicVolume", musicSlider.value);
+            mixer.SetFloat("MusicVolume", musicSlider.value);
         }
 
         public void ChangeSfxVolume()
         {
             mixer.SetFloat("SFXVolume", sfxSlider.value);
         }
+
+        IEnumerator FadeMusic(AudioSource audioSource, bool fadeIn)
+        {
+            if (fadeIn)
+            {
+                while (audioSource.volume < 1)
+                {
+                    audioSource.volume += 0.02f;
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
+            else
+            {
+                while (audioSource.volume > 0)
+                {
+                    audioSource.volume -= 0.02f;
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
+        }
+
+        public void StartSong()
+        {
+            startSong.volume = 1f;
+            startSong.Play();
+            startLoop.Stop();
+        }
+
+        public void StartSongLoop()
+        {
+            songLoop.volume = 1f;
+            melodyLoop.volume = 1f;
+            songLoop.Play();
+            melodyLoop.Play();
+            fastMelodyLoop.Play();
+        }
+
+        public void FastLoop()
+        {
+            StartCoroutine(FadeMusic(melodyLoop, false));
+            StartCoroutine(FadeMusic(fastMelodyLoop, true));
+            fastLoopActivated = true;
+        }
+
+        public void CueMusic()
+        {
+            if (!startLoop.isPlaying) startLoop.Play();
+            
+            StartCoroutine(FadeMusic(startLoop, true));
+            StartCoroutine(FadeMusic(mainMenuSong, false));
+            Invoke("StartSong", (startLoop.clip.length - startLoop.time));
+            Invoke("StartSongLoop", startSong.clip.length + (startLoop.clip.length - startLoop.time));
+        }
+
+        public void StopMusic()
+        {
+            CancelInvoke("StartSongLoop");
+            CancelInvoke("StartSong");
+            startLoop.Stop();
+            mainMenuSong.Stop();
+            startSong.Stop();
+            songLoop.Stop();
+            melodyLoop.Stop();
+            fastMelodyLoop.Stop();
+        }
+
+        public void BackToMenuMusic()
+        {
+            mainMenuSong.Play();
+            StartCoroutine(FadeMusic(mainMenuSong, true));
+            StartCoroutine(FadeMusic(startLoop, false));
+            StartCoroutine(FadeMusic(startSong, false));
+            StartCoroutine(FadeMusic(songLoop, false));
+            StartCoroutine(FadeMusic(melodyLoop, false));
+            StartCoroutine(FadeMusic(fastMelodyLoop, false));
+        }
+        
+        #endregion
     }
 }

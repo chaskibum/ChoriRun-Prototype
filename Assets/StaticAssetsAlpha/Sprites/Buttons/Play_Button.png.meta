@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ddd08b4b5d1a3a4bb4bd48bc9cc609e
+guid: 1a3420370e581794483edf9502068e4e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 701533142450346271
-    second: Moto-Rider_Game_Size02_0
+      213: -9011780523053854224
+    second: Play_Button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Moto-Rider_Game_Size02_0
+      name: Play_Button_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 382
-        height: 325
+        width: 406
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f199ae91da85cb900800000000000000
-      internalID: 701533142450346271
+      spriteID: 0f157995c59bfe280800000000000000
+      internalID: -9011780523053854224
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Moto-Rider_Game_Size02_0: 701533142450346271
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
