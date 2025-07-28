@@ -160,9 +160,9 @@ public class ItemsManager : MonoBehaviour
     void OnRestart()
     {
         StopAllCoroutines();
+        RestartItems();
         gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
         ReturnToDefault = null;
-        RestartItems();
         StartAllCoroutines();
     }
 

@@ -116,11 +116,11 @@ public class AudioManager : MonoBehaviour
     }
     void OnStart()
     {
-        CueMusic();
+        // CueMusic();
     }
     public void OnRestartButtonPressed()
     {
-        CueMusic();
+        // CueMusic();
     }
     void OnQuit()
     {
