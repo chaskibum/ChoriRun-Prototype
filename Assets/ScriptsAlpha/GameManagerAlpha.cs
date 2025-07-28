@@ -112,11 +112,11 @@ namespace ScriptsAlpha
             if (gameSpeed >= MaxGameSpeed)
             {
                 FastLoop();
-                // motorbikeSound.volume = 1.5f;
+                motorbikeSound.volume = 1.5f;
                 return;
             }
 
-            // motorbikeSound.pitch = gameSpeed / 10;
+            motorbikeSound.pitch += 0.02f;
 
             gameSpeed += 0.2f;
         }
@@ -198,6 +198,7 @@ namespace ScriptsAlpha
             gameSpeed += 5f;
             StartCoroutine(DisablePowerupAfterTime());
             player.PlayPowerUpFeedback();
+            motorbikeSound.pitch += 0.5f;
         }
 
         IEnumerator DisablePowerupAfterTime()
@@ -205,6 +206,7 @@ namespace ScriptsAlpha
             yield return new WaitForSeconds(powerUpDuration);
             isPlayerInvincible = false;
             gameSpeed -= 5f;
+            motorbikeSound.pitch -= 0.5f;
         }
 
         public void GameOver()
@@ -237,6 +239,8 @@ namespace ScriptsAlpha
             {
                 child.gameObject.GetComponent<Image>().color = Color.black;
             }
+
+            motorbikeSound.pitch = 1f;
             StopMusic();
             CueMusic();
         }
