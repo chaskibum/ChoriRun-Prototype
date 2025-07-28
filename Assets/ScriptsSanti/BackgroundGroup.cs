@@ -4,43 +4,44 @@ public class BackgroundGroup : MonoBehaviour
 {
     GameManagerBeta gameManager;
     float startSpeed;
-    [SerializeField] float Speed;
+    [Min(0),SerializeField] float Speed;
     [SerializeField] int MaxSpeed;
-    [SerializeField] bool UseSameSpeedAsObstacles;
-    private void Awake()
+    [SerializeField] int SpaceBetweenVisuals = 0;
+    [SerializeField] bool UseSameSpeedAsItems;
+    void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
     }
     void Start()
     {
         startSpeed = Speed;
-        gameManager.SortItems(transform);
+        gameManager.SortItems(transform, SpaceBetweenVisuals);
+        gameManager.GetOnstartEvent?.AddListener(OnStart);
+    }
+    void OnStart()
+    {
+        Speed = startSpeed;
         StartCoroutine(GraduallyIncreaseSpeed());
         gameManager.GetOnRestartEvent.AddListener(OnRestart);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (UseSameSpeedAsObstacles)
-        {
-            transform.position += Vector3.left * gameManager.GetItemsGroupSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += Vector3.left * Speed * Time.deltaTime;
-        }
     }
     IEnumerator GraduallyIncreaseSpeed()
     {
         while (Speed < MaxSpeed)
         {
+            float timer = 0;
+            while (timer < gameManager.GetTimeTillIncrese)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
             float ActualSpeed = Speed;
+            
             while (!Mathf.Approximately(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount))
             {
                 Speed = Mathf.MoveTowards(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount, Time.deltaTime);
                 yield return null;
             }
-            yield return new WaitForSeconds(gameManager.GetTimeTillIncrese);
         }
     }
 
@@ -50,4 +51,8 @@ public class BackgroundGroup : MonoBehaviour
         Speed = startSpeed;
         StartCoroutine(GraduallyIncreaseSpeed());
     }
+
+    public bool GetUseSameSpeedAsItems => UseSameSpeedAsItems;
+    public float GetSpeed => Speed;
+    public int GetSpaceBtwVisual => SpaceBetweenVisuals;
 }

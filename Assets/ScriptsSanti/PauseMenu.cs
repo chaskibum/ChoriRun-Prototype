@@ -4,33 +4,24 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject Menu;
     [SerializeField] int ResumeDelay;
+    [SerializeField] GameObject Menu;
+    [SerializeField] GameObject GameOverPanel;
     [SerializeField] Animator CountdownAnim;
     GameManagerBeta gameManager;
+    AudioManager audioManager;
     bool canOpenMenu = true;
     bool waitTillEnd;
     TMP_Text CountdownText;
-    bool gameStarted = false;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         CountdownText = CountdownAnim.gameObject.GetComponent<TMP_Text>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-    public void OnStart()
-    {
-        gameStarted = true;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (gameStarted)
+        if (gameManager.GetGameStarted)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -38,7 +29,7 @@ public class PauseMenu : MonoBehaviour
                 }
             if (Input.GetKeyDown(KeyCode.H))
             {
-                gameManager.Restart();
+                gameManager.GetOnRestartEvent.Invoke();
             }            
         }
 
@@ -49,6 +40,7 @@ public class PauseMenu : MonoBehaviour
         if (canOpenMenu)
         {
             Menu.SetActive(true);
+            audioManager.StopMusic();
             Time.timeScale = 0;
             gameManager.isGamePaused = true;
             canOpenMenu = false;
@@ -67,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         waitTillEnd = false;
         canOpenMenu = true;
         Menu.SetActive(false);
+        GameOverPanel.SetActive(false);
     }
 
 
@@ -85,6 +78,7 @@ public class PauseMenu : MonoBehaviour
                 gameManager.isGamePaused = false;
                 waitTillEnd = false;
                 canOpenMenu = true;
+                audioManager.CueMusic();
                 break;
             }
         }

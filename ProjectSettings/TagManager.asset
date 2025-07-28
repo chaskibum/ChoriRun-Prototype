@@ -14,14 +14,16 @@ TagManager:
   - Bread
   - Tomato
   - ObstacleGroup
+  - VeganChori
+  - PowerUp1
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Background
+  - Player
   - Water
   - UI
-  - 
+  - Item
   - 
   - 
   - 

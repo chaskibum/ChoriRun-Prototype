@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 728eafa46e419064a84b986f33f4021b
+guid: 764244946cee63349b0b5f8d6d489a0c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5763998165722957863
-    second: Cone_03_Overlay_0
+      213: 2888427252096979072
+    second: mockup_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cone_03_Overlay_0
+      name: mockup_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 56
-        height: 64
-      alignment: 9
-      pivot: {x: 0.50421387, y: 0.3623402}
+        width: 2969
+        height: 1041
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7288be1fac5ddff40800000000000000
-      internalID: 5763998165722957863
+      spriteID: 0805cc04841c51820800000000000000
+      internalID: 2888427252096979072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mockup_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1041
+        width: 2969
+        height: 809
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55c87743eb4f494a863ef789c356d07
+      internalID: 90562043
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 58233f4a622a832489fa232702938ff1
+    spriteID: 12c1e494e2cfb314aba88ac4105242b9
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cone_03_Overlay_0: 5763998165722957863
+      mockup_1: 90562043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

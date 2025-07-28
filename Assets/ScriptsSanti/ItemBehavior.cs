@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class ItemBehavior : MonoBehaviour
         int Value = Random.Range(0, MaxValue);
         return Value;
     }
-
+    #region Enums
     enum ItemType
     {
         Obstacle,
@@ -46,9 +47,9 @@ public class ItemBehavior : MonoBehaviour
     }
     enum IngredientType
     {
+        Bread,
         Chorizo,
         Lettuce,
-        Bread,
         Tomato,
         Random
     }
@@ -62,7 +63,7 @@ public class ItemBehavior : MonoBehaviour
         PowerUp1,
         Random
     }
-
+    #endregion
     Dictionary<ItemType, float> ProbabilityDic = new();
     void Awake()
     {
@@ -80,34 +81,37 @@ public class ItemBehavior : MonoBehaviour
         badIngredientProb = GetAndAddToDic(ItemType.BadIngredient, gameManager.GetBadIngredientProbability);
         powerupProb = GetAndAddToDic(ItemType.PowerUp, gameManager.GetPowerupProbability);
 
-        if (itemType == ItemType.Random)
-        {
-            refreshColissionType = true;
-        }
-        else if (obstacleType == ObstacleType.Random || ingredientType == IngredientType.Random || badIngredientType == BadIngredientType.Random || powerupType == PowerUpType.Random)
-        {
-            refreshSubType = true;
-        }
+        SetRandomizationBools();
 
         PickObstacleType();
 
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
-    float GetAndAddToDic(ItemType ProbItemType,float Probability)
+
+    void SetRandomizationBools()
     {
-        ProbabilityDic.Add(ProbItemType,Probability);
+        if (itemType == ItemType.Random)
+        {
+            refreshColissionType = true;
+        }
+        refreshSubType = IsRandomSubType(itemType);
+
+        bool IsRandomSubType(ItemType type)
+        {
+            return  (type == ItemType.Ingredient && ingredientType == IngredientType.Random)
+                 || (type == ItemType.Obstacle && obstacleType == ObstacleType.Random)
+                 || (type == ItemType.BadIngredient && badIngredientType == BadIngredientType.Random)
+                 || (type == ItemType.PowerUp && powerupType == PowerUpType.Random);
+        }
+    }
+
+    float GetAndAddToDic(ItemType ProbItemType, float Probability)
+    {
+        ProbabilityDic.Add(ProbItemType, Probability);
         return Probability;
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void RandomObstacleType()
     {
-
-
         float Probability = randomFloatValue(obstacleProb + ingredientProb + powerupProb + badIngredientProb);
 
         if (Probability <= obstacleProb)
@@ -122,7 +126,6 @@ public class ItemBehavior : MonoBehaviour
 
                 itemType = TypeSelected;
             }
-
         }
         else if (Probability <= obstacleProb + ingredientProb)
         {
@@ -165,8 +168,6 @@ public class ItemBehavior : MonoBehaviour
             }
         }
 
-
-
         switch (itemType)
         {
             case ItemType.Obstacle:
@@ -196,6 +197,8 @@ public class ItemBehavior : MonoBehaviour
                 SetTagAndSprite(powerupType.ToString(), (int)powerupType, itemsManager.GetPowerUpSprites);
 
                 itemGroupBehavior.IncrementPowerUpCount();
+
+                StartCoroutine("AnimatePowerup");
                 Debug.Log("PowerUp");
                 break;
             case ItemType.BadIngredient:
@@ -203,7 +206,7 @@ public class ItemBehavior : MonoBehaviour
                 badIngredientType = (BadIngredientType)randomIntValue(itemsManager.GetBadIngredientsSprites.Count);
 
                 SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
-                
+
                 itemGroupBehavior.IncrementBadIngredientCount();
                 Debug.Log("Bad Ingredient");
                 break;
@@ -228,7 +231,7 @@ public class ItemBehavior : MonoBehaviour
         {
             if (Probability.Value == ProbabilityToExclude)
             {
-                NewProbsList.Add(Probability.Key,0);
+                NewProbsList.Add(Probability.Key, 0);
             }
             else if (Probability.Key != ItemType.PowerUp)
             {
@@ -237,21 +240,21 @@ public class ItemBehavior : MonoBehaviour
             }
             else
             {
-                NewProbsList.Add(Probability.Key, Probability.Value);  
+                NewProbsList.Add(Probability.Key, Probability.Value);
             }
         }
 
         foreach (KeyValuePair<ItemType, float> NewProbs in NewProbsList)
-            {
-                MaxValue += NewProbs.Value;
-            }
+        {
+            MaxValue += NewProbs.Value;
+        }
 
         float ProbabilityChoosed = 0;
-        float randomProb = randomFloatValue(MaxValue);
+        float RandomProb = randomFloatValue(MaxValue);
         foreach (KeyValuePair<ItemType, float> Probability in NewProbsList)
         {
             ProbabilityChoosed += Probability.Value;
-            if (randomProb <= ProbabilityChoosed && randomProb > 0)
+            if (RandomProb <= ProbabilityChoosed && RandomProb > 0)
             {
                 return Probability.Key;
             }
@@ -301,6 +304,7 @@ public class ItemBehavior : MonoBehaviour
                 }
                 SetTagAndSprite(powerupType.ToString(), (int)powerupType, itemsManager.GetPowerUpSprites);
 
+                StartCoroutine("AnimatePowerup");
                 break;
             case ItemType.BadIngredient:
 
@@ -311,7 +315,7 @@ public class ItemBehavior : MonoBehaviour
                 SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
 
                 break;
-            
+
         }
     }
     public void SetRandomItemType()
@@ -327,6 +331,24 @@ public class ItemBehavior : MonoBehaviour
             powerupType = PowerUpType.Random;
             badIngredientType = BadIngredientType.Random;
         }
+        StopCoroutine("AnimatePowerup");
     }
 
+    public void StopPowerUpAnimation()
+    {
+        StopCoroutine("AnimatePowerup");
+    }
+
+    IEnumerator AnimatePowerup()
+    {
+        int i = 0;
+        List<Sprite> AnimationSprites = itemsManager.GetPowerUpAnimationSprites;
+        while (true)
+        {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = AnimationSprites[i];
+            i++;
+            if (i > AnimationSprites.Count - 1) i = 0;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }

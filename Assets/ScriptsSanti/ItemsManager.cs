@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemsManager : MonoBehaviour
@@ -7,7 +8,9 @@ public class ItemsManager : MonoBehaviour
     [Header("Items")]
     [SerializeField] Transform ItemGroupContainer;
     [SerializeField] float ItemsSpeed;
+    float SpeedTarget = 0;
     float startItemsSpeed;
+    float originalValue = 0;
     [SerializeField] int MaxItemsSpeed;
     [Min(1), SerializeField] int SpaceBetweenItemsGroup = 5;
 
@@ -15,36 +18,32 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] Transform RareItemsGroupContainer;
     [SerializeField] float TimeTillNextRareGroup;
     List<Transform> RareGroupsList = new List<Transform>();
-    GameManagerBeta gameManager;
-
-    [Header("Items Sprites")]
-
     [SerializeField] List<Sprite> ObstaclesSprites;
     [SerializeField] List<Sprite> IngredientsSprites;
     [SerializeField] List<Sprite> BadIngredientSprites;
     [SerializeField] List<Sprite> PowerupSprites;
+    [SerializeField] List<Sprite> PowerupAnimationSprites;
+    GameManagerBeta gameManager;
+    AudioManager audioManager;
+    Coroutine SpeedCoroutine;
+    Coroutine ReturnToDefault;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startItemsSpeed = ItemsSpeed;
-        foreach (Transform rareGroup in RareItemsGroupContainer)
-        {
-            RareGroupsList.Add(rareGroup);
-        }
-        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
-        StartAllCoroutines();
-        gameManager.GetOnRestartEvent.AddListener(OnRestart);
+        gameManager.GetOnstartEvent?.AddListener(OnStart);
+        gameManager.GetOnRestartEvent?.AddListener(OnRestart);
+        gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
     }
-    // Update is called once per frame
-    void Update()
+    public void SortItemsGroup()
     {
-
+        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
     }
-
     void RestartItems()
     {
         ItemsSpeed = startItemsSpeed;
@@ -80,34 +79,97 @@ public class ItemsManager : MonoBehaviour
     {
         while (ItemsSpeed < MaxItemsSpeed)
         {
-            float ActualSpeed = ItemsSpeed;
-            while (!Mathf.Approximately(ItemsSpeed, ActualSpeed + gameManager.GetSpeedIncreseAmount))
+            float timer = 0;
+            while (timer < gameManager.GetTimeTillIncrese)
             {
-                ItemsSpeed = Mathf.MoveTowards(ItemsSpeed, ActualSpeed + gameManager.GetSpeedIncreseAmount, Time.deltaTime);
+                timer += Time.deltaTime;
                 yield return null;
             }
-            yield return new WaitForSeconds(gameManager.GetTimeTillIncrese);
+
+            SpeedTarget = ItemsSpeed + gameManager.GetSpeedIncreseAmount;
+
+            while (!Mathf.Approximately(ItemsSpeed, SpeedTarget))
+            {
+                ItemsSpeed = Mathf.MoveTowards(ItemsSpeed, SpeedTarget, Time.deltaTime);
+                yield return null;
+            }
         }
     }
     void StartAllCoroutines()
     {
-        StartCoroutine(GraduallyIncreaseSpeed());
+        SpeedCoroutine = StartCoroutine(GraduallyIncreaseSpeed());
         StartCoroutine(AddRareGroupToRun());
+    }
+
+    public void ChangeItemsSpeed(int SpeedToAdd, float DurationTime)
+    {
+        if (ReturnToDefault != null)
+        {
+            ItemsSpeed = originalValue;
+            StopCoroutine(ReturnToDefault);
+        }
+        ItemsSpeed = SpeedTarget;
+        originalValue = ItemsSpeed;
+        ItemsSpeed += SpeedToAdd;
+        ReturnToDefault = StartCoroutine(ReturnToDefaultValue(originalValue, DurationTime));
+    }
+    IEnumerator ReturnToDefaultValue(float ValueBeforeChange, float DurationTime)
+    {
+
+        StopCoroutine(SpeedCoroutine);
+
+        yield return new WaitForSeconds(DurationTime);
+
+        while (!Mathf.Approximately(ItemsSpeed, ValueBeforeChange))
+        {
+            ItemsSpeed = Mathf.MoveTowards(ItemsSpeed, ValueBeforeChange, Time.deltaTime * 3);
+
+            yield return null;
+        }
+
+        SpeedCoroutine = StartCoroutine(GraduallyIncreaseSpeed());
+
+        ReturnToDefault = null;
+    }
+    public void ReturnRareGroupToParent(Transform RareGroup, Transform RareGroupContainer)
+    {
+        StartCoroutine(ReturnGroupToParent(RareGroup, RareGroupContainer));
+    }
+    IEnumerator ReturnGroupToParent(Transform RareGroup, Transform RareGroupContainer)
+    {
+        float timer = 0;
+        while (timer < TimeTillNextRareGroup + 1)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        RareGroup.parent = RareGroupContainer;
+    }
+    void OnStart()
+    {
+        ItemsSpeed = startItemsSpeed;
+        SortItemsGroup();
+        RestartItems();
+        StartAllCoroutines();
+        foreach (Transform rareGroup in RareItemsGroupContainer)
+        {
+            RareGroupsList.Add(rareGroup);
+        }
     }
 
     void OnRestart()
     {
         StopAllCoroutines();
         gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
+        ReturnToDefault = null;
         RestartItems();
         StartAllCoroutines();
     }
 
-    public void ChangeItemsSpeed(int AmountToChange)
+    void OnQuit()
     {
-        ItemsSpeed += AmountToChange;
+        StopAllCoroutines();
     }
-
     #region Public variables
     public Transform GetObstaclesContainer => ItemGroupContainer;
     public float GetItemsGroupSpeed => ItemsSpeed;
@@ -117,5 +179,6 @@ public class ItemsManager : MonoBehaviour
     public List<Sprite> GetIngredientsSprites => IngredientsSprites;
     public List<Sprite> GetBadIngredientsSprites => BadIngredientSprites;
     public List<Sprite> GetPowerUpSprites => PowerupSprites;
+    public List<Sprite> GetPowerUpAnimationSprites => PowerupAnimationSprites;
     #endregion
 }
