@@ -1,0 +1,414 @@
+fileFormatVersion: 2
+guid: cfd83a5a0afd7f24d89b59e1f0fcccb7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6453324579419727841
+    second: Choripan_PU_01_0
+  - first:
+      213: 8066237562948497707
+    second: Choripan_PU_01_1
+  - first:
+      213: 4199528455227778169
+    second: Choripan_PU_01_2
+  - first:
+      213: -298650304950955205
+    second: Choripan_PU_01_3
+  - first:
+      213: -1062755041705547523
+    second: Choripan_PU_01_4
+  - first:
+      213: 5670293631889649167
+    second: Choripan_PU_01_5
+  - first:
+      213: -7784044020142754918
+    second: Choripan_PU_01_6
+  - first:
+      213: 6171472714108450616
+    second: Choripan_PU_01_7
+  - first:
+      213: -2642562690705122890
+    second: Choripan_PU_01_8
+  - first:
+      213: 3235541379865325130
+    second: Choripan_PU_01_9
+  - first:
+      213: 7156115140638829893
+    second: Choripan_PU_01_10
+  - first:
+      213: 8789932467721522674
+    second: Choripan_PU_01_11
+  - first:
+      213: -4368263725213148330
+    second: Choripan_PU_01_12
+  - first:
+      213: -7159882682121752321
+    second: Choripan_PU_01_13
+  - first:
+      213: 8354052016314190913
+    second: Choripan_PU_01_14
+  - first:
+      213: 2242676240993783158
+    second: Choripan_PU_01_15
+  - first:
+      213: -6335324325226054809
+    second: Choripan_PU_01_16
+  - first:
+      213: -6749268882597551003
+    second: Choripan_PU_01_17
+  - first:
+      213: -605304601596209403
+    second: Choripan_PU_01_18
+  - first:
+      213: 9040998924650596369
+    second: Choripan_PU_01_19
+  - first:
+      213: 6513875652645850462
+    second: Choripan_PU_01_20
+  - first:
+      213: -6298509066972578124
+    second: Choripan_PU_01_21
+  - first:
+      213: 8841708065777409107
+    second: Choripan_PU_01_22
+  - first:
+      213: 1126536116372431757
+    second: Choripan_PU_01_23
+  - first:
+      213: 7726013174991503619
+    second: Choripan_PU_01_24
+  - first:
+      213: 1310683719482484641
+    second: Choripan_PU_01_25
+  - first:
+      213: -6749130505717056504
+    second: Choripan_PU_01_26
+  - first:
+      213: 261926308044576990
+    second: Choripan_PU_01_27
+  - first:
+      213: -4807175756414482936
+    second: Choripan_PU_01_28
+  - first:
+      213: -4816205971107606408
+    second: Choripan_PU_01_29
+  - first:
+      213: 8920433962544246260
+    second: Choripan_PU_01_30
+  - first:
+      213: 5135306584848278461
+    second: Choripan_PU_01_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Choripan_PU_01_6
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93336f843589f390800000000000000
+      internalID: -7784044020142754918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_8
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b912d3db3bb35bd0800000000000000
+      internalID: -2642562690705122890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_11
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fdc632220d1cf970800000000000000
+      internalID: 8789932467721522674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_16
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b720a97186418a0800000000000000
+      internalID: -6335324325226054809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_18
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507d2f00ca68997f0800000000000000
+      internalID: -605304601596209403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_19
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 350
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118cc76ee94187d70800000000000000
+      internalID: 9040998924650596369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Choripan_PU_01_28
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 170
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8068b0a7e1b794db0800000000000000
+      internalID: -4807175756414482936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6d55d797ed46666499d4366624cff792
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Choripan_PU_01_0: 6453324579419727841
+      Choripan_PU_01_1: 8066237562948497707
+      Choripan_PU_01_10: 7156115140638829893
+      Choripan_PU_01_11: 8789932467721522674
+      Choripan_PU_01_12: -4368263725213148330
+      Choripan_PU_01_13: -7159882682121752321
+      Choripan_PU_01_14: 8354052016314190913
+      Choripan_PU_01_15: 2242676240993783158
+      Choripan_PU_01_16: -6335324325226054809
+      Choripan_PU_01_17: -6749268882597551003
+      Choripan_PU_01_18: -605304601596209403
+      Choripan_PU_01_19: 9040998924650596369
+      Choripan_PU_01_2: 4199528455227778169
+      Choripan_PU_01_20: 6513875652645850462
+      Choripan_PU_01_21: -6298509066972578124
+      Choripan_PU_01_22: 8841708065777409107
+      Choripan_PU_01_23: 1126536116372431757
+      Choripan_PU_01_24: 7726013174991503619
+      Choripan_PU_01_25: 1310683719482484641
+      Choripan_PU_01_26: -6749130505717056504
+      Choripan_PU_01_27: 261926308044576990
+      Choripan_PU_01_28: -4807175756414482936
+      Choripan_PU_01_29: -4816205971107606408
+      Choripan_PU_01_3: -298650304950955205
+      Choripan_PU_01_30: 8920433962544246260
+      Choripan_PU_01_31: 5135306584848278461
+      Choripan_PU_01_32: -1116753162
+      Choripan_PU_01_33: 807884265
+      Choripan_PU_01_4: -1062755041705547523
+      Choripan_PU_01_5: 5670293631889649167
+      Choripan_PU_01_6: -7784044020142754918
+      Choripan_PU_01_7: 6171472714108450616
+      Choripan_PU_01_8: -2642562690705122890
+      Choripan_PU_01_9: 3235541379865325130
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

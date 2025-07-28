@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 6579514adaa5cf24eb70cf97dc3bbce2
+guid: 95a6de9896a6b8e44ad7782330e62ea1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8864161598196001867
-    second: powerup_0
+      213: -7431492323319139047
+    second: MR_Idle_03-export_0
+  - first:
+      213: -6224855377247358564
+    second: MR_Idle_03-export_1
+  - first:
+      213: 4210770204462435395
+    second: MR_Idle_03-export_2
+  - first:
+      213: 671627817538381293
+    second: MR_Idle_03-export_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: powerup_0
+      name: MR_Idle_03-export_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 34
-        height: 9
+        x: 18
+        y: 161
+        width: 82
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4ca12c5204d30b70800000000000000
-      internalID: 8864161598196001867
+      spriteID: 915358d0b190ed890800000000000000
+      internalID: -7431492323319139047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MR_Idle_03-export_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 161
+        width: 82
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91bdfcd30fdc99a0800000000000000
+      internalID: -6224855377247358564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MR_Idle_03-export_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 54
+        width: 82
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c48cbf039af6a30800000000000000
+      internalID: 4210770204462435395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MR_Idle_03-export_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 54
+        width: 82
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de565ad01f9125900800000000000000
+      internalID: 671627817538381293
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      powerup_0: 8864161598196001867
+      MR_Idle_03-export_0: -7431492323319139047
+      MR_Idle_03-export_1: -6224855377247358564
+      MR_Idle_03-export_2: 4210770204462435395
+      MR_Idle_03-export_3: 671627817538381293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
