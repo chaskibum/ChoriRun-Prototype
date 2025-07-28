@@ -14,6 +14,7 @@ namespace ScriptsAlpha
         [Header("Audio")]
         public AudioSource hitSound;
         public AudioSource crashSound;
+        public AudioSource powerUpSound;
 
         private int _currentPosition;
         private float _currentRotation;
@@ -118,6 +119,12 @@ namespace ScriptsAlpha
         public void ResetPosition()
         {
             _currentPosition = 1;
+        }
+
+        public void PlayPowerUpFeedback()
+        {
+            _animator.SetTrigger("PowerUpGrabbed");
+            powerUpSound.Play();
         }
     }
 }

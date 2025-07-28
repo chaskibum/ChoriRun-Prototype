@@ -112,8 +112,11 @@ namespace ScriptsAlpha
             if (gameSpeed >= MaxGameSpeed)
             {
                 FastLoop();
+                // motorbikeSound.volume = 1.5f;
                 return;
             }
+
+            // motorbikeSound.pitch = gameSpeed / 10;
 
             gameSpeed += 0.2f;
         }
@@ -194,6 +197,7 @@ namespace ScriptsAlpha
             isPlayerInvincible = true;
             gameSpeed += 5f;
             StartCoroutine(DisablePowerupAfterTime());
+            player.PlayPowerUpFeedback();
         }
 
         IEnumerator DisablePowerupAfterTime()
