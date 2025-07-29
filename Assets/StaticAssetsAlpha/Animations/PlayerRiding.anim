@@ -31,7 +31,7 @@ AnimationClip:
     - time: 1
       value: {fileID: -7431492323319139047, guid: 95a6de9896a6b8e44ad7782330e62ea1, type: 3}
     attribute: m_Sprite
-    path: PlayerPivot/PlayerVisuals
+    path: PlayerVisuals/Player
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -43,7 +43,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4210243855
+      path: 2329343094
       attribute: 0
       script: {fileID: 0}
       typeID: 212

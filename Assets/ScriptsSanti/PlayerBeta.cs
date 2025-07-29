@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 public class PlayerBeta : MonoBehaviour
 {
     [Header("Properties")]
@@ -24,7 +23,7 @@ public class PlayerBeta : MonoBehaviour
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
     UIManager uIManager;
-    public Animator animator;
+    Animator animator;
 
     [Header("Audio")]
     [SerializeField] AudioSource hitSound;
