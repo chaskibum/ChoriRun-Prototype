@@ -4,10 +4,10 @@ public class ItemGroupBehavior : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] Transform RareGroupContainer;
+    [SerializeField] bool isRandomizable;
     [SerializeField] bool isRareGroup;
     [SerializeField] bool destroyOnLimit;
     ItemsManager itemsManager;
-    GameManagerBeta gameManager;
 
     [Header("Obstacles")]
     [SerializeField] int ObstacleAmount;
@@ -20,22 +20,18 @@ public class ItemGroupBehavior : MonoBehaviour
     [Header("Bad Ingredient")]
     [SerializeField] int BadIngredientAmount;
     [SerializeField] int MaxBadIngredientsPerGroup;
-
+    
     [Header("Power up")]
     [SerializeField] int PowerupsAmount;
     [SerializeField] int MaxPowerupPerGroup;
     void Awake()
     {
         itemsManager = FindFirstObjectByType<ItemsManager>();
-        gameManager = FindFirstObjectByType<GameManagerBeta>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetGameStarted)
-        {
-            transform.position += Vector3.left * itemsManager.GetItemsGroupSpeed * Time.deltaTime;
-        }
+        transform.position += Vector3.left * itemsManager.GetItemsGroupSpeed * Time.deltaTime;
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -49,7 +45,6 @@ public class ItemGroupBehavior : MonoBehaviour
     {
         if (other.CompareTag("Limit"))
         {
-            RefreshItemType();
             if (!isRareGroup)
             {
                 int index = Random.Range(4, transform.parent.childCount);
@@ -58,9 +53,10 @@ public class ItemGroupBehavior : MonoBehaviour
             }
             else
             {
-                itemsManager.ReturnRareGroupToParent(transform, RareGroupContainer);
+                transform.parent = RareGroupContainer;
                 transform.gameObject.SetActive(false);
             }
+            RefreshItemType();
         }
     }
 
@@ -93,16 +89,20 @@ public class ItemGroupBehavior : MonoBehaviour
 
         }
     }
+
     public void RefreshItemType()
     {
-        ObstacleAmount = 0;
-        IngredientsAmount = 0;
-        foreach (Transform child in transform)
+        if (isRandomizable)
         {
-            child.GetComponent<ItemBehavior>().SetRandomItemType();
-            child.GetComponent<ItemBehavior>().PickObstacleType();
+            ObstacleAmount = 0;
+            IngredientsAmount = 0;
+            foreach (Transform child in transform)
+            {
+                child.GetComponent<ItemBehavior>().SetRandomItemType();
+                child.GetComponent<ItemBehavior>().PickObstacleType();
+            }
         }
-        if (destroyOnLimit)
+        else if (destroyOnLimit)
         {
             Destroy(gameObject);
         }
@@ -123,14 +123,12 @@ public class ItemGroupBehavior : MonoBehaviour
     {
         PowerupsAmount++;
     }
-    #region Public variables
-    public int GetObstacleAmount => ObstacleAmount;
-    public int GetIngredientsAmount => IngredientsAmount;
-    public int GetBadIngredientAmount => BadIngredientAmount;
-    public int GetPowerupAmount => PowerupsAmount;
-    public int GetMaxObstaclesPerGroup => MaxObstaclesPerGroup;
-    public int GetMaxIngredientPerGroup => MaxIngredientsPerGroup;
-    public int GetMaxBadIngredientPerGroup => MaxBadIngredientsPerGroup;
+    public int GetObstacleAmount => ObstacleAmount; 
+    public int GetIngredientsAmount => IngredientsAmount; 
+    public int GetBadIngredientAmount => BadIngredientAmount; 
+    public int GetPowerupAmount => PowerupsAmount; 
+    public int GetMaxObstaclesPerGroup => MaxObstaclesPerGroup; 
+    public int GetMaxIngredientPerGroup => MaxIngredientsPerGroup; 
+    public int GetMaxBadIngredientPerGroup => MaxBadIngredientsPerGroup; 
     public int GetMaxPowerUpPerGroup => MaxPowerupPerGroup; 
-    #endregion
 }

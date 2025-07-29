@@ -2,29 +2,6 @@ using UnityEngine;
 
 public class VisualBehaviour : MonoBehaviour
 {
-    GameManagerBeta gameManager;
-    BackgroundGroup backgroundGroup;
-    void Awake()
-    {
-        gameManager = FindFirstObjectByType<GameManagerBeta>();
-        backgroundGroup = transform.parent.GetComponent<BackgroundGroup>();
-    }
-    void Update()
-    {
-        if (gameManager.GetGameStarted)
-        {
-            if (backgroundGroup.GetUseSameSpeedAsItems)
-            {
-                transform.position += Vector3.left * gameManager.GetItemsGroupSpeed * Time.deltaTime;
-            }
-            else
-            {
-                transform.position += Vector3.left * backgroundGroup.GetSpeed * Time.deltaTime;
-            }
-        }
-    }
-
-    #region Colission
     float GetPreviousRightEdge(int currentIndex)
     {
         Transform ChildTransform = transform.parent.GetChild(currentIndex - 1);
@@ -36,7 +13,7 @@ public class VisualBehaviour : MonoBehaviour
     {
         var ChildBoxCollider = transform.parent.GetChild(index).GetComponent<BoxCollider2D>();
         float LeftEdge = (ChildBoxCollider.size.x / 2f) - ChildBoxCollider.offset.x;
-        float newXPos = PreviousRightEdge + backgroundGroup.GetSpaceBtwVisual +LeftEdge;
+        float newXPos = PreviousRightEdge + LeftEdge;
         return new Vector2(newXPos, 0);
     }
 
@@ -55,5 +32,4 @@ public class VisualBehaviour : MonoBehaviour
             }
         }
     }
-    #endregion
 }
