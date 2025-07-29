@@ -8056,8 +8056,13 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5577812125555184576, guid: 8f542d925ee291a44b77c9cd8a9581d6, type: 2}
+<<<<<<< HEAD
   m_audioClip: {fileID: 8300000, guid: bee11bfd511d009488523b0e286739be, type: 3}
   m_Resource: {fileID: 8300000, guid: bee11bfd511d009488523b0e286739be, type: 3}
+=======
+  m_audioClip: {fileID: 8300000, guid: e28a60d1339b56a45b514d4626b40cbf, type: 3}
+  m_Resource: {fileID: 8300000, guid: e28a60d1339b56a45b514d4626b40cbf, type: 3}
+>>>>>>> parent of 984eab2 (Sonido de moto actualizado)
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
