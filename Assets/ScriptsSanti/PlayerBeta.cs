@@ -24,7 +24,7 @@ public class PlayerBeta : MonoBehaviour
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
     UIManager uIManager;
-    public Animator animator;
+    Animator animator;
 
     [Header("Audio")]
     [SerializeField] AudioSource hitSound;
