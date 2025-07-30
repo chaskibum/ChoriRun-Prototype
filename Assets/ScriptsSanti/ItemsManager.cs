@@ -116,7 +116,7 @@ public class ItemsManager : MonoBehaviour
     IEnumerator ReturnToDefaultValue(float ValueBeforeChange, float DurationTime)
     {
 
-        StopCoroutine(SpeedCoroutine);
+        if(SpeedCoroutine != null) StopCoroutine(SpeedCoroutine);
 
         yield return new WaitForSeconds(DurationTime);
 

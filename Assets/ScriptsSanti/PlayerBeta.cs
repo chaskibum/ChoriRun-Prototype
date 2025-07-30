@@ -6,6 +6,8 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] int Speed = 1;
     [SerializeField] float rotationSpeed = 10.0f;
     [SerializeField] float PowerUpDuration;
+    [SerializeField] bool isInvincible = false;
+
     [Header("Variables")]
     [SerializeField] Transform playerPositions;
     [SerializeField] Transform playerVisuals;
@@ -19,8 +21,8 @@ public class PlayerBeta : MonoBehaviour
     bool _particlesActive;
     int laneToBe = 1;
     int hp = 2;
-    bool OnWheelie;
-    bool EnableWheelie;
+    bool onWheelie;
+    bool enableWheelie;
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
     UIManager uIManager;
@@ -29,7 +31,6 @@ public class PlayerBeta : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource hitSound;
     [SerializeField] AudioSource crashSound;
-    bool isInvincible = false;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -61,7 +62,7 @@ public class PlayerBeta : MonoBehaviour
     {
         bool up;
         bool down;
-        if (!OnWheelie)
+        if (!onWheelie)
         {
             up = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
             down = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
@@ -88,7 +89,7 @@ public class PlayerBeta : MonoBehaviour
     {
         bool left;
 
-        if (EnableWheelie) left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        if (enableWheelie) left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         else left = false;
 
         if (left)
@@ -101,14 +102,14 @@ public class PlayerBeta : MonoBehaviour
                 _hitbox.offset = new Vector2(_offsetX -= 2f, _offsetY);
             }
             gameManager.IncreseSpeedOnWheelie(true);
-            OnWheelie = true;
+            onWheelie = true;
 
         }
         else
         {
             gameManager.IncreseSpeedOnWheelie(false);
             _currentRotation -= rotationSpeed * 2 * Time.deltaTime;
-            if (_currentRotation < 10) OnWheelie = false;
+            if (_currentRotation < 10) onWheelie = false;
             if (_currentRotation < 0.1f && _particlesActive)
             {
                 _particlesActive = false;
@@ -214,16 +215,32 @@ public class PlayerBeta : MonoBehaviour
     }
     IEnumerator DisablePowerUpAfterTime()
     {
+        StartCoroutine("ActivatePowerupWarning");
         yield return new WaitForSeconds(PowerUpDuration);
+        StopCoroutine("ActivatePowerupWarning");
         PowerupVisual.SetActive(false);
         isInvincible = false;
+    }
+    IEnumerator ActivatePowerupWarning()
+    {
+        yield return new WaitForSeconds(PowerUpDuration - 2);
+        while (true)
+            {
+                PowerupVisual.SetActive(false);
+                yield return new WaitForSeconds(0.1f);
+                PowerupVisual.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+            }
     }
     void OnRestart()
     {
         ResetPosition();
+        StopAllCoroutines();
+        PowerupVisual.SetActive(false);
+        isInvincible = false;
         laneToBe = 1;
         hp = 2;
-        EnableWheelie = false;
+        enableWheelie = false;
         InvokeActiveWheelie();
         animator.Rebind();
     }
@@ -241,6 +258,6 @@ public class PlayerBeta : MonoBehaviour
     }
     void ActivateWheelie()
     {
-        EnableWheelie = true;
+        enableWheelie = true;
     }
 }
