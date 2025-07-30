@@ -10,6 +10,7 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] Transform playerPositions;
     [SerializeField] Transform playerVisuals;
     [SerializeField] GameObject velocityParticles;
+    [SerializeField] GameObject PowerupVisual;
     CircleCollider2D _hitbox;
     Vector2 startPos;
     float _currentRotation;
@@ -184,6 +185,7 @@ public class PlayerBeta : MonoBehaviour
                 case "PowerUp1":
                     isInvincible = true;
                     itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
+                    PowerupVisual.SetActive(true);
                     StartCoroutine(DisablePowerUpAfterTime());
                     break;
             }
@@ -213,6 +215,7 @@ public class PlayerBeta : MonoBehaviour
     IEnumerator DisablePowerUpAfterTime()
     {
         yield return new WaitForSeconds(PowerUpDuration);
+        PowerupVisual.SetActive(false);
         isInvincible = false;
     }
     void OnRestart()
