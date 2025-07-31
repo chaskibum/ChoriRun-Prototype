@@ -190,6 +190,7 @@ public class AudioManager : MonoBehaviour
 
     void IncreaseMotorPitch()
     {
+        if (motorbikeSound.pitch > 2.2f) return;
         motorbikeSound.pitch += 0.005f;
     }
 }
