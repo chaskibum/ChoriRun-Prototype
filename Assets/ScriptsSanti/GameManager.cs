@@ -21,20 +21,16 @@ public class GameManagerBeta : MonoBehaviour
     bool StartFastLoop = false;
 
     ItemsManager itemsManager;
-    AudioManager audioManager;
     UIManager uiManager;
     PlayerBeta player;
 
     UnityEvent onRestartGame = new UnityEvent();
     UnityEvent onStartGame = new UnityEvent();
     UnityEvent onQuitButton = new UnityEvent();
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Awake()
     {
         itemsManager = FindFirstObjectByType<ItemsManager>();
-        audioManager = FindFirstObjectByType<AudioManager>();
         uiManager = FindFirstObjectByType<UIManager>();
         player = FindFirstObjectByType<PlayerBeta>();
     }
@@ -83,13 +79,13 @@ public class GameManagerBeta : MonoBehaviour
     {
         onRestartGame?.Invoke();
         uiManager.StartRowOfActivates();
-        //Resetear musica
+        AudioManager.Instance.OnRestartButtonPressed();
     }
     public void GameOver()
     {
         Time.timeScale = 0;
-        audioManager.motorbikeSound.Stop();
-        audioManager.StopMusic();
+        AudioManager.Instance.motorbikeSound.volume = 0f;
+        AudioManager.Instance.StopMusic();
         uiManager.GameOver();
     }
     void OnQuit()
@@ -137,12 +133,13 @@ public class GameManagerBeta : MonoBehaviour
         {
             score += points;
             uiManager.UpdateScore(score);
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.IngredientSound);
         }
 
         public void AddScoreChoriPan()
         {
             AddScore(250);
-            audioManager.choriSound.Play();
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.ChoriSound);
         }
         public void ResetScore()
         {

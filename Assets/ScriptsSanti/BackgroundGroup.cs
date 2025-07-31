@@ -34,7 +34,8 @@ public class BackgroundGroup : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
-
+            
+            // AudioManager.Instance.motorbikeSound.pitch += 0.02f;
             float ActualSpeed = Speed;
             
             while (!Mathf.Approximately(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount))

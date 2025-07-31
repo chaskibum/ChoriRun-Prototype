@@ -191,13 +191,12 @@ public class UIManager : MonoBehaviour
             {
                 if (!isScoreTarget) ChoriFeedback(SpriteIndex);
                 gameManager.AddScore(ScoreToAdd);
-                audioManager.ingredientSound.Play();
+                // audioManager.ingredientSound.Play();
 
                 yield break;
             }
             yield return null;
         }
-
     }
 
     void ResetLivesAndIngredientsContainer()

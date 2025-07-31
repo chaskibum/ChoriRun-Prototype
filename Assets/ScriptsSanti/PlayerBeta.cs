@@ -124,7 +124,7 @@ public class PlayerBeta : MonoBehaviour
 
     public void LooseHp()
     {
-        hitSound.Play();
+        AudioManager.Instance.PlayClip(AudioManager.AudioList.GetHitSound);
         hp -= 1;
         uIManager.HpFeedback(hp);
         if (hp <= 0)
@@ -187,6 +187,8 @@ public class PlayerBeta : MonoBehaviour
                     isInvincible = true;
                     itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
                     PowerupVisual.SetActive(true);
+                    AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound);
+                    AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                     StartCoroutine(DisablePowerUpAfterTime());
                     break;
             }
@@ -197,6 +199,7 @@ public class PlayerBeta : MonoBehaviour
             {
                 case "Cone":
                     other.GetComponent<Animator>().SetTrigger("Throw");
+                    AudioManager.Instance.PlayClip(AudioManager.AudioList.DestroyObstacleSound, true);
                     isObstacle = true;
                     break;
                 case "Oil":
@@ -220,17 +223,18 @@ public class PlayerBeta : MonoBehaviour
         StopCoroutine("ActivatePowerupWarning");
         PowerupVisual.SetActive(false);
         isInvincible = false;
+        AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
     }
     IEnumerator ActivatePowerupWarning()
     {
         yield return new WaitForSeconds(PowerUpDuration - 2);
         while (true)
-            {
-                PowerupVisual.SetActive(false);
-                yield return new WaitForSeconds(0.1f);
-                PowerupVisual.SetActive(true);
-                yield return new WaitForSeconds(0.1f);
-            }
+        {
+            PowerupVisual.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+            PowerupVisual.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
     void OnRestart()
     {

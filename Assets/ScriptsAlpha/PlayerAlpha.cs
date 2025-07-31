@@ -124,7 +124,8 @@ namespace ScriptsAlpha
         public void PlayPowerUpFeedback()
         {
             _animator.SetTrigger("PowerUpGrabbed");
-            powerUpSound.Play();
+            print("play sound");
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound);
         }
     }
 }

@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         if (canOpenMenu)
         {
             Menu.SetActive(true);
-            audioManager.StopMusic();
+            // audioManager.StopMusic();
             Time.timeScale = 0;
             gameManager.isGamePaused = true;
             canOpenMenu = false;
@@ -78,7 +78,7 @@ public class PauseMenu : MonoBehaviour
                 gameManager.isGamePaused = false;
                 waitTillEnd = false;
                 canOpenMenu = true;
-                audioManager.CueMusic();
+                // audioManager.CueMusic();
                 break;
             }
         }

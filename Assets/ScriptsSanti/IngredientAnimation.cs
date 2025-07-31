@@ -19,12 +19,7 @@ public class IngredientAnimation : MonoBehaviour
         StartScale = transform.localScale;
         gameManager.GetOnRestartEvent?.AddListener(OnRestart);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     public void AnimateObject(Sprite IngredientSprite, Vector3 StartPosition, Vector3 TargetPosition, bool ChangeScale = false)
     {
         gameObject.SetActive(true);

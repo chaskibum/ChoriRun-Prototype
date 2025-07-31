@@ -192,7 +192,7 @@ namespace ScriptsAlpha
             choriSound.Play();
         }
 
-        public void ActivatePowerUp()
+        /*public void ActivatePowerUp()
         {
             isPlayerInvincible = true;
             gameSpeed += 5f;
@@ -207,7 +207,7 @@ namespace ScriptsAlpha
             isPlayerInvincible = false;
             gameSpeed -= 5f;
             motorbikeSound.pitch -= 0.5f;
-        }
+        }*/
 
         public void GameOver()
         {

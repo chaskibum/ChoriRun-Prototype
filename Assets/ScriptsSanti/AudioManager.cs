@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -6,29 +7,72 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio")]
-    public AudioSource motorbikeSound;
-    public AudioSource ingredientSound;
-    public AudioSource choriSound;
-    public AudioMixer mixer;
     public Slider musicSlider;
     public Slider sfxSlider;
-    public AudioSource startLoop;
+    public AudioMixer mixer;
+    public AudioSource sfxSource;
+    
     public AudioSource mainMenuSong;
+    public AudioSource startLoop;
     public AudioSource startSong;
     public AudioSource songLoop;
     public AudioSource melodyLoop;
     public AudioSource fastMelodyLoop;
+    public AudioSource motorbikeSound;
+
+    public enum AudioList
+    {
+        IngredientSound,
+        ChoriSound,
+        PowerUpSound,
+        DestroyObstacleSound,
+        GetHitSound,
+    }
+    
+	[SerializeField] List<AudioClip> audioClips;
     [SerializeField] bool fastLoopActivated = false;
-    GameManagerBeta gameManager;
+    private GameManagerBeta _gameManager;
+    
+    // Makes the audio manager a singleton
+    public static AudioManager Instance { get; private set; }
+    
     void Awake()
     {
-        gameManager = FindFirstObjectByType<GameManagerBeta>();
+        _gameManager = FindFirstObjectByType<GameManagerBeta>();
+        
+        // Makes the audio manager a singleton
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("AudioManager is a Singleton: An instance already exists");
+            Destroy(this.gameObject);
+            return;
+        }
+        
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        InvokeRepeating("IncreaseMotorPitch", 0, 1f);
     }
+    
+    public void PlayClip(AudioList clip, bool changePitch = false, bool oneShot = true)
+    {
+        sfxSource.pitch = changePitch ? Random.Range(0.9f, 1.1f) : 1f;
+        if (oneShot)
+        {
+            sfxSource.PlayOneShot(audioClips[(int)clip]);
+        }
+        else
+        {
+            sfxSource.clip = audioClips[(int)clip];
+            sfxSource.Play();
+        }
+    }
+    
     void Start()
     {
-        gameManager.GetOnstartEvent?.AddListener(OnStart);
-        gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
+        _gameManager.GetOnstartEvent?.AddListener(OnStart);
+        _gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
     }
+    
     public void ChangeMusicVolume()
     {
         mixer.SetFloat("MusicVolume", musicSlider.value);
@@ -61,7 +105,6 @@ public class AudioManager : MonoBehaviour
 
     public void StartSong()
     {
-        startSong.volume = 1f;
         startSong.Play();
         startLoop.Stop();
     }
@@ -84,18 +127,31 @@ public class AudioManager : MonoBehaviour
 
     public void CueMusic()
     {
+        mainMenuSong.volume = 1f;
+        startSong.volume = 1f;
+        songLoop.volume = 1f;
+        melodyLoop.volume = 1f;
+        fastMelodyLoop.volume = 0f;
+        
         if (!startLoop.isPlaying) startLoop.Play();
 
         StartCoroutine(FadeMusic(startLoop, true));
         StartCoroutine(FadeMusic(mainMenuSong, false));
-        Invoke("StartSong", (startLoop.clip.length - startLoop.time));
-        Invoke("StartSongLoop", startSong.clip.length + (startLoop.clip.length - startLoop.time));
+        
+        StartCoroutine(RealTimeCoroutine("StartSong", (startLoop.clip.length - startLoop.time) - 0.05f));
+        StartCoroutine(RealTimeCoroutine("StartSongLoop", startSong.clip.length + (startLoop.clip.length - startLoop.time) - 0.05f));
+    }
+    
+    // Plays the song despite the game being paused
+    IEnumerator RealTimeCoroutine(string function, float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        Invoke(function, 0);
     }
 
     public void StopMusic()
     {
-        CancelInvoke("StartSongLoop");
-        CancelInvoke("StartSong");
+        StopAllCoroutines();
         startLoop.Stop();
         mainMenuSong.Stop();
         startSong.Stop();
@@ -106,25 +162,34 @@ public class AudioManager : MonoBehaviour
 
     public void BackToMenuMusic()
     {
+        StopMusic();
         mainMenuSong.Play();
+        startLoop.volume = 0f;
+        startLoop.Play();
         StartCoroutine(FadeMusic(mainMenuSong, true));
-        StartCoroutine(FadeMusic(startLoop, false));
-        StartCoroutine(FadeMusic(startSong, false));
-        StartCoroutine(FadeMusic(songLoop, false));
-        StartCoroutine(FadeMusic(melodyLoop, false));
-        StartCoroutine(FadeMusic(fastMelodyLoop, false));
     }
+    
     void OnStart()
     {
-        // CueMusic();
+        CueMusic();
+        motorbikeSound.Play();
     }
+    
     public void OnRestartButtonPressed()
     {
-        // CueMusic();
+        motorbikeSound.pitch = 1f;
+        StopMusic();
+        CueMusic();
     }
+    
     void OnQuit()
     {
         motorbikeSound.Stop();
         BackToMenuMusic();
+    }
+
+    void IncreaseMotorPitch()
+    {
+        motorbikeSound.pitch += 0.005f;
     }
 }
