@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         InvokeRepeating("IncreaseMotorPitch", 0, 1f);
     }
-    
+
     public void PlayClip(AudioList clip, bool changePitch = false, bool oneShot = true)
     {
         sfxSource.pitch = changePitch ? Random.Range(0.9f, 1.1f) : 1f;
@@ -65,6 +65,13 @@ public class AudioManager : MonoBehaviour
             sfxSource.clip = audioClips[(int)clip];
             sfxSource.Play();
         }
+        sfxSource.loop = oneShot;
+    }
+
+    public void StopClip()
+    {
+        sfxSource.Stop();
+        sfxSource.loop = false;
     }
     
     void Start()

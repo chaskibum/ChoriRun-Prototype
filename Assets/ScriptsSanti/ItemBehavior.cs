@@ -83,8 +83,6 @@ public class ItemBehavior : MonoBehaviour
 
         SetRandomizationBools();
 
-        PickObstacleType();
-
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -177,7 +175,7 @@ public class ItemBehavior : MonoBehaviour
                 SetTagAndSprite(obstacleType.ToString(), (int)obstacleType, itemsManager.GetObstaclesSprites);
 
                 itemGroupBehavior.IncrementObstacleCount();
-                Debug.Log("Obstacle");
+                Debug.Log("Obstacle") ;
                 break;
 
             case ItemType.Ingredient:
@@ -208,7 +206,7 @@ public class ItemBehavior : MonoBehaviour
                 SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
 
                 itemGroupBehavior.IncrementBadIngredientCount();
-                Debug.Log("Bad Ingredient");
+                Debug.Log("Badingredient");
                 break;
         }
     }

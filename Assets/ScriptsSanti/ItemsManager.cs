@@ -50,7 +50,7 @@ public class ItemsManager : MonoBehaviour
         foreach (Transform rareGroup in RareGroupsList)
         {
             rareGroup.parent = RareItemsGroupContainer;
-            rareGroup.gameObject.SetActive(false);
+            //rareGroup.GetComponent<ItemGroupBehavior>().RefreshItemType();
         }
         foreach (Transform ItemsGroup in ItemGroupContainer)
         {
@@ -70,6 +70,7 @@ public class ItemsManager : MonoBehaviour
                 GroupToAdd.SetSiblingIndex(WhereToAdd.GetSiblingIndex());
                 GroupToAdd.position = WhereToAdd.position;
                 GroupToAdd.gameObject.SetActive(true);
+                GroupToAdd.GetComponent<ItemGroupBehavior>().RefreshItemType();
                 yield return new WaitUntil(() => !GroupToAdd.gameObject.activeSelf);
             }
             yield return null;
@@ -116,7 +117,7 @@ public class ItemsManager : MonoBehaviour
     IEnumerator ReturnToDefaultValue(float ValueBeforeChange, float DurationTime)
     {
 
-        if(SpeedCoroutine != null) StopCoroutine(SpeedCoroutine);
+        if (SpeedCoroutine != null) StopCoroutine(SpeedCoroutine);
 
         yield return new WaitForSeconds(DurationTime);
 
@@ -145,30 +146,40 @@ public class ItemsManager : MonoBehaviour
         }
         RareGroup.parent = RareGroupContainer;
     }
+    public void AddRareGroupToList(Transform raregroup)
+    {
+        RareGroupsList.Add(raregroup);
+    }
+    void RestartRareGroups()
+    {
+        foreach (Transform rareGroup in RareGroupsList)
+        {
+            rareGroup.parent = RareItemsGroupContainer;
+            rareGroup.gameObject.SetActive(false);
+        }
+    }
     void OnStart()
     {
         ItemsSpeed = startItemsSpeed;
         SortItemsGroup();
         RestartItems();
         StartAllCoroutines();
-        foreach (Transform rareGroup in RareItemsGroupContainer)
-        {
-            RareGroupsList.Add(rareGroup);
-        }
     }
 
     void OnRestart()
     {
         StopAllCoroutines();
         RestartItems();
-        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
         ReturnToDefault = null;
+        RestartRareGroups();
         StartAllCoroutines();
+        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
     }
 
     void OnQuit()
     {
         StopAllCoroutines();
+        RestartRareGroups();
     }
     #region Public variables
     public Transform GetObstaclesContainer => ItemGroupContainer;

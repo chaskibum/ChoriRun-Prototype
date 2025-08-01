@@ -229,6 +229,7 @@ public class UIManager : MonoBehaviour
         CancelInvoke();
         StopAllCoroutines();
         ResetLivesAndIngredientsContainer();
+        ClearIndexList();
 
         CameraAnimator.SetBool("GameStarted", false);
         livesContainer.gameObject.SetActive(false);

@@ -27,6 +27,7 @@ public class PlayerBeta : MonoBehaviour
     GameManagerBeta gameManager;
     UIManager uIManager;
     Animator animator;
+    Coroutine DisablePowerUpCoroutine;
 
     [Header("Audio")]
     [SerializeField] AudioSource hitSound;
@@ -162,6 +163,26 @@ public class PlayerBeta : MonoBehaviour
             case "VeganChori":
                 uIManager.AddToIndexList(5);
                 uIManager.PickupIngredient(CollisionPosition, 5, -200, CollisionItemSprite);
+                break; 
+            case "PowerUp1":
+                if (DisablePowerUpCoroutine != null)
+                {
+                    StopCoroutine("ActivatePowerupWarning");
+                    StopCoroutine(DisablePowerUpCoroutine);
+                }
+                else
+                {
+                    isInvincible = true;
+
+                    AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, false);
+                    AudioManager.Instance.motorbikeSound.pitch += 0.5f;
+                }
+
+                PowerupVisual.SetActive(true);
+
+                itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
+
+                DisablePowerUpCoroutine = StartCoroutine(DisablePowerUpAfterTime());
                 break;
         }
         if (!isInvincible)
@@ -182,14 +203,6 @@ public class PlayerBeta : MonoBehaviour
                     LooseHp();
                     itemsManager.ChangeItemsSpeed(-2, 2);
                     isObstacle = true;
-                    break;
-                case "PowerUp1":
-                    isInvincible = true;
-                    itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
-                    PowerupVisual.SetActive(true);
-                    AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound);
-                    AudioManager.Instance.motorbikeSound.pitch += 0.5f;
-                    StartCoroutine(DisablePowerUpAfterTime());
                     break;
             }
         }
@@ -223,7 +236,9 @@ public class PlayerBeta : MonoBehaviour
         StopCoroutine("ActivatePowerupWarning");
         PowerupVisual.SetActive(false);
         isInvincible = false;
+        DisablePowerUpCoroutine = null;
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
+        AudioManager.Instance.StopClip();
     }
     IEnumerator ActivatePowerupWarning()
     {
@@ -240,6 +255,9 @@ public class PlayerBeta : MonoBehaviour
     {
         ResetPosition();
         StopAllCoroutines();
+        DisablePowerUpCoroutine = null;
+        AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
+        AudioManager.Instance.StopClip();
         PowerupVisual.SetActive(false);
         isInvincible = false;
         laneToBe = 1;
@@ -251,6 +269,9 @@ public class PlayerBeta : MonoBehaviour
     void OnQuit()
     {
         _hitbox.enabled = false;
+        DisablePowerUpCoroutine = null;
+        AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
+        AudioManager.Instance.StopClip();
     }
     public void ResetPosition()
     {

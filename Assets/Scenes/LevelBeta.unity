@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_MinValue: -60
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -20
+  m_Value: -16.8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -14407,7 +14407,7 @@ MonoBehaviour:
   obstacleProbability: 30
   ingredientProbability: 59
   badIngredientProbability: 10
-  powerUpProbability: 30
+  powerUpProbability: 1
 --- !u!1 &1282143877
 GameObject:
   m_ObjectHideFlags: 0
@@ -17817,7 +17817,7 @@ Transform:
   m_GameObject: {fileID: 1576973187}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.560001, y: -9.9, z: 0}
+  m_LocalPosition: {x: -8.560001, y: -9.899998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18413,7 +18413,7 @@ MonoBehaviour:
   MaxItemsSpeed: 20
   SpaceBetweenItemsGroup: 5
   RareItemsGroupContainer: {fileID: 1861507690}
-  TimeTillNextRareGroup: 15
+  TimeTillNextRareGroup: 1
   ObstaclesSprites:
   - {fileID: -8459554342495459711, guid: 31b04be2b77b1934cb50038ea4a6a502, type: 3}
   - {fileID: -6129153178573044465, guid: b99e52bb095e1b148a1e97f9c0ca9194, type: 3}
@@ -21044,7 +21044,7 @@ RectTransform:
   m_Father: {fileID: 848698080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.6666667, y: 1}
+  m_AnchorMax: {x: 0.72, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

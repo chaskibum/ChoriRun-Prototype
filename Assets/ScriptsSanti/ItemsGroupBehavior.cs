@@ -29,6 +29,13 @@ public class ItemGroupBehavior : MonoBehaviour
         itemsManager = FindFirstObjectByType<ItemsManager>();
         gameManager = FindFirstObjectByType<GameManagerBeta>();
     }
+    void Start()
+    {
+        if (isRareGroup)
+        {
+            itemsManager.AddRareGroupToList(transform);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -49,9 +56,9 @@ public class ItemGroupBehavior : MonoBehaviour
     {
         if (other.CompareTag("Limit"))
         {
-            RefreshItemType();
             if (!isRareGroup)
             {
+                RefreshItemType();
                 int index = Random.Range(4, transform.parent.childCount);
                 transform.SetSiblingIndex(index);
                 SetPosition(index);
