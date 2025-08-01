@@ -24,14 +24,12 @@ public class UIManager : MonoBehaviour
 
     List<int> IndexList = new();
     bool _hasAllIngredients;
-    AudioManager audioManager;
     GameManagerBeta gameManager;
     ItemsManager itemsManager;
     PlayerBeta player;
 
     void Awake()
     {
-        audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
         player = FindFirstObjectByType<PlayerBeta>();

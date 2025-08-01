@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
         DestroyObstacleSound,
         GetHitSound,
         GameOverMelody,
+        Splat,
     }
     
 	[SerializeField] List<AudioClip> audioClips;
@@ -53,9 +54,10 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void PlayClip(AudioList clip, bool changePitch = false, bool oneShot = true)
+    public void PlayClip(AudioList clip, bool changePitch = false, float volume = 1f, bool oneShot = true)
     {
-        sfxSource.pitch = changePitch ? Random.Range(0.9f, 1.1f) : 1f;
+        sfxSource.volume = volume;
+        sfxSource.pitch = changePitch ? Random.Range(0.8f, 1.2f) : 1f;
         if (oneShot)
         {
             sfxSource.PlayOneShot(audioClips[(int)clip]);

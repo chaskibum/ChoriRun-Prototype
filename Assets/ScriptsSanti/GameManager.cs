@@ -134,7 +134,7 @@ public class GameManagerBeta : MonoBehaviour
         {
             score += points;
             uiManager.UpdateScore(score);
-            AudioManager.Instance.PlayClip(AudioManager.AudioList.IngredientSound, true);
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.IngredientSound, true, 0.4f);
         }
 
         public void AddScoreChoriPan()

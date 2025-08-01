@@ -28,10 +28,7 @@ public class PlayerBeta : MonoBehaviour
     UIManager uIManager;
     Animator animator;
     Coroutine DisablePowerUpCoroutine;
-
-    [Header("Audio")]
-    [SerializeField] AudioSource hitSound;
-    [SerializeField] AudioSource crashSound;
+    
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -125,12 +122,11 @@ public class PlayerBeta : MonoBehaviour
 
     public void LooseHp()
     {
-        AudioManager.Instance.PlayClip(AudioManager.AudioList.GetHitSound);
+        AudioManager.Instance.PlayClip(AudioManager.AudioList.GetHitSound, false, 0.4f);
         hp -= 1;
         uIManager.HpFeedback(hp);
         if (hp <= 0)
         {
-            crashSound.Play();
             gameManager.GameOver();
             return;
         }
@@ -174,7 +170,7 @@ public class PlayerBeta : MonoBehaviour
                 {
                     isInvincible = true;
 
-                    AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, false);
+                    AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                 }
 
