@@ -57,7 +57,13 @@ public class GameManagerBeta : MonoBehaviour
         {
             foreach (Transform ObjectInContainer in objectToSortContainer)
             {
+                BoxCollider2D objectCollider = ObjectInContainer.GetComponent<BoxCollider2D>();
+
+                objectCollider.enabled = false;
+
                 ObjectInContainer.SetSiblingIndex(Random.Range(0, objectToSortContainer.childCount));
+                
+                objectCollider.enabled = true;
             }
         }
 
@@ -72,6 +78,8 @@ public class GameManagerBeta : MonoBehaviour
             ObjectInContainer.localPosition = new Vector2(obstacleCenter, 0);
 
             currentX += objectCollider.size.x + SpaceBetweenObjects;
+
+            objectCollider.enabled = true;
         }
     }
 

@@ -172,8 +172,8 @@ public class ItemsManager : MonoBehaviour
         RestartItems();
         ReturnToDefault = null;
         RestartRareGroups();
+        SortItemsGroup();
         StartAllCoroutines();
-        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
     }
 
     void OnQuit()

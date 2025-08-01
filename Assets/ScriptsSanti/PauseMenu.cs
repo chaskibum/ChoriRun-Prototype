@@ -9,14 +9,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject GameOverPanel;
     [SerializeField] Animator CountdownAnim;
     GameManagerBeta gameManager;
-    AudioManager audioManager;
     bool canOpenMenu = true;
     bool waitTillEnd;
     TMP_Text CountdownText;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
-        audioManager = FindFirstObjectByType<AudioManager>();
         CountdownText = CountdownAnim.gameObject.GetComponent<TMP_Text>();
     }
     void Update()

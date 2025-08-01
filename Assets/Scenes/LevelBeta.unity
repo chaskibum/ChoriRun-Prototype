@@ -11881,7 +11881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 38220170300957979, guid: cd5496b36a700b843b926a3d7bdbb748, type: 3}
       propertyPath: itemType
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 38220170300957979, guid: cd5496b36a700b843b926a3d7bdbb748, type: 3}
       propertyPath: powerupType
@@ -18789,7 +18789,7 @@ MonoBehaviour:
   m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 542a15d2c5519af41b6eef8367efa6ae, type: 2}
-  m_sharedMaterial: {fileID: 1843701477817230754, guid: 3010a047720eeae41ab5da46b6a7a28e, type: 2}
+  m_sharedMaterial: {fileID: 8720560294418483462, guid: 542a15d2c5519af41b6eef8367efa6ae, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18854,7 +18854,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1670966339
@@ -21119,7 +21119,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 38220170300957979, guid: cd5496b36a700b843b926a3d7bdbb748, type: 3}
       propertyPath: itemType
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 38220170300957979, guid: cd5496b36a700b843b926a3d7bdbb748, type: 3}
       propertyPath: powerupType

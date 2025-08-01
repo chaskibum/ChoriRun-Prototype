@@ -107,7 +107,7 @@ public class ItemGroupBehavior : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.GetComponent<ItemBehavior>().SetRandomItemType();
-            child.GetComponent<ItemBehavior>().PickObstacleType();
+            child.GetComponent<ItemBehavior>().SetPickedType();
         }
         if (destroyOnLimit)
         {
