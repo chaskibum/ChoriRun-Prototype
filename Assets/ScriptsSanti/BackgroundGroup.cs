@@ -35,7 +35,6 @@ public class BackgroundGroup : MonoBehaviour
                 yield return null;
             }
             
-            // AudioManager.Instance.motorbikeSound.pitch += 0.02f;
             float ActualSpeed = Speed;
             
             while (!Mathf.Approximately(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount))

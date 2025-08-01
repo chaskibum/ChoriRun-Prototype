@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeholder: {fileID: 8079169569269913048}
-  playerAnimator: {fileID: 3218715054922721495, guid: 66d21602d1a82b84b88554b94604671b, type: 3}
 --- !u!95 &6147838438979534998
 Animator:
   serializedVersion: 7

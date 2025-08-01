@@ -86,6 +86,7 @@ public class GameManagerBeta : MonoBehaviour
         Time.timeScale = 0;
         AudioManager.Instance.motorbikeSound.volume = 0f;
         AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayClip(AudioManager.AudioList.GameOverMelody);
         uiManager.GameOver();
     }
     void OnQuit()
@@ -133,7 +134,7 @@ public class GameManagerBeta : MonoBehaviour
         {
             score += points;
             uiManager.UpdateScore(score);
-            AudioManager.Instance.PlayClip(AudioManager.AudioList.IngredientSound);
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.IngredientSound, true);
         }
 
         public void AddScoreChoriPan()

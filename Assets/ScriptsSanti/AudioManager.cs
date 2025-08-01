@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
         PowerUpSound,
         DestroyObstacleSound,
         GetHitSound,
+        GameOverMelody,
     }
     
 	[SerializeField] List<AudioClip> audioClips;
@@ -50,7 +51,6 @@ public class AudioManager : MonoBehaviour
         
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        InvokeRepeating("IncreaseMotorPitch", 0, 1f);
     }
 
     public void PlayClip(AudioList clip, bool changePitch = false, bool oneShot = true)
@@ -180,6 +180,7 @@ public class AudioManager : MonoBehaviour
     {
         CueMusic();
         motorbikeSound.Play();
+        InvokeRepeating("IncreaseMotorPitch", 0, 1f);
     }
     
     public void OnRestartButtonPressed()
