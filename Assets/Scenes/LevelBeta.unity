@@ -18413,7 +18413,7 @@ MonoBehaviour:
   MaxItemsSpeed: 20
   SpaceBetweenItemsGroup: 5
   RareItemsGroupContainer: {fileID: 1861507690}
-  TimeTillNextRareGroup: 1
+  TimeTillNextRareGroup: 15
   ObstaclesSprites:
   - {fileID: -8459554342495459711, guid: 31b04be2b77b1934cb50038ea4a6a502, type: 3}
   - {fileID: -6129153178573044465, guid: b99e52bb095e1b148a1e97f9c0ca9194, type: 3}
