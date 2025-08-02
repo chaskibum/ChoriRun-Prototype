@@ -29,6 +29,8 @@ public class AudioManager : MonoBehaviour
         GetHitSound,
         GameOverMelody,
         Splat,
+        PuajSound,
+        ButtonPressed,
     }
     
 	[SerializeField] List<AudioClip> audioClips;
@@ -90,6 +92,7 @@ public class AudioManager : MonoBehaviour
     public void ChangeSfxVolume()
     {
         mixer.SetFloat("SFXVolume", sfxSlider.value);
+        PlayClip(AudioList.ButtonPressed, true, 1f, false);
     }
 
     IEnumerator FadeMusic(AudioSource audioSource, bool fadeIn)
@@ -127,7 +130,7 @@ public class AudioManager : MonoBehaviour
         fastMelodyLoop.Play();
     }
 
-    public void FastLoop()
+    public void PlayFastLoop()
     {
         StartCoroutine(FadeMusic(melodyLoop, false));
         StartCoroutine(FadeMusic(fastMelodyLoop, true));
@@ -202,5 +205,15 @@ public class AudioManager : MonoBehaviour
     {
         if (motorbikeSound.pitch > 2.2f) return;
         motorbikeSound.pitch += 0.005f;
+    }
+
+    public void PlayButtonPressed()
+    {
+        PlayClip(AudioList.ButtonPressed, true);
+    }
+
+    public void PlayOpenMenuSound()
+    {
+        PlayClip(AudioList.Splat);
     }
 }

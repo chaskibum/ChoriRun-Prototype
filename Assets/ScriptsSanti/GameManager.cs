@@ -149,6 +149,7 @@ public class GameManagerBeta : MonoBehaviour
         {
             AddScore(250);
             AudioManager.Instance.PlayClip(AudioManager.AudioList.ChoriSound);
+            if (score > 10000) AudioManager.Instance.PlayFastLoop();
         }
         public void ResetScore()
         {

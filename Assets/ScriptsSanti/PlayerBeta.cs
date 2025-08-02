@@ -159,6 +159,8 @@ public class PlayerBeta : MonoBehaviour
             case "VeganChori":
                 uIManager.AddToIndexList(5);
                 uIManager.PickupIngredient(CollisionPosition, 5, -200, CollisionItemSprite);
+                animator.SetTrigger("EatVeganChori");
+                AudioManager.Instance.PlayClip(AudioManager.AudioList.PuajSound);
                 break; 
             case "PowerUp1":
                 if (DisablePowerUpCoroutine != null)

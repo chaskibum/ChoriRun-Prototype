@@ -5664,6 +5664,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c13db606f287fc44db8a87ca6fe9cf60, type: 3}
   - {fileID: 8300000, guid: 09daad94b77c2934db2c7d6155cb6da0, type: 3}
   - {fileID: 8300000, guid: 80258ab79381a174ebafeb641ac2b59a, type: 3}
+  - {fileID: 8300000, guid: 4f7df56570cc9064bbd74bfdc6387796, type: 3}
+  - {fileID: 8300000, guid: 18f2d4cd21e0a324b903c9b71fe2c9eb, type: 3}
+  - {fileID: 8300000, guid: 3cdf0304328a1dc45a7126f2b0cffe03, type: 3}
   fastLoopActivated: 0
 --- !u!4 &485398131
 Transform:
@@ -33654,8 +33657,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.5, y: 1.2}
-  m_Radius: 0.8
+  m_Offset: {x: 2.4, y: 1.3}
+  m_Radius: 0.6
 --- !u!114 &8779769114283802528
 MonoBehaviour:
   m_ObjectHideFlags: 0
