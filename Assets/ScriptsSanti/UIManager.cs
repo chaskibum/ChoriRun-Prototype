@@ -216,6 +216,7 @@ public class UIManager : MonoBehaviour
     void OnRestart()
     {
         ChoriPanAnimator.Rebind();
+        CancelInvoke();
         ClearIndexList();
         StopAllCoroutines();
         ResetLivesAndIngredientsContainer();

@@ -110,41 +110,47 @@ public class ItemBehavior : MonoBehaviour
     }
     void PickRandomItemType()
     {
-        ItemType PickedType;
+        ItemType PickedType = ItemType.Random;
 
-        int MaxAmountPerGroup;
-        int ItemAmount;
+        int MaxAmountPerGroup = 0;
+        int ItemAmount = 0;
 
-        float ProbabilityToExclude;
-        float Probability = randomFloatValue(obstacleProb + ingredientProb + powerupProb + badIngredientProb);
+        float ProbabilityToExclude = 0;
+        float ProbabilityChoosed = randomFloatValue(obstacleProb + ingredientProb + powerupProb + badIngredientProb);
+        float Probability = 0;
 
-        if (Probability <= obstacleProb)
+        foreach (KeyValuePair<ItemType, float> Prob in ProbabilityDic)
         {
-            ProbabilityToExclude = obstacleProb;
-            MaxAmountPerGroup = itemGroupBehavior.GetMaxObstaclesPerGroup;
-            ItemAmount = itemGroupBehavior.GetObstacleAmount;
-            PickedType = ItemType.Obstacle;
+            Probability += Prob.Value;
+            if (ProbabilityChoosed <= Probability)
+            {
+                PickedType = Prob.Key;
+                break;
+            }
         }
-        else if (Probability <= obstacleProb + ingredientProb)
+        switch (PickedType)
         {
-            ProbabilityToExclude = ingredientProb;
-            MaxAmountPerGroup = itemGroupBehavior.GetMaxIngredientPerGroup;
-            ItemAmount = itemGroupBehavior.GetIngredientsAmount;
-            PickedType = ItemType.Ingredient;
-        }
-        else if (Probability <= obstacleProb + ingredientProb + badIngredientProb)
-        {
-            ProbabilityToExclude = badIngredientProb;
-            MaxAmountPerGroup = itemGroupBehavior.GetMaxBadIngredientPerGroup;
-            ItemAmount = itemGroupBehavior.GetBadIngredientAmount;
-            PickedType = ItemType.BadIngredient;
-        }
-        else
-        {
-            ProbabilityToExclude = powerupProb;
-            MaxAmountPerGroup = itemGroupBehavior.GetMaxPowerUpPerGroup;
-            ItemAmount = itemGroupBehavior.GetPowerupAmount;
-            PickedType = ItemType.PowerUp;
+            case ItemType.Obstacle:
+                ProbabilityToExclude = obstacleProb;
+                MaxAmountPerGroup = itemGroupBehavior.GetMaxObstaclesPerGroup;
+                ItemAmount = itemGroupBehavior.GetObstacleAmount;
+                break;
+            case ItemType.Ingredient:
+                ProbabilityToExclude = ingredientProb;
+                MaxAmountPerGroup = itemGroupBehavior.GetMaxIngredientPerGroup;
+                ItemAmount = itemGroupBehavior.GetIngredientsAmount;
+                break;
+            case ItemType.BadIngredient:
+                ProbabilityToExclude = badIngredientProb;
+                MaxAmountPerGroup = itemGroupBehavior.GetMaxBadIngredientPerGroup;
+                ItemAmount = itemGroupBehavior.GetBadIngredientAmount;
+                break;
+            case ItemType.PowerUp:
+                ProbabilityToExclude = powerupProb;
+                MaxAmountPerGroup = itemGroupBehavior.GetMaxPowerUpPerGroup;
+                ItemAmount = itemGroupBehavior.GetPowerupAmount;
+                break;
+
         }
 
         SetItemType(ItemAmount, MaxAmountPerGroup, PickedType, ProbabilityToExclude);
@@ -190,9 +196,9 @@ public class ItemBehavior : MonoBehaviour
             itemType = NewPickedType;
         }
     }
-    void PickObstacle()
+    void PickObstacle(bool randomize = true)
     {
-        obstacleType = (ObstacleType)randomIntValue(itemsManager.GetObstaclesSprites.Count);
+        if(randomize)  obstacleType = (ObstacleType)randomIntValue(itemsManager.GetObstaclesSprites.Count);
 
         SetTagAndSprite(obstacleType.ToString(), (int)obstacleType, itemsManager.GetObstaclesSprites);
 
@@ -200,9 +206,9 @@ public class ItemBehavior : MonoBehaviour
 
         Debug.Log("Obstacle");
     }
-    void PickIngredient()
+    void PickIngredient(bool randomize = true)
     {
-        ingredientType = (IngredientType)randomIntValue(itemsManager.GetIngredientsSprites.Count);
+        if(randomize) ingredientType = (IngredientType)randomIntValue(itemsManager.GetIngredientsSprites.Count);
 
         SetTagAndSprite(ingredientType.ToString(), (int)ingredientType, itemsManager.GetIngredientsSprites);
 
@@ -210,9 +216,9 @@ public class ItemBehavior : MonoBehaviour
 
         Debug.Log("Ingredient");
     }   
-    void PickPowerup()
+    void PickPowerup(bool randomize = true)
     {
-        powerupType = (PowerUpType)randomIntValue(itemsManager.GetPowerUpSprites.Count);
+        if(randomize) powerupType = (PowerUpType)randomIntValue(itemsManager.GetPowerUpSprites.Count);
 
         SetTagAndSprite(powerupType.ToString(), (int)powerupType, itemsManager.GetPowerUpSprites);
 
@@ -222,9 +228,9 @@ public class ItemBehavior : MonoBehaviour
 
         Debug.Log("PowerUp");
     }
-    void PickBadIngredient()
+    void PickBadIngredient(bool randomize = true)
     {
-        badIngredientType = (BadIngredientType)randomIntValue(itemsManager.GetBadIngredientsSprites.Count);
+        if(randomize) badIngredientType = (BadIngredientType)randomIntValue(itemsManager.GetBadIngredientsSprites.Count);
 
         SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
 
@@ -291,49 +297,36 @@ public class ItemBehavior : MonoBehaviour
 
     public void SetPickedType()
     {
+        bool RandomSubType = false;
         switch (itemType)
         {
             case ItemType.Random:
 
                 PickRandomItemType();
-
                 break;
             case ItemType.Obstacle:
 
-                if (obstacleType == ObstacleType.Random)
-                {
-                    obstacleType = (ObstacleType)randomIntValue(itemsManager.GetObstaclesSprites.Count);
-                }
-                SetTagAndSprite(obstacleType.ToString(), (int)obstacleType, itemsManager.GetObstaclesSprites);
+                RandomSubType = obstacleType == ObstacleType.Random;
 
+                PickObstacle(RandomSubType);
                 break;
             case ItemType.Ingredient:
 
-                if (ingredientType == IngredientType.Random)
-                {
-                    ingredientType = (IngredientType)randomIntValue(itemsManager.GetIngredientsSprites.Count);
-                }
-                SetTagAndSprite(ingredientType.ToString(), (int)ingredientType, itemsManager.GetIngredientsSprites);
+                RandomSubType = ingredientType == IngredientType.Random;
 
+                PickIngredient(RandomSubType);
                 break;
             case ItemType.PowerUp:
 
-                if (powerupType == PowerUpType.Random)
-                {
-                    powerupType = (PowerUpType)randomIntValue(itemsManager.GetPowerUpSprites.Count);
-                }
-                SetTagAndSprite(powerupType.ToString(), (int)powerupType, itemsManager.GetPowerUpSprites);
+                RandomSubType = powerupType == PowerUpType.Random;
 
-                StartCoroutine("AnimatePowerup");
+                PickPowerup(RandomSubType);
                 break;
             case ItemType.BadIngredient:
 
-                if (badIngredientType == BadIngredientType.Random)
-                {
-                    badIngredientType = (BadIngredientType)randomIntValue(itemsManager.GetBadIngredientsSprites.Count);
-                }
-                SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
+                RandomSubType = badIngredientType == BadIngredientType.Random;
 
+                PickBadIngredient(RandomSubType);
                 break;
 
         }
