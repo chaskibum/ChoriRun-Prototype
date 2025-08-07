@@ -13,8 +13,12 @@ public class ItemBehavior : MonoBehaviour
     [SerializeField, Space(5)] BadIngredientType badIngredientType;
     [SerializeField, Space(5)] PowerUpType powerupType;
 
+    string DefaultLayer;
+
     bool refreshSubType = false;
     bool refreshColissionType = false;
+
+
     float obstacleProb;
     float ingredientProb;
     float badIngredientProb;
@@ -24,11 +28,13 @@ public class ItemBehavior : MonoBehaviour
         float Value = Random.Range(0f, MaxValue);
         return Value;
     }
+
     int randomIntValue(int MaxValue)
     {
         int Value = Random.Range(0, MaxValue);
         return Value;
     }
+
     #region Enums
     enum ItemType
     {
@@ -84,6 +90,8 @@ public class ItemBehavior : MonoBehaviour
         SetRandomizationBools();
 
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        DefaultLayer = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName;
     }
 
     void SetRandomizationBools()
@@ -297,7 +305,8 @@ public class ItemBehavior : MonoBehaviour
 
     public void SetPickedType()
     {
-        bool RandomSubType = false;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = DefaultLayer;
+        bool RandomSubType;
         switch (itemType)
         {
             case ItemType.Random:
@@ -346,7 +355,6 @@ public class ItemBehavior : MonoBehaviour
         }
         StopPowerUpAnimation();
     }
-
     public void StopPowerUpAnimation()
     {
         StopCoroutine("AnimatePowerup");
