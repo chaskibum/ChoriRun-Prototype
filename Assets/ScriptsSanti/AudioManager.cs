@@ -185,6 +185,8 @@ public class AudioManager : MonoBehaviour
     {
         CueMusic();
         motorbikeSound.Play();
+        motorbikeSound.volume = 1f;
+        motorbikeSound.pitch = 1.5f;
         InvokeRepeating("IncreaseMotorPitch", 0, 1f);
     }
     
@@ -198,6 +200,7 @@ public class AudioManager : MonoBehaviour
     void OnQuit()
     {
         motorbikeSound.Stop();
+        CancelInvoke("IncreaseMotorPitch");
         BackToMenuMusic();
     }
 

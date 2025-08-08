@@ -9,7 +9,7 @@ public class GameManagerBeta : MonoBehaviour
     float StartValueTimeTillIncrese;
     public bool isGamePaused;
 
-    [Header("Probabilitys")]
+    [Header("Probabilities")]
     [SerializeField] float obstacleProbability = 0;
     [SerializeField] float ingredientProbability = 0;
     [SerializeField] float badIngredientProbability = 0;
@@ -45,9 +45,11 @@ public class GameManagerBeta : MonoBehaviour
     {
         player.GetComponent<CircleCollider2D>().enabled = true;
         player.InvokeActiveWheelie();
+        player.ResetAnimationSpeed();
         InvokeRepeating("TimeScore", 0, timeScoreRepeatRate);
         gameStarted = true;
         onRestartGame.AddListener(ResetScore);
+        Cursor.visible = false;
     }
 
     public void SortItems(Transform objectToSortContainer, int SpaceBetweenObjects = 0, bool RandomIndex = false)
@@ -88,6 +90,7 @@ public class GameManagerBeta : MonoBehaviour
         onRestartGame?.Invoke();
         uiManager.StartRowOfActivates();
         AudioManager.Instance.OnRestartButtonPressed();
+        player.ResetAnimationSpeed();
     }
     public void GameOver()
     {
@@ -96,10 +99,12 @@ public class GameManagerBeta : MonoBehaviour
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlayClip(AudioManager.AudioList.GameOverMelody);
         uiManager.GameOver();
+        Cursor.visible = true;
     }
     void OnQuit()
     {
         CancelInvoke();
+        Cursor.visible = true;
     }
     public void QuitGame()
     {

@@ -38,10 +38,12 @@ public class PauseMenu : MonoBehaviour
         if (canOpenMenu)
         {
             Menu.SetActive(true);
-            // audioManager.StopMusic();
+            AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value - 10f);
+            AudioManager.Instance.motorbikeSound.volume = 0f;
             Time.timeScale = 0;
             gameManager.isGamePaused = true;
             canOpenMenu = false;
+            Cursor.visible = true;
         }
         else if (!waitTillEnd)
         {
@@ -58,6 +60,9 @@ public class PauseMenu : MonoBehaviour
         canOpenMenu = true;
         Menu.SetActive(false);
         GameOverPanel.SetActive(false);
+        AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value);
+        Cursor.visible = false;
+        AudioManager.Instance.motorbikeSound.volume = 1f;
     }
 
 
@@ -76,7 +81,9 @@ public class PauseMenu : MonoBehaviour
                 gameManager.isGamePaused = false;
                 waitTillEnd = false;
                 canOpenMenu = true;
-                // audioManager.CueMusic();
+                AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value);
+                AudioManager.Instance.motorbikeSound.volume = 1f;
+                Cursor.visible = false;
                 break;
             }
         }

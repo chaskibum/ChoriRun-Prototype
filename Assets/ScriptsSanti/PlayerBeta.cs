@@ -18,6 +18,7 @@ public class PlayerBeta : MonoBehaviour
     float _currentRotation;
     float _offsetX;
     float _offsetY;
+    private float _animSpeed = 1f;
     bool _particlesActive;
     int laneToBe = 1;
     int hp = 2;
@@ -46,6 +47,7 @@ public class PlayerBeta : MonoBehaviour
         gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
         _offsetX = _hitbox.offset.x;
         _offsetY = _hitbox.offset.y;
+        InvokeRepeating("AccelerateAnimation", 0f, 1f);
     }
     void Update()
     {
@@ -174,6 +176,7 @@ public class PlayerBeta : MonoBehaviour
 
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
+                    animator.SetFloat("IncreaseSpeed", _animSpeed + 0.5f);
                 }
 
                 PowerupVisual.SetActive(true);
@@ -249,6 +252,7 @@ public class PlayerBeta : MonoBehaviour
         DisablePowerUpCoroutine = null;
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
         AudioManager.Instance.StopClip();
+        animator.SetFloat("IncreaseSpeed", _animSpeed - 0.5f);
     }
     IEnumerator ActivatePowerupWarning()
     {
@@ -294,5 +298,19 @@ public class PlayerBeta : MonoBehaviour
     void ActivateWheelie()
     {
         enableWheelie = true;
+    }
+
+    void AccelerateAnimation()
+    {
+        if (_animSpeed > 4) return;
+        
+        _animSpeed += 0.01f;
+        animator.SetFloat("IncreaseSpeed", _animSpeed);
+    }
+
+    public void ResetAnimationSpeed()
+    {
+        _animSpeed = 1f;
+        animator.SetFloat("IncreaseSpeed", _animSpeed);
     }
 }
