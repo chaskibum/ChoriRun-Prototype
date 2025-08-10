@@ -138,29 +138,29 @@ public class PlayerBeta : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        SpriteRenderer CollisionItemSpriteRenderer = other.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        SpriteRenderer CollisionChildSpriteRenderer(int index = 0) { return other.transform.GetChild(index).GetComponent<SpriteRenderer>(); }
 
-        Vector3 CollisionPosition = other.transform.position;
+        Vector3 CollisionPosition = other.transform.GetChild(0).position;
         
         bool isObstacle = false;
 
         switch (tag)
         {
             case "Bread":
-                uIManager.PickupIngredient(CollisionPosition, 0, 50, CollisionItemSpriteRenderer.sprite);
+                uIManager.PickupIngredient(CollisionPosition, 0, 50, CollisionChildSpriteRenderer().sprite);
                 break;
             case "Chorizo":
-                uIManager.PickupIngredient(CollisionPosition, 1, 50, CollisionItemSpriteRenderer.sprite);
+                uIManager.PickupIngredient(CollisionPosition, 1, 50, CollisionChildSpriteRenderer().sprite);
                 break;
             case "Lettuce":
-                uIManager.PickupIngredient(CollisionPosition, 2, 50, CollisionItemSpriteRenderer.sprite);
+                uIManager.PickupIngredient(CollisionPosition, 2, 50, CollisionChildSpriteRenderer().sprite);
                 break;
             case "Tomato":
-                uIManager.PickupIngredient(CollisionPosition, 3, 50, CollisionItemSpriteRenderer.sprite);
+                uIManager.PickupIngredient(CollisionPosition, 3, 50, CollisionChildSpriteRenderer().sprite);
                 break;
             case "VeganChori":
                 uIManager.AddToIndexList(5);
-                uIManager.PickupIngredient(CollisionPosition, 5, -200, CollisionItemSpriteRenderer.sprite);
+                uIManager.PickupIngredient(CollisionPosition, 5, -200, CollisionChildSpriteRenderer().sprite);
                 animator.SetTrigger("EatVeganChori");
                 AudioManager.Instance.PlayClip(AudioManager.AudioList.PuajSound);
                 break; 
@@ -212,7 +212,7 @@ public class PlayerBeta : MonoBehaviour
             switch (tag)
             {
                 case "Cone":
-                    StartCoroutine(ChangeSortingLayerForTime(CollisionItemSpriteRenderer, 0.5f, "UI", CollisionItemSpriteRenderer.sortingLayerName));
+                    StartCoroutine(ChangeSortingLayerForTime(CollisionChildSpriteRenderer(), 0.5f, "UI", CollisionChildSpriteRenderer().sortingLayerName));
                     other.GetComponent<Animator>().SetTrigger("Throw");
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.DestroyObstacleSound, true);
                     isObstacle = true;
@@ -228,7 +228,8 @@ public class PlayerBeta : MonoBehaviour
         other.GetComponent<ItemBehavior>().StopPowerUpAnimation();
         if (!isObstacle)
         {
-            other.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+            CollisionChildSpriteRenderer().sprite = null;
+            CollisionChildSpriteRenderer(1).sprite = null;
         }
     }
     IEnumerator ChangeSortingLayerForTime(SpriteRenderer Renderer, float DelayedTime, string Layer, string DefaultLayer)

@@ -7,6 +7,7 @@ public class ItemBehavior : MonoBehaviour
     GameManagerBeta gameManager;
     ItemGroupBehavior itemGroupBehavior;
     ItemsManager itemsManager;
+    Animator animator;
     [SerializeField, Space(5)] ItemType itemType;
     [SerializeField, Space(5)] ObstacleType obstacleType;
     [SerializeField, Space(5)] IngredientType ingredientType;
@@ -35,47 +36,24 @@ public class ItemBehavior : MonoBehaviour
         return Value;
     }
 
-    #region Enums
-    enum ItemType
-    {
-        Obstacle,
-        Ingredient,
-        PowerUp,
-        BadIngredient,
-        Random
-    }
-    enum ObstacleType
-    {
-        Oil,
-        Pothole,
-        Cone,
-        Random
-    }
-    enum IngredientType
-    {
-        Bread,
-        Chorizo,
-        Lettuce,
-        Tomato,
-        Random
-    }
-    enum BadIngredientType
-    {
-        VeganChori,
-        Random
-    }
-    enum PowerUpType
-    {
-        PowerUp1,
-        Random
-    }
-    #endregion
+    enum ItemType { Obstacle, Ingredient, PowerUp, BadIngredient, Random }
+
+    enum ObstacleType { Oil, Pothole, Cone, Random }
+
+    enum IngredientType { Bread, Chorizo, Lettuce, Tomato, Random }
+
+    enum BadIngredientType { VeganChori, Random }
+
+    enum PowerUpType { PowerUp1, Random }
+
     Dictionary<ItemType, float> ProbabilityDic = new();
+
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         itemGroupBehavior = GetComponentInParent<ItemGroupBehavior>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -167,24 +145,24 @@ public class ItemBehavior : MonoBehaviour
         {
             case ItemType.Obstacle:
 
-                PickObstacle();
+                SetAsObstacle();
 
                 break;
 
             case ItemType.Ingredient:
 
-                PickIngredient();
+                SetAsIngredient();
 
                 break;
 
             case ItemType.PowerUp:
 
-                PickPowerup();
+                SetAsPowerup();
 
                 break;
             case ItemType.BadIngredient:
 
-                PickBadIngredient();
+                SetAsBadIngredient();
 
                 break;
         }
@@ -204,7 +182,7 @@ public class ItemBehavior : MonoBehaviour
             itemType = NewPickedType;
         }
     }
-    void PickObstacle(bool randomize = true)
+    void SetAsObstacle(bool randomize = true)
     {
         if(randomize)  obstacleType = (ObstacleType)randomIntValue(itemsManager.GetObstaclesSprites.Count);
 
@@ -212,19 +190,23 @@ public class ItemBehavior : MonoBehaviour
 
         itemGroupBehavior.IncrementObstacleCount();
 
+        animator.SetBool("Levitate", false);
+
         Debug.Log("Obstacle");
     }
-    void PickIngredient(bool randomize = true)
+    void SetAsIngredient(bool randomize = true)
     {
         if(randomize) ingredientType = (IngredientType)randomIntValue(itemsManager.GetIngredientsSprites.Count);
 
-        SetTagAndSprite(ingredientType.ToString(), (int)ingredientType, itemsManager.GetIngredientsSprites);
+        SetTagAndSprite(ingredientType.ToString(), (int)ingredientType, itemsManager.GetIngredientsSprites, true);
 
         itemGroupBehavior.IncrementIngredientCount();
 
+        animator.SetBool("Levitate", true);
+
         Debug.Log("Ingredient");
     }   
-    void PickPowerup(bool randomize = true)
+    void SetAsPowerup(bool randomize = true)
     {
         if(randomize) powerupType = (PowerUpType)randomIntValue(itemsManager.GetPowerUpSprites.Count);
 
@@ -234,15 +216,19 @@ public class ItemBehavior : MonoBehaviour
 
         StartCoroutine("AnimatePowerup");
 
+        animator.SetBool("Levitate", false);
+
         Debug.Log("PowerUp");
     }
-    void PickBadIngredient(bool randomize = true)
+    void SetAsBadIngredient(bool randomize = true)
     {
         if(randomize) badIngredientType = (BadIngredientType)randomIntValue(itemsManager.GetBadIngredientsSprites.Count);
 
-        SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites);
+        SetTagAndSprite(badIngredientType.ToString(), (int)badIngredientType, itemsManager.GetBadIngredientsSprites, true);
 
         itemGroupBehavior.IncrementBadIngredientCount();
+
+        animator.SetBool("Levitate", true);
 
         Debug.Log("Badingredient");
     }
@@ -296,9 +282,14 @@ public class ItemBehavior : MonoBehaviour
         return ItemType.Random;
     }
 
-    void SetTagAndSprite(string TagName, int index, List<Sprite> SpritesList)
+    void SetTagAndSprite(string TagName, int index, List<Sprite> SpritesList, bool hasDropShadow = false)
     {
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = SpritesList[index];
+        SpriteRenderer GetSpriteRendererInChildren(int index) { return transform.GetChild(index).GetComponent<SpriteRenderer>(); }
+        
+        if (hasDropShadow) GetSpriteRendererInChildren(1).sprite = SpritesList[index];
+        else GetSpriteRendererInChildren(1).sprite = null;
+
+       GetSpriteRendererInChildren(0).sprite = SpritesList[index];
 
         transform.tag = TagName.ToString();
     }
@@ -317,25 +308,25 @@ public class ItemBehavior : MonoBehaviour
 
                 RandomSubType = obstacleType == ObstacleType.Random;
 
-                PickObstacle(RandomSubType);
+                SetAsObstacle(RandomSubType);
                 break;
             case ItemType.Ingredient:
 
                 RandomSubType = ingredientType == IngredientType.Random;
 
-                PickIngredient(RandomSubType);
+                SetAsIngredient(RandomSubType);
                 break;
             case ItemType.PowerUp:
 
                 RandomSubType = powerupType == PowerUpType.Random;
 
-                PickPowerup(RandomSubType);
+                SetAsPowerup(RandomSubType);
                 break;
             case ItemType.BadIngredient:
 
                 RandomSubType = badIngredientType == BadIngredientType.Random;
 
-                PickBadIngredient(RandomSubType);
+                SetAsBadIngredient(RandomSubType);
                 break;
 
         }
@@ -359,7 +350,6 @@ public class ItemBehavior : MonoBehaviour
     {
         StopCoroutine("AnimatePowerup");
     }
-
     IEnumerator AnimatePowerup()
     {
         int i = 0;

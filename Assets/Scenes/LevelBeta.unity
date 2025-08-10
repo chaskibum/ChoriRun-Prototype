@@ -14129,8 +14129,8 @@ MonoBehaviour:
   TimeTillIncrese: 1
   TimeTillIncreseOnWheelie: 0.5
   isGamePaused: 0
-  obstacleProbability: 30
-  ingredientProbability: 59
+  obstacleProbability: 40
+  ingredientProbability: 49
   badIngredientProbability: 10
   powerUpProbability: 1
 --- !u!1 &1282143877
@@ -14967,9 +14967,9 @@ MonoBehaviour:
   isRareGroup: 0
   destroyOnLimit: 0
   ObstacleAmount: 0
-  MaxObstaclesPerGroup: 3
+  MaxObstaclesPerGroup: 2
   IngredientsAmount: 0
-  MaxIngredientsPerGroup: 3
+  MaxIngredientsPerGroup: 2
   BadIngredientAmount: 0
   MaxBadIngredientsPerGroup: 1
   PowerupsAmount: 0
@@ -18805,7 +18805,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646714409}
-  - component: {fileID: 1646714408}
   m_Layer: 5
   m_Name: IngredientsPositionContainer
   m_TagString: Untagged
@@ -18813,28 +18812,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1646714408
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646714407}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 69758939e89eb6249bef3f5011e8b7e3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1646714409
 Transform:
   m_ObjectHideFlags: 0
