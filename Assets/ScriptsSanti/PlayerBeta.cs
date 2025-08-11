@@ -14,6 +14,7 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] Transform playerVisuals;
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
+    [SerializeField] GameObject PowerupVisual2;
     [SerializeField] Animator CameraAnimator;
     CircleCollider2D _hitbox;
     Vector2 startPos;
@@ -198,6 +199,7 @@ public class PlayerBeta : MonoBehaviour
                 }
 
                 PowerupVisual.SetActive(true);
+                PowerupVisual2.SetActive(true);
 
                 itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
 
@@ -267,6 +269,7 @@ public class PlayerBeta : MonoBehaviour
         yield return new WaitForSeconds(PowerUpDuration);
         StopCoroutine("ActivatePowerupWarning");
         PowerupVisual.SetActive(false);
+        PowerupVisual2.SetActive(false);
         isInvincible = false;
         DisablePowerUpCoroutine = null;
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
