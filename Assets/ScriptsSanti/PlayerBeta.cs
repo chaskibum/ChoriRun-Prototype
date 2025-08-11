@@ -7,6 +7,7 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] float rotationSpeed = 10.0f;
     [SerializeField] float PowerUpDuration;
     [SerializeField] bool isInvincible = false;
+    [SerializeField] float InvincibilityDuration = 1f;
 
     [Header("Variables")]
     [SerializeField] Transform playerPositions;
@@ -22,7 +23,7 @@ public class PlayerBeta : MonoBehaviour
     bool _particlesActive;
     int laneToBe = 1;
     int hp = 2;
-    bool onWheelie;
+    public bool onWheelie;
     bool enableWheelie;
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
@@ -127,6 +128,8 @@ public class PlayerBeta : MonoBehaviour
         AudioManager.Instance.PlayClip(AudioManager.AudioList.GetHitSound, false, 0.4f);
         hp -= 1;
         uIManager.HpFeedback(hp);
+        isInvincible = true;
+        Invoke("NoMoreInvincible", InvincibilityDuration);
         if (hp <= 0)
         {
             gameManager.GameOver();
@@ -134,6 +137,12 @@ public class PlayerBeta : MonoBehaviour
         }
         animator.SetTrigger("LooseHp");
     }
+
+    void NoMoreInvincible()
+    {
+        isInvincible = false;
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         string tag = other.gameObject.tag;

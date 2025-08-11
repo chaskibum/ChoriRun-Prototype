@@ -14442,7 +14442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7e73e8ef89b11488a88a7bcb54daa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedIncreseAmount: 0.5
+  SpeedIncreseAmount: 0.2
   TimeTillIncrese: 1
   TimeTillIncreseOnWheelie: 0.5
   isGamePaused: 0
@@ -18594,7 +18594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemGroupContainer: {fileID: 1772339756}
   ItemsSpeed: 5
-  MaxItemsSpeed: 20
+  MaxItemsSpeed: 35
   SpaceBetweenItemsGroup: 5
   RareItemsGroupContainer: {fileID: 1861507690}
   TimeTillNextRareGroup: 15
@@ -34380,6 +34380,7 @@ MonoBehaviour:
   playerVisuals: {fileID: 337086453267164265}
   velocityParticles: {fileID: 2135995793900225729}
   PowerupVisual: {fileID: 505711836}
+  onWheelie: 0
 --- !u!199 &8814026353836240665
 ParticleSystemRenderer:
   serializedVersion: 6

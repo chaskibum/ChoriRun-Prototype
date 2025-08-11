@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 public class GameManagerBeta : MonoBehaviour
@@ -46,7 +47,8 @@ public class GameManagerBeta : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         player.InvokeActiveWheelie();
         player.ResetAnimationSpeed();
-        InvokeRepeating("TimeScore", 0, timeScoreRepeatRate);
+        // InvokeRepeating("TimeScore", 0, timeScoreRepeatRate);
+        StartCoroutine("TimeScore");
         gameStarted = true;
         onRestartGame.AddListener(ResetScore);
         Cursor.visible = false;
@@ -127,8 +129,13 @@ public class GameManagerBeta : MonoBehaviour
     }
 
     #region  Score
-        void TimeScore()
+        /*void TimeScore()
         {
+            if (player.onWheelie)
+            {
+                score++;
+                timeScoreRepeatRate = 0.1f;
+            }
             if (itemsManager.GetItemsGroupSpeed < itemsManager.GetMaxItemsGroupSpeed)
             {
                 score++;
@@ -141,6 +148,35 @@ public class GameManagerBeta : MonoBehaviour
             }
 
             uiManager.UpdateScore(score);
+        }*/
+
+        IEnumerator TimeScore()
+        {
+            while (true)
+            {
+                if (itemsManager.GetItemsGroupSpeed >= itemsManager.GetMaxItemsGroupSpeed)
+                {
+                    score++;
+                    timeScoreRepeatRate = 0.1f;
+                }
+                else
+                {
+                    if (player.onWheelie)
+                    {
+                        score++;
+                        timeScoreRepeatRate = 0.2f;
+                    }
+                    else
+                    {
+                        score++;
+                        timeScoreRepeatRate = 0.5f;
+                    }
+                }
+
+                uiManager.UpdateScore(score);
+                yield return new WaitForSeconds(timeScoreRepeatRate);
+                print(timeScoreRepeatRate);
+            }
         }
 
         public void AddScore(int points = 1)

@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
         Splat,
         PuajSound,
         ButtonPressed,
+        CuelgueSound,
     }
     
 	[SerializeField] List<AudioClip> audioClips;
