@@ -175,7 +175,6 @@ public class GameManagerBeta : MonoBehaviour
 
                 uiManager.UpdateScore(score);
                 yield return new WaitForSeconds(timeScoreRepeatRate);
-                print(timeScoreRepeatRate);
             }
         }
 

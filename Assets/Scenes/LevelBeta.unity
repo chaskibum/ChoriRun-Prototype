@@ -3610,6 +3610,7 @@ MonoBehaviour:
   MaxSpeed: 0
   SpaceBetweenVisuals: 0
   UseSameSpeedAsItems: 1
+  isSecondBackground: 0
 --- !u!1001 &314633739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4098,9 +4099,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  MaxSpeed: 3
-  SpaceBetweenVisuals: 10
+  MaxSpeed: 1
+  SpaceBetweenVisuals: 1
   UseSameSpeedAsItems: 0
+  isSecondBackground: 0
 --- !u!4 &346705541
 Transform:
   m_ObjectHideFlags: 0
@@ -5807,6 +5809,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f7df56570cc9064bbd74bfdc6387796, type: 3}
   - {fileID: 8300000, guid: 18f2d4cd21e0a324b903c9b71fe2c9eb, type: 3}
   - {fileID: 8300000, guid: 3cdf0304328a1dc45a7126f2b0cffe03, type: 3}
+  - {fileID: 8300000, guid: 1e595683f50b917458abe446b7a31ae4, type: 3}
   fastLoopActivated: 0
 --- !u!4 &485398131
 Transform:
@@ -7636,7 +7639,7 @@ SpriteRenderer:
   m_SortingLayerID: 2020580185
   m_SortingLayer: -1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -9129172416153862104, guid: dce124030fb1e244ba9c244e9935f777, type: 3}
+  m_Sprite: {fileID: -6500204691337769923, guid: 942b338afd6d57942afbf8de74436c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8509,10 +8512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7005fb85add1d4643b2cf08a2affa7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  MaxSpeed: 10
+  Speed: 3
+  MaxSpeed: 18
   SpaceBetweenVisuals: 0
   UseSameSpeedAsItems: 0
+  isSecondBackground: 1
 --- !u!4 &690755633
 Transform:
   m_ObjectHideFlags: 0
@@ -12973,7 +12977,7 @@ SpriteRenderer:
   m_SortingLayerID: 2020580185
   m_SortingLayer: -1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -9129172416153862104, guid: dce124030fb1e244ba9c244e9935f777, type: 3}
+  m_Sprite: {fileID: -6500204691337769923, guid: 942b338afd6d57942afbf8de74436c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15890,6 +15894,7 @@ MonoBehaviour:
   MaxSpeed: 5
   SpaceBetweenVisuals: 0
   UseSameSpeedAsItems: 0
+  isSecondBackground: 0
 --- !u!1001 &1416577535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22062,7 +22067,7 @@ SpriteRenderer:
   m_SortingLayerID: 2020580185
   m_SortingLayer: -1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -9129172416153862104, guid: dce124030fb1e244ba9c244e9935f777, type: 3}
+  m_Sprite: {fileID: -6500204691337769923, guid: 942b338afd6d57942afbf8de74436c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -34376,6 +34381,7 @@ MonoBehaviour:
   rotationSpeed: 60
   PowerUpDuration: 10
   isInvincible: 0
+  InvincibilityDuration: 1.5
   playerPositions: {fileID: 1815741394}
   playerVisuals: {fileID: 337086453267164265}
   velocityParticles: {fileID: 2135995793900225729}

@@ -21,6 +21,7 @@ public class PlayerBeta : MonoBehaviour
     float _offsetY;
     private float _animSpeed = 1f;
     bool _particlesActive;
+    private bool isPlayingWheelieSound;
     int laneToBe = 1;
     int hp = 2;
     public bool onWheelie;
@@ -104,7 +105,11 @@ public class PlayerBeta : MonoBehaviour
             }
             gameManager.IncreseSpeedOnWheelie(true);
             onWheelie = true;
-
+            if (!isPlayingWheelieSound)
+            {
+                isPlayingWheelieSound = true;
+                // StartCoroutine("PlayWheelieSound");
+            }
         }
         else
         {
@@ -305,6 +310,19 @@ public class PlayerBeta : MonoBehaviour
     {
         Invoke("ActivateWheelie", .5f);
     }
+
+    /*IEnumerator PlayWheelieSound()
+    {
+        while (onWheelie)
+        {
+            AudioManager.Instance.PlayClip(AudioManager.AudioList.CuelgueSound, false, 0.8f);
+            yield return new WaitForSeconds(1.460f);
+        }
+        
+        AudioManager.Instance.StopClip();
+        isPlayingWheelieSound = false;
+    }*/
+    
     void ActivateWheelie()
     {
         enableWheelie = true;

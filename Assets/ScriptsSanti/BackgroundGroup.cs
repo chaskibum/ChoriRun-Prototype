@@ -4,10 +4,12 @@ public class BackgroundGroup : MonoBehaviour
 {
     GameManagerBeta gameManager;
     float startSpeed;
+    private float timeTillIncrease;
     [Min(0),SerializeField] float Speed;
     [SerializeField] int MaxSpeed;
     [SerializeField] int SpaceBetweenVisuals = 0;
     [SerializeField] bool UseSameSpeedAsItems;
+    [SerializeField] private bool isSecondBackground;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -29,7 +31,15 @@ public class BackgroundGroup : MonoBehaviour
         while (Speed < MaxSpeed)
         {
             float timer = 0;
-            while (timer < gameManager.GetTimeTillIncrese)
+            if (isSecondBackground)
+            {
+                timeTillIncrease = gameManager.GetTimeTillIncrese * 2 + 0.5f;
+            }
+            else
+            {
+                timeTillIncrease = gameManager.GetTimeTillIncrese;
+            }
+            while (timer < timeTillIncrease)
             {
                 timer += Time.deltaTime;
                 yield return null;

@@ -16,6 +16,7 @@ TagManager:
   - ObstacleGroup
   - VeganChori
   - PowerUp1
+  - Background2
   layers:
   - Default
   - TransparentFX
