@@ -40,6 +40,7 @@ public class PauseMenu : MonoBehaviour
             Menu.SetActive(true);
             AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value - 10f);
             AudioManager.Instance.motorbikeSound.volume = 0f;
+            AudioManager.Instance.sfxSource.volume = 0f;
             Time.timeScale = 0;
             gameManager.isGamePaused = true;
             canOpenMenu = false;
@@ -83,6 +84,7 @@ public class PauseMenu : MonoBehaviour
                 canOpenMenu = true;
                 AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value);
                 AudioManager.Instance.motorbikeSound.volume = 1f;
+                AudioManager.Instance.sfxSource.volume = 1f;
                 Cursor.visible = false;
                 break;
             }
