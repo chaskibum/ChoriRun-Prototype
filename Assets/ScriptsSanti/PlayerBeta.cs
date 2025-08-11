@@ -14,6 +14,7 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] Transform playerVisuals;
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
+    [SerializeField] Animator CameraAnimator;
     CircleCollider2D _hitbox;
     Vector2 startPos;
     float _currentRotation;
@@ -134,6 +135,7 @@ public class PlayerBeta : MonoBehaviour
         hp -= 1;
         uIManager.HpFeedback(hp);
         isInvincible = true;
+        CameraAnimator.SetBool("Shake", true);
         Invoke("NoMoreInvincible", InvincibilityDuration);
         if (hp <= 0)
         {
@@ -145,6 +147,7 @@ public class PlayerBeta : MonoBehaviour
 
     void NoMoreInvincible()
     {
+        CameraAnimator.SetBool("Shake", false);
         isInvincible = false;
     }
     
@@ -191,6 +194,7 @@ public class PlayerBeta : MonoBehaviour
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                     animator.SetFloat("IncreaseSpeed", _animSpeed + 0.5f);
+                    CameraAnimator.SetBool("Shake", true);
                 }
 
                 PowerupVisual.SetActive(true);
@@ -268,6 +272,7 @@ public class PlayerBeta : MonoBehaviour
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
         AudioManager.Instance.StopClip();
         animator.SetFloat("IncreaseSpeed", _animSpeed - 0.5f);
+        CameraAnimator.SetBool("Shake", false);
     }
     IEnumerator ActivatePowerupWarning()
     {
