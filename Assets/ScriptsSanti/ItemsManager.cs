@@ -42,7 +42,39 @@ public class ItemsManager : MonoBehaviour
     }
     public void SortItemsGroup()
     {
-        gameManager.SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
+        SortItems(ItemGroupContainer, SpaceBetweenItemsGroup, true);
+    }
+    public void SortItems(Transform objectToSortContainer, int SpaceBetweenObjects = 0, bool RandomIndex = false)
+    {
+        float currentX = 0f;
+        if (RandomIndex)
+        {
+            foreach (Transform ObjectInContainer in objectToSortContainer)
+            {
+                BoxCollider2D objectCollider = ObjectInContainer.GetComponent<BoxCollider2D>();
+
+                objectCollider.enabled = false;
+
+                ObjectInContainer.SetSiblingIndex(Random.Range(0, objectToSortContainer.childCount));
+                
+                objectCollider.enabled = true;
+            }
+        }
+
+        for (int i = 0; i < objectToSortContainer.childCount; i++)
+        {
+            Transform ObjectInContainer = objectToSortContainer.GetChild(i);
+
+            BoxCollider2D objectCollider = ObjectInContainer.GetComponent<BoxCollider2D>();
+
+            float obstacleCenter = currentX + (objectCollider.size.x / 2f) - objectCollider.offset.x;
+
+            ObjectInContainer.localPosition = new Vector2(obstacleCenter, 0);
+
+            currentX += objectCollider.size.x + SpaceBetweenObjects;
+
+            objectCollider.enabled = true;
+        }
     }
     void RestartItems()
     {

@@ -3,21 +3,22 @@ using UnityEngine;
 public class BackgroundGroup : MonoBehaviour
 {
     GameManagerBeta gameManager;
+    ItemsManager itemsManager;
     float startSpeed;
-    private float timeTillIncrease;
     [Min(0),SerializeField] float Speed;
     [SerializeField] int MaxSpeed;
     [SerializeField] int SpaceBetweenVisuals = 0;
     [SerializeField] bool UseSameSpeedAsItems;
-    [SerializeField] private bool isSecondBackground;
+    [SerializeField] float TimeTillIncreseMultiplier = 1;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
+        itemsManager = FindFirstObjectByType<ItemsManager>();
     }
     void Start()
     {
         startSpeed = Speed;
-        gameManager.SortItems(transform, SpaceBetweenVisuals);
+        itemsManager.SortItems(transform, SpaceBetweenVisuals);
         gameManager.GetOnstartEvent?.AddListener(OnStart);
     }
     void OnStart()
@@ -30,23 +31,15 @@ public class BackgroundGroup : MonoBehaviour
     {
         while (Speed < MaxSpeed)
         {
-            float timer = 0;
-            if (isSecondBackground)
+            float Timer = 0;
+            float MaxTimer = gameManager.GetTimeTillIncrese * TimeTillIncreseMultiplier;
+            float ActualSpeed = Speed;
+            while (Timer < MaxTimer)
             {
-                timeTillIncrease = gameManager.GetTimeTillIncrese * 2 + 0.5f;
-            }
-            else
-            {
-                timeTillIncrease = gameManager.GetTimeTillIncrese;
-            }
-            while (timer < timeTillIncrease)
-            {
-                timer += Time.deltaTime;
+                Timer += Time.deltaTime;
                 yield return null;
             }
-            
-            float ActualSpeed = Speed;
-            
+
             while (!Mathf.Approximately(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount))
             {
                 Speed = Mathf.MoveTowards(Speed, ActualSpeed + gameManager.GetSpeedIncreseAmount, Time.deltaTime);

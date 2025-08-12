@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     bool canOpenMenu = true;
     bool waitTillEnd;
     TMP_Text CountdownText;
+    Coroutine CheckAnimatonPlaying;
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -22,17 +23,26 @@ public class PauseMenu : MonoBehaviour
         if (gameManager.GetGameStarted)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    OpenCloseMenu();
-                }
-            if (Input.GetKeyDown(KeyCode.H))
             {
-                gameManager.GetOnRestartEvent.Invoke();
-            }            
+                if (CheckAnimatonPlaying != null) return;
+                CheckAnimatonPlaying = StartCoroutine(CheckIfShakeIsPlaying());
+            }      
         }
 
     }
+    IEnumerator CheckIfShakeIsPlaying()
+    {
+        Animator CameraAnimator = Camera.main.GetComponent<Animator>();
 
+        yield return new WaitUntil(() =>
+        {
+            AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
+            bool isPlaying = stateInfo.IsName("ShakeCamera") && stateInfo.normalizedTime < 1f;
+            return !isPlaying;
+        });
+        OpenCloseMenu();
+        CheckAnimatonPlaying = null;
+    }
     public void OpenCloseMenu()
     {
         if (canOpenMenu)

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Transform IngredientsPosition;
     [SerializeField] Transform AnimatorsContainer;
+    [SerializeField] Color DisableColor;
 
     [Header("Text")]
     [SerializeField] TMP_Text scoreText;
@@ -40,6 +40,11 @@ public class UIManager : MonoBehaviour
         gameManager.GetOnRestartEvent?.AddListener(OnRestart);
         gameManager.GetOnstartEvent?.AddListener(OnStart);
         gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
+
+        foreach (Transform Child in ingredientsContainer)
+        {
+            Child.gameObject.GetComponent<Image>().color = DisableColor;
+        }
     }
     public void OnPlayButtonPresed()
     {
@@ -71,7 +76,7 @@ public class UIManager : MonoBehaviour
 
         foreach (Transform child in ingredientsContainer)
         {
-            if (child.gameObject.GetComponent<Image>().color == Color.black)
+            if (child.gameObject.GetComponent<Image>().color == DisableColor)
             {
                 _hasAllIngredients = false;
                 break;
@@ -91,7 +96,7 @@ public class UIManager : MonoBehaviour
     {
         foreach (Transform child in ingredientsContainer)
         {
-            child.gameObject.GetComponent<Image>().color = Color.black;
+            child.gameObject.GetComponent<Image>().color = DisableColor;
         }
         ingredientsContainer.gameObject.SetActive(false);
         ChoriPanAnimator.Play("ChoriPanCompleted", 0, 0);
@@ -200,7 +205,7 @@ public class UIManager : MonoBehaviour
     {
         foreach (Transform Child in ingredientsContainer)
         {
-            Child.gameObject.GetComponent<Image>().color = Color.black;
+            Child.gameObject.GetComponent<Image>().color = DisableColor;
         }
         foreach (Transform Child in livesContainer)
         {
@@ -229,10 +234,10 @@ public class UIManager : MonoBehaviour
         ResetLivesAndIngredientsContainer();
         ClearIndexList();
 
-        CameraAnimator.SetBool("GameStarted", false);
         livesContainer.gameObject.SetActive(false);
         ingredientsContainer.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
+        CameraAnimator.SetBool("GameStarted", false);
 
         AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
         Invoke("TurnMainMenuOn", stateInfo.length);

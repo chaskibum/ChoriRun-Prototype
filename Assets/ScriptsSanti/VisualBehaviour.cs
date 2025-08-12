@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class VisualBehaviour : MonoBehaviour
@@ -22,6 +23,10 @@ public class VisualBehaviour : MonoBehaviour
                 transform.position += Vector3.left * backgroundGroup.GetSpeed * Time.deltaTime;
             }
         }
+    }
+    public void DecreseAlpha()
+    {
+
     }
 
     #region Colission

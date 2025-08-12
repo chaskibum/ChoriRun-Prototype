@@ -192,7 +192,7 @@ public class ItemBehavior : MonoBehaviour
 
         animator.SetBool("Levitate", false);
 
-        Debug.Log("Obstacle");
+        // Debug.Log("Obstacle");
     }
     void SetAsIngredient(bool randomize = true)
     {
@@ -204,7 +204,7 @@ public class ItemBehavior : MonoBehaviour
 
         animator.SetBool("Levitate", true);
 
-        Debug.Log("Ingredient");
+        // Debug.Log("Ingredient");
     }   
     void SetAsPowerup(bool randomize = true)
     {
@@ -218,7 +218,7 @@ public class ItemBehavior : MonoBehaviour
 
         animator.SetBool("Levitate", false);
 
-        Debug.Log("PowerUp");
+        // Debug.Log("PowerUp");
     }
     void SetAsBadIngredient(bool randomize = true)
     {
@@ -230,7 +230,7 @@ public class ItemBehavior : MonoBehaviour
 
         animator.SetBool("Levitate", true);
 
-        Debug.Log("Badingredient");
+        // Debug.Log("Badingredient");
     }
 
     ItemType RecalculateNewProbs(Dictionary<ItemType, float> ProbabilityList, float ProbabilityToExclude)
@@ -349,14 +349,19 @@ public class ItemBehavior : MonoBehaviour
     public void StopPowerUpAnimation()
     {
         StopCoroutine("AnimatePowerup");
+        SpriteRenderer spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = 1;
     }
     IEnumerator AnimatePowerup()
     {
         int i = 0;
         List<Sprite> AnimationSprites = itemsManager.GetPowerUpAnimationSprites;
+        SpriteRenderer spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        spriteRenderer.sortingOrder = 3;
         while (true)
         {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = AnimationSprites[i];
+            spriteRenderer.sprite = AnimationSprites[i];
             i++;
             if (i > AnimationSprites.Count - 1) i = 0;
             yield return new WaitForSeconds(0.1f);

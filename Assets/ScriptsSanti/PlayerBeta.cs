@@ -4,35 +4,44 @@ public class PlayerBeta : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] int Speed = 1;
+
     [SerializeField] float rotationSpeed = 10.0f;
     [SerializeField] float PowerUpDuration;
+    [SerializeField] float GraceDuration = 1;
+
     [SerializeField] bool isInvincible = false;
-    [SerializeField] float InvincibilityDuration = 1f;
 
     [Header("Variables")]
     [SerializeField] Transform playerPositions;
     [SerializeField] Transform playerVisuals;
+
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
-    [SerializeField] Animator CameraAnimator;
+
     CircleCollider2D _hitbox;
+
     Vector2 startPos;
+
     float _currentRotation;
     float _offsetX;
     float _offsetY;
-    private float _animSpeed = 1f;
+    float _animSpeed = 1f;
+
     bool _particlesActive;
-    private bool isPlayingWheelieSound;
+    bool isPlayingWheelieSound;
+    bool onWheelie;
+    bool enableWheelie;
+    bool gracePeriod;
+
     int laneToBe = 1;
     int hp = 2;
-    public bool onWheelie;
-    bool enableWheelie;
+
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
     UIManager uIManager;
     Animator animator;
     Coroutine DisablePowerUpCoroutine;
-    
+
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -116,7 +125,7 @@ public class PlayerBeta : MonoBehaviour
         {
             gameManager.IncreseSpeedOnWheelie(false);
             _currentRotation -= rotationSpeed * 2 * Time.deltaTime;
-            if (_currentRotation < 10) onWheelie = false;
+            if (_currentRotation < 15) onWheelie = false;
             if (_currentRotation < 0.1f && _particlesActive)
             {
                 _particlesActive = false;
@@ -131,26 +140,24 @@ public class PlayerBeta : MonoBehaviour
 
     public void LooseHp()
     {
+        if (gracePeriod) return;
         AudioManager.Instance.PlayClip(AudioManager.AudioList.GetHitSound, false, 0.4f);
         hp -= 1;
         uIManager.HpFeedback(hp);
-        isInvincible = true;
-        CameraAnimator.SetBool("Shake", true);
-        Invoke("NoMoreInvincible", InvincibilityDuration);
         if (hp <= 0)
         {
             gameManager.GameOver();
             return;
         }
         animator.SetTrigger("LooseHp");
+        Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+        gracePeriod = true;
+        Invoke("DisableGracePeriod", GraceDuration);
     }
-
-    void NoMoreInvincible()
+    void DisableGracePeriod()
     {
-        CameraAnimator.SetBool("Shake", false);
-        isInvincible = false;
+        gracePeriod = false;
     }
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         string tag = other.gameObject.tag;
@@ -158,7 +165,7 @@ public class PlayerBeta : MonoBehaviour
         SpriteRenderer CollisionChildSpriteRenderer(int index = 0) { return other.transform.GetChild(index).GetComponent<SpriteRenderer>(); }
 
         Vector3 CollisionPosition = other.transform.GetChild(0).position;
-        
+
         bool isObstacle = false;
 
         switch (tag)
@@ -180,7 +187,7 @@ public class PlayerBeta : MonoBehaviour
                 uIManager.PickupIngredient(CollisionPosition, 5, -200, CollisionChildSpriteRenderer().sprite);
                 animator.SetTrigger("EatVeganChori");
                 AudioManager.Instance.PlayClip(AudioManager.AudioList.PuajSound);
-                break; 
+                break;
             case "PowerUp1":
                 if (DisablePowerUpCoroutine != null)
                 {
@@ -194,12 +201,12 @@ public class PlayerBeta : MonoBehaviour
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                     animator.SetFloat("IncreaseSpeed", _animSpeed + 0.5f);
-                    CameraAnimator.SetBool("Shake", true);
+                    StartCoroutine(gameManager.ChangeCameraFOV());
                 }
 
                 PowerupVisual.SetActive(true);
 
-                itemsManager.ChangeItemsSpeed(5, PowerUpDuration);
+                itemsManager.ChangeItemsSpeed(8, PowerUpDuration);
 
                 DisablePowerUpCoroutine = StartCoroutine(DisablePowerUpAfterTime());
                 break;
@@ -272,7 +279,6 @@ public class PlayerBeta : MonoBehaviour
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
         AudioManager.Instance.StopClip();
         animator.SetFloat("IncreaseSpeed", _animSpeed - 0.5f);
-        CameraAnimator.SetBool("Shake", false);
     }
     IEnumerator ActivatePowerupWarning()
     {
@@ -299,11 +305,14 @@ public class PlayerBeta : MonoBehaviour
         enableWheelie = false;
         InvokeActiveWheelie();
         animator.Rebind();
+        DisableGracePeriod();
     }
     void OnQuit()
     {
         _hitbox.enabled = false;
         DisablePowerUpCoroutine = null;
+        isInvincible = false;
+        DisableGracePeriod();
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
         AudioManager.Instance.StopClip();
     }
@@ -327,7 +336,7 @@ public class PlayerBeta : MonoBehaviour
         AudioManager.Instance.StopClip();
         isPlayingWheelieSound = false;
     }*/
-    
+
     void ActivateWheelie()
     {
         enableWheelie = true;
@@ -336,7 +345,7 @@ public class PlayerBeta : MonoBehaviour
     void AccelerateAnimation()
     {
         if (_animSpeed > 4) return;
-        
+
         _animSpeed += 0.01f;
         animator.SetFloat("IncreaseSpeed", _animSpeed);
     }
@@ -346,4 +355,7 @@ public class PlayerBeta : MonoBehaviour
         _animSpeed = 1f;
         animator.SetFloat("IncreaseSpeed", _animSpeed);
     }
+
+    public bool IsPlayerWheeling => onWheelie;
+    public bool IsPlayerInvincible => isInvincible;
 }
