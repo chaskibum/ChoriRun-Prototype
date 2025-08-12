@@ -47,7 +47,7 @@ public class GameManagerBeta : MonoBehaviour
 
     void StartGame()
     {
-        player.GetComponent<CircleCollider2D>().enabled = true;
+        player.GetComponent<CapsuleCollider2D>().enabled = true;
         player.InvokeActiveWheelie();
         player.ResetAnimationSpeed();
         // InvokeRepeating("TimeScore", 0, timeScoreRepeatRate);

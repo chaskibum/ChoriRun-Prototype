@@ -25,7 +25,7 @@ public class ClimateChange : MonoBehaviour
     [SerializeField] Color DayColor;
     [SerializeField] Color NightTextColor;
     
-     [SerializeField] List<GameObject> DayBackgroundVisual;
+    [SerializeField] List<GameObject> DayBackgroundVisual;
     [SerializeField] List<GameObject> CloudsVisual;
     [SerializeField] List<Light2D> Lights;
 

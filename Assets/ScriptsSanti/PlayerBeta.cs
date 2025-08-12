@@ -18,7 +18,7 @@ public class PlayerBeta : MonoBehaviour
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
 
-    CircleCollider2D _hitbox;
+    CapsuleCollider2D _hitbox;
 
     Vector2 startPos;
 
@@ -47,7 +47,7 @@ public class PlayerBeta : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         uIManager = FindFirstObjectByType<UIManager>();
         animator = GetComponent<Animator>();
-        _hitbox = GetComponent<CircleCollider2D>();
+        _hitbox = GetComponent<CapsuleCollider2D>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
