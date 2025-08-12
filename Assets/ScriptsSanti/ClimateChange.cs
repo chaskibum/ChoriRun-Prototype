@@ -49,7 +49,9 @@ public class ClimateChange : MonoBehaviour
     {
         gameManagerBeta.GetOnRestartEvent.AddListener(OnRestart);
         gameManagerBeta.GetOnQuitButtonEvent.AddListener(OnRestart);
-        StartCoroutine(ChangeDayTimeBasedOnScore());
+        gameManagerBeta.GetOnstartEvent.AddListener(OnStart);
+        gameManagerBeta.GetOnQuitButtonEvent.AddListener(OnQuit);
+        // StartCoroutine(ChangeDayTimeBasedOnScore());
     }
 
     // Update is called once per frame
@@ -60,6 +62,8 @@ public class ClimateChange : MonoBehaviour
             ChangeDayTime();
         }
     }
+    
+    /*
     IEnumerator ChangeDayTimeBasedOnScore()
     {
         while (true)
@@ -68,7 +72,8 @@ public class ClimateChange : MonoBehaviour
             yield return new WaitUntil(() => gameManagerBeta.GetScore >= targetScore);
             ChangeDayTime();
         }
-    }
+    }*/
+    
     public void ChangeDayTime()
     {
         StopCoroutines();
@@ -222,5 +227,14 @@ public class ClimateChange : MonoBehaviour
         MakeDay();
     }
 
+    void OnStart()
+    {
+        InvokeRepeating(nameof(ChangeDayTime), 30f, 30f);
+    }
 
+    void OnQuit()
+    {
+        CancelInvoke();
+        MakeDay();
+    }
 }
