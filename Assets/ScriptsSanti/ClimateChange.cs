@@ -11,6 +11,7 @@ public class ClimateChange : MonoBehaviour
 
     [SerializeField] Light2D GlobalLight;
     [SerializeField] TMP_Text ScoreText;
+    [SerializeField] TMP_Text GameOverText;
 
 
     [Header("Properties")]
@@ -35,6 +36,7 @@ public class ClimateChange : MonoBehaviour
     Coroutine CloudsCoroutine;
     Coroutine LightsCoroutine;
     Coroutine TextColorCoroutine;
+    Coroutine TextColorCoroutine2;
 
 
 
@@ -88,7 +90,8 @@ public class ClimateChange : MonoBehaviour
         DayBackgroundCoroutine = StartCoroutine(IncreaseDecreaseAlpha(DayBackgroundVisual, false));
         CloudsCoroutine = StartCoroutine(IncreaseDecreaseAlpha(CloudsVisual, false));
         LightsCoroutine = StartCoroutine(IncreaseDecreaseLights(Lights, GlobalLight, NightColor, true));
-        TextColorCoroutine = StartCoroutine(ChangeTextColor(NightTextColor));
+        TextColorCoroutine = StartCoroutine(ChangeTextColor(NightTextColor, ScoreText));
+        TextColorCoroutine2 = StartCoroutine(ChangeTextColor(NightTextColor, GameOverText));
     }
 
     void MakeDay()
@@ -96,7 +99,8 @@ public class ClimateChange : MonoBehaviour
         DayBackgroundCoroutine = StartCoroutine(IncreaseDecreaseAlpha(DayBackgroundVisual, true));
         CloudsCoroutine = StartCoroutine(IncreaseDecreaseAlpha(CloudsVisual, true));
         LightsCoroutine = StartCoroutine(IncreaseDecreaseLights(Lights, GlobalLight, DayColor, false));
-        TextColorCoroutine = StartCoroutine(ChangeTextColor(Color.black));
+        TextColorCoroutine = StartCoroutine(ChangeTextColor(Color.black, ScoreText));
+        TextColorCoroutine2 = StartCoroutine(ChangeTextColor(Color.black, GameOverText));
     }
 
     void StopCoroutines()
@@ -145,14 +149,14 @@ public class ClimateChange : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator ChangeTextColor(Color TextColor)
+    IEnumerator ChangeTextColor(Color TextColor, TMP_Text text)
     {
-        Color color = ScoreText.color;
+        Color color = text.color;
 
         while (true)
         {
             color = Color.Lerp(color, TextColor, Time.deltaTime * 2);
-            ScoreText.color = color;
+            text.color = color;
             if (color == TextColor) break;
             yield return null;
         }
