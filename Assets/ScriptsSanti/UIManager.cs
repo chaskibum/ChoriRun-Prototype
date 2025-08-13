@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform AnimatorsContainer;
     [SerializeField] TMP_Text inputFieldText;
     [SerializeField] GameObject inputFieldContainer;
-    [SerializeField] GameObject restartButton;
+    [SerializeField] GameObject gameOverButtons;
     [SerializeField] Color DisableColor;
 
     [Header("Text")]
@@ -224,7 +223,7 @@ public class UIManager : MonoBehaviour
         if (inputFieldText.text.Length < 2 || inputFieldText.text.Length > 6) return;
         leaderboard.AddNameAndScoreToLeaderboard(gameManager.GetScore, inputFieldText.text);
         inputFieldContainer.SetActive(false);
-        restartButton.SetActive(true);
+        gameOverButtons.SetActive(true);
     }
     public void CloseLeaderboard()
     {
