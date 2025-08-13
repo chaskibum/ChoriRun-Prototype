@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,12 +8,16 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("UI")]
+    [SerializeField] GameObject LeaderboardCanvas;
+    [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject mainMenuPanel;
     [SerializeField] Transform livesContainer;
     [SerializeField] Transform ingredientsContainer;
-    [SerializeField] GameObject gameOverPanel;
     [SerializeField] Transform IngredientsPosition;
     [SerializeField] Transform AnimatorsContainer;
+    [SerializeField] TMP_Text inputFieldText;
+    [SerializeField] GameObject inputFieldContainer;
+    [SerializeField] GameObject restartButton;
     [SerializeField] Color DisableColor;
 
     [Header("Text")]
@@ -27,12 +32,14 @@ public class UIManager : MonoBehaviour
     GameManagerBeta gameManager;
     ItemsManager itemsManager;
     PlayerBeta player;
+    Leaderboard leaderboard;
 
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
         player = FindFirstObjectByType<PlayerBeta>();
+        leaderboard = FindFirstObjectByType<Leaderboard>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -211,6 +218,34 @@ public class UIManager : MonoBehaviour
         {
             Child.gameObject.SetActive(true);
         }
+    }
+    public void AddScoreToTop()
+    {
+        if (inputFieldText.text.Length < 2 || inputFieldText.text.Length > 6) return;
+        leaderboard.AddNameAndScoreToLeaderboard(gameManager.GetScore, inputFieldText.text);
+        inputFieldContainer.SetActive(false);
+        restartButton.SetActive(true);
+    }
+    public void CloseLeaderboard()
+    {
+        LeaderboardCanvas.SetActive(false);
+        CameraAnimator.SetTrigger("GoToLeaderboard");
+        AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
+        Invoke("EnableMainMenu", stateInfo.length);
+    }
+    public void OpenLeaderboard()
+    {
+        CameraAnimator.SetTrigger("GoToLeaderboard");
+        AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
+        Invoke("EnableLeaderboard", stateInfo.length);
+    }
+    void EnableLeaderboard()
+    {
+        LeaderboardCanvas.SetActive(true);
+    }
+    void EnableMainMenu()
+    {
+        mainMenuPanel.SetActive(true);
     }
 
     void OnStart()

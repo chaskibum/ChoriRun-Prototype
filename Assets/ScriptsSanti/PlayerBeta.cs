@@ -39,6 +39,7 @@ public class PlayerBeta : MonoBehaviour
     ItemsManager itemsManager;
     GameManagerBeta gameManager;
     UIManager uIManager;
+    Leaderboard leaderboard;
     Animator animator;
     Coroutine DisablePowerUpCoroutine;
 
@@ -49,6 +50,7 @@ public class PlayerBeta : MonoBehaviour
         animator = GetComponent<Animator>();
         _hitbox = GetComponent<CapsuleCollider2D>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
+        leaderboard = FindFirstObjectByType<Leaderboard>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -15,8 +15,8 @@ public class ClimateChange : MonoBehaviour
 
 
     [Header("Properties")]
-    [SerializeField] int ScoreToChangeDayTime;
-    int targetScore;
+    // [SerializeField] int ScoreToChangeDayTime;
+    // int targetScore;
 
     [SerializeField] float TargetIntensity;
     [SerializeField] float GlobalTargetIntensity;
@@ -223,13 +223,14 @@ public class ClimateChange : MonoBehaviour
     void OnRestart()
     {
         StopAllCoroutines();
+        CancelInvoke();
         DayTime = false;
         MakeDay();
     }
 
     void OnStart()
     {
-        InvokeRepeating(nameof(ChangeDayTime), 30f, 30f);
+        InvokeRepeating(nameof(ChangeDayTime), 60f, 60f);
     }
 
     void OnQuit()
