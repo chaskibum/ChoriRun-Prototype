@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class PlayerBeta : MonoBehaviour
 {
     [Header("Properties")]
@@ -17,6 +19,12 @@ public class PlayerBeta : MonoBehaviour
 
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
+
+    [Header("Mobile Controls")]
+    [SerializeField] private Button upButton;
+    [SerializeField] private Button downButton;
+    private bool upButtonPressed = false;
+    private bool downButtonPressed = false;
 
     CapsuleCollider2D _hitbox;
 
@@ -62,12 +70,16 @@ public class PlayerBeta : MonoBehaviour
         _offsetX = _hitbox.offset.x;
         _offsetY = _hitbox.offset.y;
         InvokeRepeating("AccelerateAnimation", 0f, 1f);
+        upButton.onClick.AddListener(() => upButtonPressed = true);
+        downButton.onClick.AddListener(() => downButtonPressed = true);
     }
     void Update()
     {
         if (gameManager.GetGameStarted)
         {
             Movement();
+            upButtonPressed = false;
+            downButtonPressed = false;
             CheckForWheelie();
         }
     }
@@ -78,8 +90,8 @@ public class PlayerBeta : MonoBehaviour
         bool down;
         if (!onWheelie)
         {
-            up = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-            down = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+            up = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || upButtonPressed;
+            down = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || downButtonPressed;
         }
         else
         {
@@ -117,11 +129,11 @@ public class PlayerBeta : MonoBehaviour
             }
             gameManager.IncreseSpeedOnWheelie(true);
             onWheelie = true;
-            if (!isPlayingWheelieSound)
+            /*if (!isPlayingWheelieSound)
             {
                 isPlayingWheelieSound = true;
-                // StartCoroutine("PlayWheelieSound");
-            }
+                StartCoroutine("PlayWheelieSound");
+            }*/
         }
         else
         {
@@ -134,6 +146,7 @@ public class PlayerBeta : MonoBehaviour
                 velocityParticles.SetActive(false);
                 _hitbox.offset = new Vector2(_offsetX += 2f, _offsetY);
             }
+            onWheelie = false;
         }
 
         _currentRotation = Mathf.Clamp(_currentRotation, 0, 25.0f);
@@ -348,7 +361,7 @@ public class PlayerBeta : MonoBehaviour
     {
         if (_animSpeed > 4) return;
 
-        _animSpeed += 0.01f;
+        _animSpeed += 0.02f;
         animator.SetFloat("IncreaseSpeed", _animSpeed);
     }
 

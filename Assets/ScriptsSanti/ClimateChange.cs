@@ -37,14 +37,13 @@ public class ClimateChange : MonoBehaviour
     Coroutine LightsCoroutine;
     Coroutine TextColorCoroutine;
     Coroutine TextColorCoroutine2;
-
-
+    
 
     void Awake()
     {
         gameManagerBeta = FindFirstObjectByType<GameManagerBeta>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         gameManagerBeta.GetOnRestartEvent.AddListener(OnRestart);
@@ -53,15 +52,14 @@ public class ClimateChange : MonoBehaviour
         gameManagerBeta.GetOnQuitButtonEvent.AddListener(OnQuit);
         // StartCoroutine(ChangeDayTimeBasedOnScore());
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChangeDayTime();
         }
-    }
+    }*/
     
     /*
     IEnumerator ChangeDayTimeBasedOnScore()

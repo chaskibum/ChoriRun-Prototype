@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     bool waitTillEnd;
     TMP_Text CountdownText;
     Coroutine CheckAnimatonPlaying;
+    
     void Awake()
     {
         gameManager = FindFirstObjectByType<GameManagerBeta>();
@@ -55,6 +56,9 @@ public class PauseMenu : MonoBehaviour
             gameManager.isGamePaused = true;
             canOpenMenu = false;
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            gameManager.upButton.SetActive(false);
+            gameManager.downButton.SetActive(false);
         }
         else if (!waitTillEnd)
         {
@@ -73,6 +77,9 @@ public class PauseMenu : MonoBehaviour
         GameOverPanel.SetActive(false);
         AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value);
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        gameManager.upButton.SetActive(true);
+        gameManager.downButton.SetActive(true);
         AudioManager.Instance.motorbikeSound.volume = 1f;
     }
 
@@ -96,6 +103,9 @@ public class PauseMenu : MonoBehaviour
                 AudioManager.Instance.motorbikeSound.volume = 1f;
                 AudioManager.Instance.sfxSource.volume = 1f;
                 Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                gameManager.upButton.SetActive(true);
+                gameManager.downButton.SetActive(true);
                 break;
             }
         }

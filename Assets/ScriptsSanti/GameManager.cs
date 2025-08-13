@@ -13,6 +13,10 @@ public class GameManagerBeta : MonoBehaviour
     [SerializeField] float ingredientProbability = 0;
     [SerializeField] float badIngredientProbability = 0;
     [SerializeField] float powerUpProbability = 0;
+    
+    [Header("Mobile Buttons")]
+    public GameObject upButton;
+    public GameObject downButton;
 
     int score;
 
@@ -55,6 +59,9 @@ public class GameManagerBeta : MonoBehaviour
         gameStarted = true;
         onRestartGame.AddListener(ResetScore);
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        upButton.SetActive(true);
+        downButton.SetActive(true);
     }
 
 
@@ -75,12 +82,18 @@ public class GameManagerBeta : MonoBehaviour
         AudioManager.Instance.PlayClip(AudioManager.AudioList.GameOverMelody);
         uiManager.GameOver();
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        upButton.SetActive(false);
+        downButton.SetActive(false);
     }
     void OnQuit()
     {
         StopCoroutine("TimeScore");
         CancelInvoke();
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        upButton.SetActive(false);
+        downButton.SetActive(false);
     }
     public void QuitGame()
     {
