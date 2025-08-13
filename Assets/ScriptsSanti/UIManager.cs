@@ -134,10 +134,12 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         gameManager.SetGameStarted(false);
     }
-    
+
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        gameOverButtons.SetActive(false);
+        inputFieldContainer.SetActive(true);
     }
 
     public void StartRowOfActivates()

@@ -82,21 +82,23 @@ public class Leaderboard : MonoBehaviour
         SaveLeadearboardsValues();
     }
     // Update is called once per frame
-    // void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.H))
-    //     {
-    //         AddNameAndScoreToLeaderboard(ScoreToAdd, nametoAdd);
-    //     }
-    //     if (Input.GetKeyDown(KeyCode.J))
-    //     {
-    //         SaveLeadearboardsValues();
-    //     }
-    //     if (Input.GetKeyDown(KeyCode.LeftAlt))
-    //     {
-    //         PlayerPrefs.DeleteAll();
-    //     }
-    // }
+    /*
+     void Update()
+     {
+         if (Input.GetKeyDown(KeyCode.H))
+         {
+             AddNameAndScoreToLeaderboard(ScoreToAdd, nametoAdd);
+         }
+         if (Input.GetKeyDown(KeyCode.J))
+         {
+             SaveLeadearboardsValues();
+         }
+         if (Input.GetKeyDown(KeyCode.LeftAlt))
+         {
+             PlayerPrefs.DeleteAll();
+         }
+    }
+    */
 
     void SaveLeadearboardsValues()
     {
@@ -111,5 +113,5 @@ public class Leaderboard : MonoBehaviour
     {
 
 
-    }    
+    }
 }
