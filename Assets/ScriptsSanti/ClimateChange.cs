@@ -220,20 +220,29 @@ public class ClimateChange : MonoBehaviour
 
     void OnRestart()
     {
-        StopAllCoroutines();
+        StopCoroutines();
         CancelInvoke();
         DayTime = false;
         MakeDay();
+        InvokeChangeDayBasedOnTime();
     }
 
     void OnStart()
     {
-        InvokeRepeating(nameof(ChangeDayTime), 60f, 60f);
+        InvokeChangeDayBasedOnTime();
     }
 
     void OnQuit()
     {
+        StopCoroutines();
+        DayTime = false;
         CancelInvoke();
         MakeDay();
+        InvokeChangeDayBasedOnTime();
+    }
+
+    private void InvokeChangeDayBasedOnTime()
+    {
+        InvokeRepeating(nameof(ChangeDayTime), 60f, 60f);
     }
 }

@@ -20,7 +20,6 @@ public class PlayerBeta : MonoBehaviour
 
     [SerializeField] GameObject velocityParticles;
     [SerializeField] GameObject PowerupVisual;
-    [SerializeField] Light2D auraLight;
 
     [Header("Mobile Controls")]
     [SerializeField] private Button upButton;
@@ -218,7 +217,6 @@ public class PlayerBeta : MonoBehaviour
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                     animator.SetFloat("IncreaseSpeed", _animSpeed + 0.5f);
-                    auraLight.intensity = 2f;
                     StartCoroutine(gameManager.ChangeCameraFOV());
                 }
 
@@ -297,7 +295,6 @@ public class PlayerBeta : MonoBehaviour
         AudioManager.Instance.motorbikeSound.pitch -= 0.5f;
         AudioManager.Instance.StopClip();
         animator.SetFloat("IncreaseSpeed", _animSpeed - 0.5f);
-        auraLight.intensity = 0f;
     }
     IEnumerator ActivatePowerupWarning()
     {
