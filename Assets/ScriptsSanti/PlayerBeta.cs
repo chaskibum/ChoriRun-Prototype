@@ -178,6 +178,8 @@ public class PlayerBeta : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
+        BoxCollider2D otherCollider = other.GetComponent<BoxCollider2D>();
+
         SpriteRenderer CollisionChildSpriteRenderer(int index = 0) { return other.transform.GetChild(index).GetComponent<SpriteRenderer>(); }
 
         Vector3 CollisionPosition = other.transform.GetChild(0).position;
@@ -266,7 +268,11 @@ public class PlayerBeta : MonoBehaviour
                     break;
             }
         }
+        
+        otherCollider.enabled = false;
+
         other.GetComponent<ItemBehavior>().StopPowerUpAnimation();
+
         if (!isObstacle)
         {
             CollisionChildSpriteRenderer().sprite = null;

@@ -8,6 +8,7 @@ public class ItemBehavior : MonoBehaviour
     ItemGroupBehavior itemGroupBehavior;
     ItemsManager itemsManager;
     Animator animator;
+    BoxCollider2D boxCollider;
     [SerializeField, Space(5)] ItemType itemType;
     [SerializeField, Space(5)] ObstacleType obstacleType;
     [SerializeField, Space(5)] IngredientType ingredientType;
@@ -54,6 +55,7 @@ public class ItemBehavior : MonoBehaviour
         itemGroupBehavior = GetComponentInParent<ItemGroupBehavior>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
 
@@ -297,6 +299,7 @@ public class ItemBehavior : MonoBehaviour
     public void SetPickedType()
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = DefaultLayer;
+        boxCollider.enabled = true;
         bool RandomSubType;
         switch (itemType)
         {
@@ -328,7 +331,6 @@ public class ItemBehavior : MonoBehaviour
 
                 SetAsBadIngredient(RandomSubType);
                 break;
-
         }
     }
     public void SetRandomItemType()
