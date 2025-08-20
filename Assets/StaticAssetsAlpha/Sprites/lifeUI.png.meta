@@ -116,10 +116,10 @@ TextureImporter:
       name: lifeUI_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 17
-        height: 16
+        x: 3
+        y: 5
+        width: 73
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

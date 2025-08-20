@@ -116,10 +116,10 @@ TextureImporter:
       name: Play_Button_Press_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 406
-        height: 227
+        width: 52
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
