@@ -2,24 +2,59 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using Dan.Main;
+
 public class Leaderboard : MonoBehaviour
 {
-    [SerializeField] string nametoAdd;
+    [SerializeField] string nameToAdd;
     [SerializeField] int ScoreToAdd;
     [SerializeField] string Scores;
     [SerializeField] string Names;
     [SerializeField] List<int> ScoreList = new();
     [SerializeField] List<string> NameLists = new();
     [SerializeField] List<TMP_Text> NamesListText;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField] private List<TextMeshProUGUI> names;
+    [SerializeField] private List<TextMeshProUGUI> scores;
+
+    private string publicLeaderboardKey = "b4b5364321b1d6af6c914a51c2d352f3bb04ca52ef1c2193625ecc6a0f01cb79";
+
+    public void GetLeaderboard()
     {
-        Scores = PlayerPrefs.GetString("ScoreList");
-        Names = PlayerPrefs.GetString("NamesList");
-        SetLeaderboard();
-        UpdateTextUI();
+        LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, (msg) =>
+        {
+            int loopLength = (msg.Length < names.Count ? msg.Length : names.Count);
+            for (int i = 0; i < loopLength; i++)
+            {
+                names[i].text = msg[i].Username;
+                scores[i].text = msg[i].Score.ToString();
+            }
+        });
     }
 
+    public void SetLeaderboardEntry(string username, int score)
+    {
+        LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, (_) => { GetLeaderboard(); });
+        LeaderboardCreator.ResetPlayer();
+    }
+
+    public void SubmitScore()
+    {
+        print("...");
+        SetLeaderboardEntry(nameToAdd, ScoreToAdd);
+    }
+
+    void Start()
+    {
+        /*Scores = PlayerPrefs.GetString("ScoreList");
+        Names = PlayerPrefs.GetString("NamesList");
+        SetLeaderboard();
+        UpdateTextUI();*/
+
+        GetLeaderboard();
+    }
+
+    /*
     void SetLeaderboard()
     {
         if (Scores != "")
@@ -38,9 +73,9 @@ public class Leaderboard : MonoBehaviour
                 NameLists.Add(Name);
             }
         }
-    }
+    }*/
 
-    public void UpdateTextUI()
+    /*public void UpdateTextUI()
     {
         for (int i = 0; i < ScoreList.Count; i++)
         {
@@ -50,7 +85,7 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    public void AddNameAndScoreToLeaderboard(int Score, string Name)
+    public void AddNameAndScoreToLeaderboard(string Name, int Score)
     {
         bool isTopFull = ScoreList.Count >= 10;
         for (int i = 0; i < ScoreList.Count; i++)
@@ -78,10 +113,12 @@ public class Leaderboard : MonoBehaviour
             NameLists.RemoveAt(NameLists.Count - 1);
         }
 
-        UpdateTextUI();
-        SaveLeadearboardsValues();
-    }
-    // Update is called once per frame
+        UpdateTextUI();*/
+    // SaveLeadearboardsValues();
+    // SetLeaderboardEntry(Name, Score);
+    // }
+
+// Update is called once per frame
     /*
      void Update()
      {
@@ -100,18 +137,12 @@ public class Leaderboard : MonoBehaviour
     }
     */
 
-    void SaveLeadearboardsValues()
+    /*void SaveLeadearboardsValues()
     {
         Names = string.Join(",", NameLists);
         Scores = string.Join(",", ScoreList);
         PlayerPrefs.SetString("NamesList", Names);
         PlayerPrefs.SetString("ScoreList", Scores);
         PlayerPrefs.Save();
-    }
-
-    private void OnApplicationQuit()
-    {
-
-
-    }
+    }*/
 }

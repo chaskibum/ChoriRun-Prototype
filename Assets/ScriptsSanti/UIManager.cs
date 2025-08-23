@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,6 +33,16 @@ public class UIManager : MonoBehaviour
     ItemsManager itemsManager;
     PlayerBeta player;
     Leaderboard leaderboard;
+    
+    public UnityEvent<string, int> submitScoreEvent;
+    
+    public void SubmitScore()
+    {
+        // if (inputFieldText.text.Length < 2 || inputFieldText.text.Length > 6) return;
+        submitScoreEvent.Invoke(inputFieldText.text, gameManager.GetScore);
+        inputFieldContainer.SetActive(false);
+        gameOverButtons.SetActive(true);
+    }
 
     void Awake()
     {
@@ -223,7 +234,8 @@ public class UIManager : MonoBehaviour
     public void AddScoreToTop()
     {
         if (inputFieldText.text.Length < 2 || inputFieldText.text.Length > 6) return;
-        leaderboard.AddNameAndScoreToLeaderboard(gameManager.GetScore, inputFieldText.text);
+        // leaderboard.AddNameAndScoreToLeaderboard(inputFieldText.text, gameManager.GetScore);
+        // leaderboard.SetLeaderboardEntry(inputFieldText.text, gameManager.GetScore);
         inputFieldContainer.SetActive(false);
         gameOverButtons.SetActive(true);
     }
