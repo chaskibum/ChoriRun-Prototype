@@ -34,13 +34,13 @@ public class Leaderboard : MonoBehaviour
 
     public void SetLeaderboardEntry(string username, int score)
     {
+        username = username.ToUpper();
         LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, (_) => { GetLeaderboard(); });
         LeaderboardCreator.ResetPlayer();
     }
 
     public void SubmitScore()
     {
-        print("...");
         SetLeaderboardEntry(nameToAdd, ScoreToAdd);
     }
 
@@ -145,4 +145,11 @@ public class Leaderboard : MonoBehaviour
         PlayerPrefs.SetString("ScoreList", Scores);
         PlayerPrefs.Save();
     }*/
+
+    public int GetNumber10Score()
+    {
+        int numberTenScore;
+        int.TryParse(scores[scores.Count - 1].text, out numberTenScore);
+        return numberTenScore;
+    }
 }

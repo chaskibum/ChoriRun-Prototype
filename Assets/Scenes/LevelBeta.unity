@@ -1051,8 +1051,10 @@ MonoBehaviour:
   AnimatorsContainer: {fileID: 1969816899}
   inputFieldText: {fileID: 1567920470}
   inputFieldContainer: {fileID: 638252945}
+  inputField: {fileID: 1056682474}
   gameOverButtons: {fileID: 1021142098}
   DisableColor: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 1}
+  restartButton: {fileID: 901599097}
   scoreText: {fileID: 1551054702}
   ChoriPanAnimator: {fileID: 1639345603}
   CameraAnimator: {fileID: 496284920}

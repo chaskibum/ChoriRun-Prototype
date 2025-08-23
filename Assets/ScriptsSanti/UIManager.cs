@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,8 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform AnimatorsContainer;
     [SerializeField] TMP_Text inputFieldText;
     [SerializeField] GameObject inputFieldContainer;
+    [SerializeField] TMP_InputField inputField;
     [SerializeField] GameObject gameOverButtons;
     [SerializeField] Color DisableColor;
+    [SerializeField] private Button restartButton;
+    // [SerializeField] private Button playButton;
 
     [Header("Text")]
     [SerializeField] TMP_Text scoreText;
@@ -42,6 +47,14 @@ public class UIManager : MonoBehaviour
         submitScoreEvent.Invoke(inputFieldText.text, gameManager.GetScore);
         inputFieldContainer.SetActive(false);
         gameOverButtons.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(restartButton.gameObject);
+    }
+
+    private void Update()
+    {
+        if (inputFieldContainer.activeInHierarchy)
+            if (Input.GetKeyDown(KeyCode.Return))
+                SubmitScore();
     }
 
     void Awake()
@@ -62,6 +75,8 @@ public class UIManager : MonoBehaviour
         {
             Child.gameObject.GetComponent<Image>().color = DisableColor;
         }
+        
+        // EventSystem.current.SetSelectedGameObject(playButton.gameObject);
     }
     public void OnPlayButtonPresed()
     {
@@ -149,8 +164,22 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-        gameOverButtons.SetActive(false);
-        inputFieldContainer.SetActive(true);
+
+        if (gameManager.GetScore > leaderboard.GetNumber10Score())
+        {
+            gameOverButtons.SetActive(false);
+            inputFieldContainer.SetActive(true);
+            
+            inputField.Select();
+            inputField.ActivateInputField();
+        }
+        else
+        {
+            gameOverButtons.SetActive(true);
+            inputFieldContainer.SetActive(false);
+            
+            EventSystem.current.SetSelectedGameObject(restartButton.gameObject);
+        }
     }
 
     public void StartRowOfActivates()
