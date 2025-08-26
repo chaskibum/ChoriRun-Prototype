@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverButtons;
     [SerializeField] Color DisableColor;
     [SerializeField] private Button restartButton;
+
+    [SerializeField] private Texture2D cursorTexture;
     // [SerializeField] private Button playButton;
 
     [Header("Text")]
@@ -59,6 +61,7 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
+        Cursor.SetCursor(cursorTexture, new Vector2(-8f, 0), CursorMode.ForceSoftware);
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
         player = FindFirstObjectByType<PlayerBeta>();

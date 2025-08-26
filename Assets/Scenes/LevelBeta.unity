@@ -1055,6 +1055,7 @@ MonoBehaviour:
   gameOverButtons: {fileID: 1021142098}
   DisableColor: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 1}
   restartButton: {fileID: 901599097}
+  cursorTexture: {fileID: 2800000, guid: f93ddf5ac37b3d44284a575a5991d38a, type: 3}
   scoreText: {fileID: 1551054702}
   ChoriPanAnimator: {fileID: 1639345603}
   CameraAnimator: {fileID: 496284920}
