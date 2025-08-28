@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (CheckAnimatonPlaying != null) return;
+                if (gameManager.isGameOver) return;
                 CheckAnimatonPlaying = StartCoroutine(CheckIfShakeIsPlaying());
             }      
         }

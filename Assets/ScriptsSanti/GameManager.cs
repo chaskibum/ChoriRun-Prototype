@@ -26,6 +26,7 @@ public class GameManagerBeta : MonoBehaviour
 
     bool gameStarted = false;
     public bool isGamePaused;
+    public bool isGameOver;
 
     ItemsManager itemsManager;
     UIManager uiManager;
@@ -67,6 +68,7 @@ public class GameManagerBeta : MonoBehaviour
 
     public void RestartButtonPressed()
     {
+        isGameOver = false;
         onRestartGame?.Invoke();
         uiManager.StartRowOfActivates();
         AudioManager.Instance.OnRestartButtonPressed();
@@ -76,6 +78,7 @@ public class GameManagerBeta : MonoBehaviour
     }
     public void GameOver()
     {
+        isGameOver = true;
         Time.timeScale = 0;
         AudioManager.Instance.motorbikeSound.volume = 0f;
         AudioManager.Instance.StopMusic();
@@ -88,6 +91,7 @@ public class GameManagerBeta : MonoBehaviour
     }
     void OnQuit()
     {
+        isGameOver = false;
         StopCoroutine("TimeScore");
         CancelInvoke();
         Cursor.lockState = CursorLockMode.None;
