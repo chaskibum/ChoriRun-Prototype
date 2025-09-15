@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     ItemsManager itemsManager;
     PlayerBeta player;
     Leaderboard leaderboard;
+    Cinematic cinematic;
     
     public UnityEvent<string, int> submitScoreEvent;
     
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
         itemsManager = FindFirstObjectByType<ItemsManager>();
         player = FindFirstObjectByType<PlayerBeta>();
         leaderboard = FindFirstObjectByType<Leaderboard>();
+        cinematic = FindFirstObjectByType<Cinematic>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,14 +85,15 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayButtonPresed()
     {
-        CameraAnimator.SetBool("GameStarted", true);
+        // CameraAnimator.SetBool("GameStarted", true);
         mainMenuPanel.gameObject.SetActive(false);
-        AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
-        Invoke("StartGame", stateInfo.length - 0.3f);
+        cinematic.StartCinematic();
+        // AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
+        // Invoke("StartGame", stateInfo.length - 0.3f);
     } 
-    void StartGame()
+    public void StartGame()
     {
-        gameManager.GetOnstartEvent?.Invoke();
+         gameManager.GetOnstartEvent?.Invoke();
     }
     public void UpdateScore(int score)
     {
