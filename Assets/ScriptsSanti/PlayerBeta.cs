@@ -50,6 +50,7 @@ public class PlayerBeta : MonoBehaviour
     UIManager uIManager;
     Leaderboard leaderboard;
     Animator animator;
+    DogsMovement dogsMovement;
     Coroutine DisablePowerUpCoroutine;
 
     void Awake()
@@ -60,6 +61,7 @@ public class PlayerBeta : MonoBehaviour
         _hitbox = GetComponent<CapsuleCollider2D>();
         itemsManager = FindFirstObjectByType<ItemsManager>();
         leaderboard = FindFirstObjectByType<Leaderboard>();
+        dogsMovement = FindFirstObjectByType<DogsMovement>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -130,6 +132,7 @@ public class PlayerBeta : MonoBehaviour
             }
             gameManager.IncreseSpeedOnWheelie(true);
             onWheelie = true;
+            dogsMovement.StopChase();
             /*if (!isPlayingWheelieSound)
             {
                 isPlayingWheelieSound = true;
@@ -216,6 +219,8 @@ public class PlayerBeta : MonoBehaviour
                 {
                     isInvincible = true;
 
+                    dogsMovement.StopChase(10, true);
+
                     AudioManager.Instance.PlayClip(AudioManager.AudioList.PowerUpSound, false, 1f, false);
                     AudioManager.Instance.motorbikeSound.pitch += 0.5f;
                     animator.SetFloat("IncreaseSpeed", _animSpeed + 0.5f);
@@ -235,20 +240,30 @@ public class PlayerBeta : MonoBehaviour
             {
                 case "Oil":
                     LooseHp();
+                    Invoke("ActivateWheelie", 2);
                     itemsManager.ChangeItemsSpeed(-3, 2);
+                    dogsMovement.StartChase();
+                    enableWheelie = false;
                     isObstacle = true;
                     break;
                 case "Pothole":
                     LooseHp();
+                    Invoke("ActivateWheelie", 2);
                     itemsManager.ChangeItemsSpeed(-2, 2);
+                    dogsMovement.StartChase();
+                    enableWheelie = false;
                     isObstacle = true;
                     break;
                 case "Cone":
                     LooseHp();
+                    Invoke("ActivateWheelie", 2);
                     itemsManager.ChangeItemsSpeed(-2, 2);
+                    dogsMovement.StartChase();
+                    enableWheelie = false;
                     isObstacle = true;
                     break;
             }
+
         }
         else if (isInvincible)
         {
@@ -268,8 +283,9 @@ public class PlayerBeta : MonoBehaviour
                     break;
             }
         }
-        
-        otherCollider.enabled = false;
+
+        // otherCollider.enabled = false;
+        otherCollider.excludeLayers = 1 << gameObject.layer;;
 
         other.GetComponent<ItemBehavior>().StopPowerUpAnimation();
 

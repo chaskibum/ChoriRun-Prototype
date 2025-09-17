@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
     {
         // CameraAnimator.SetBool("GameStarted", true);
         mainMenuPanel.gameObject.SetActive(false);
-        cinematic.StartCinematic();
+        cinematic.OnPlayButtonPressed();
         // AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
         // Invoke("StartGame", stateInfo.length - 0.3f);
     } 

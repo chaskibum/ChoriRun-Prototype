@@ -299,7 +299,7 @@ public class ItemBehavior : MonoBehaviour
     public void SetPickedType()
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = DefaultLayer;
-        boxCollider.enabled = true;
+        boxCollider.excludeLayers = 0;
         bool RandomSubType;
         switch (itemType)
         {

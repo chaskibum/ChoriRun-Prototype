@@ -18,6 +18,7 @@ public class Cinematic : MonoBehaviour
     [Header("Transforms/GameObjects")]
     [SerializeField] Transform StartPosCamera;
     [SerializeField] GameObject CloseText;
+    [SerializeField] GameObject NextFrameButton;
     [SerializeField] List<Transform> CameraPosition;
     [SerializeField] List<GameObject> MovieFrames;
     int Index;
@@ -35,30 +36,35 @@ public class Cinematic : MonoBehaviour
         gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPressed()
     {
-        if (CinematicStarted)
+        if (Index < CameraPosition.Count)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (Index < CameraPosition.Count)
-                {
-                    NextFrame();
-                    cooldown = 0;
-                }
-                else
-                {
-                    CloseText.SetActive(false);
-                    FadeAnimator.SetBool("Fade", false);
-                    StartCoroutine(EndCinematic());
-                    CinematicStarted = false;
-                }
-            }
+            NextFrame();
+            cooldown = 0;
+        }
+        else
+        {
+            CloseText.SetActive(false);
+            FadeAnimator.SetBool("Fade", false);
+            StartCoroutine(EndCinematic());
+            NextFrameButton.SetActive(false);
         }
     }
 
-    public void StartCinematic()
+    public void OnPlayButtonPressed()
+    {
+        if (!CinematicStarted)
+        {
+            StartCinematic();
+        }
+        else
+        {
+            StartGame();
+        }
+    }
+
+    void StartCinematic()
     {
         FadeAnimator.SetBool("Fade", true);
         AnimatorStateInfo stateInfo = FadeAnimator.GetCurrentAnimatorStateInfo(0);
@@ -81,6 +87,7 @@ public class Cinematic : MonoBehaviour
         UpdateCameraPositionCoroutine = StartCoroutine(UpdateCameraPosition(Index));
         UpdateMovieFrames(Index);
         Index++;
+        NextFrameButton.SetActive(true);
     }
     void StartGame()
     {
@@ -160,13 +167,13 @@ public class Cinematic : MonoBehaviour
     void OnQuit()
     {
         StopAllCoroutines();
+        CancelInvoke();
         UpdateCameraSizeCoroutine = null;
         UpdateCameraPositionCoroutine = null;
         foreach (GameObject gameObject in MovieFrames)
         {
             Image image = gameObject.GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
-            Debug.Log("Alpha en 0");
         }
         Index = 0;
         CinematicCamera.transform.position = StartPosCamera.position;
