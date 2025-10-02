@@ -236,11 +236,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonPressed()
     {
+        StopClip();
         PlayClip(AudioList.ButtonPressed, true);
     }
 
     public void PlayOpenMenuSound()
     {
-        PlayClip(AudioList.Splat);
+        StopClip();
+        PlayClip(AudioList.Splat, true);
     }
 }
