@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DogsMovement : MonoBehaviour
@@ -33,16 +32,6 @@ public class DogsMovement : MonoBehaviour
         gameManager.GetOnRestartEvent?.AddListener(OnRestart);
     }
 
-    /*
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            StartChase();
-        }
-    }
-    */
-
 
     public void StartChase()
     {
@@ -50,9 +39,11 @@ public class DogsMovement : MonoBehaviour
         {
             StopCoroutine(ChaseCoroutine);
             ChaseCoroutine = StartCoroutine(Chase(DistanceFromPlayer, StartSpeed, true));
-
         }
-        else ChaseCoroutine = StartCoroutine(Chase(DistanceFromPlayer, StartSpeed, true));
+        else
+        {
+            ChaseCoroutine = StartCoroutine(Chase(DistanceFromPlayer, StartSpeed, true));
+        }
 
         if (StopChaseCoroutine == null) StopChaseCoroutine = StartCoroutine(WaitToStop());
         else
@@ -86,6 +77,8 @@ public class DogsMovement : MonoBehaviour
 
             transform.position = TargetPosition;
             if (Mathf.Abs(transform.position.x - TargetPositionX) < 6f) boxCollider.enabled = ColliderActive;
+            if (Vector3.Distance(transform.position, PlayerPosition.position) < 6f) AudioManager.Instance.FadeInDogs();
+            else AudioManager.Instance.FadeOutDogs();
             yield return null;
         }
     }

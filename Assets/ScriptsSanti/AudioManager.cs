@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource melodyLoop;
     public AudioSource fastMelodyLoop;
     public AudioSource motorbikeSound;
+    public AudioSource dogsChasingSound;
 
     public enum AudioList
     {
@@ -31,7 +32,7 @@ public class AudioManager : MonoBehaviour
         Splat,
         PuajSound,
         ButtonPressed,
-        CuelgueSound,
+        Cinematic,
     }
     
 	[SerializeField] List<AudioClip> audioClips;
@@ -96,13 +97,22 @@ public class AudioManager : MonoBehaviour
         PlayClip(AudioList.ButtonPressed, true, 1f, false);
     }
 
-    IEnumerator FadeMusic(AudioSource audioSource, bool fadeIn)
+    public void StartMainMenuMusic()
+    {
+        mainMenuSong.Play();
+        startLoop.volume = 0f;
+        startLoop.Play();
+        dogsChasingSound.volume = 0f;
+        dogsChasingSound.Play();
+    }
+
+    IEnumerator FadeMusic(AudioSource audioSource, bool fadeIn, float speed = 0.02f)
     {
         if (fadeIn)
         {
             while (audioSource.volume < 1)
             {
-                audioSource.volume += 0.02f;
+                audioSource.volume += speed;
                 yield return new WaitForSeconds(0.05f);
             }
         }
@@ -110,7 +120,7 @@ public class AudioManager : MonoBehaviour
         {
             while (audioSource.volume > 0)
             {
-                audioSource.volume -= 0.02f;
+                audioSource.volume -= speed;
                 yield return new WaitForSeconds(0.05f);
             }
         }
@@ -120,6 +130,7 @@ public class AudioManager : MonoBehaviour
     {
         startSong.Play();
         startLoop.Stop();
+        mainMenuSong.Stop();
     }
 
     public void StartSongLoop()
@@ -129,6 +140,16 @@ public class AudioManager : MonoBehaviour
         songLoop.Play();
         melodyLoop.Play();
         fastMelodyLoop.Play();
+    }
+
+    public void FadeInDogs()
+    {
+        StartCoroutine(FadeMusic(dogsChasingSound, true, 0.001f));
+    }
+
+    public void FadeOutDogs()
+    {
+        StartCoroutine(FadeMusic(dogsChasingSound, false, 0.00003f));
     }
 
     public void PlayFastLoop()
@@ -151,6 +172,9 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeMusic(startLoop, true));
         StartCoroutine(FadeMusic(mainMenuSong, false));
         
+        if (!dogsChasingSound.isPlaying) dogsChasingSound.Play();
+        FadeInDogs();
+        
         StartCoroutine(RealTimeCoroutine("StartSong", (startLoop.clip.length - startLoop.time) - 0.05f));
         StartCoroutine(RealTimeCoroutine("StartSongLoop", startSong.clip.length + (startLoop.clip.length - startLoop.time) - 0.05f));
     }
@@ -171,14 +195,13 @@ public class AudioManager : MonoBehaviour
         songLoop.Stop();
         melodyLoop.Stop();
         fastMelodyLoop.Stop();
+        dogsChasingSound.Stop();
     }
 
     public void BackToMenuMusic()
     {
         StopMusic();
-        mainMenuSong.Play();
-        startLoop.volume = 0f;
-        startLoop.Play();
+        StartMainMenuMusic();
         StartCoroutine(FadeMusic(mainMenuSong, true));
     }
     

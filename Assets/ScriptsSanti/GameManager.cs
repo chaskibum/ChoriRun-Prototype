@@ -55,7 +55,6 @@ public class GameManagerBeta : MonoBehaviour
         player.GetComponent<CapsuleCollider2D>().enabled = true;
         player.InvokeActiveWheelie();
         player.ResetAnimationSpeed();
-        // InvokeRepeating("TimeScore", 0, timeScoreRepeatRate);
         StartCoroutine("TimeScore");
         gameStarted = true;
         onRestartGame.AddListener(ResetScore);
@@ -64,7 +63,6 @@ public class GameManagerBeta : MonoBehaviour
         upButton.SetActive(true);
         downButton.SetActive(true);
     }
-
 
     public void RestartButtonPressed()
     {

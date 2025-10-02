@@ -21,6 +21,8 @@ public class Cinematic : MonoBehaviour
     [SerializeField] GameObject NextFrameButton;
     [SerializeField] List<Transform> CameraPosition;
     [SerializeField] List<GameObject> MovieFrames;
+    [SerializeField] private GameObject FadeStartImage;
+    
     int Index;
     bool CinematicStarted;
     GameManagerBeta gameManager;
@@ -34,21 +36,26 @@ public class Cinematic : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManagerBeta>();
         CinematicCamera.orthographicSize = CameraSizeStart;
         gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
+        FadeStartImage.SetActive(true);
+        OnPlayButtonPressed();
     }
 
     public void OnPressed()
     {
-        if (Index < CameraPosition.Count)
-        {
-            NextFrame();
-            cooldown = 0;
-        }
-        else
+        if (Index == CameraPosition.Count)
         {
             CloseText.SetActive(false);
             FadeAnimator.SetBool("Fade", false);
             StartCoroutine(EndCinematic());
             NextFrameButton.SetActive(false);
+        }
+        else
+        {
+            while (Index < CameraPosition.Count)
+            {
+                NextFrame();
+                AudioManager.Instance.StopClip();
+            }
         }
     }
 
@@ -70,6 +77,7 @@ public class Cinematic : MonoBehaviour
         AnimatorStateInfo stateInfo = FadeAnimator.GetCurrentAnimatorStateInfo(0);
         Invoke("SetupCinematic", stateInfo.length);
         StartCoroutine(PassFrame());
+        AudioManager.Instance.PlayClip(AudioManager.AudioList.Cinematic);
     }
     void NextFrame()
     {
@@ -97,6 +105,7 @@ public class Cinematic : MonoBehaviour
         AnimatorStateInfo stateInfo = cameraAnimator.GetCurrentAnimatorStateInfo(0);
         Invoke("InvokeStartEvent", stateInfo.length - 0.3f);
     }
+    
     void InvokeStartEvent()
     {
         gameManager.GetOnstartEvent?.Invoke();
@@ -152,7 +161,9 @@ public class Cinematic : MonoBehaviour
         }
         MainCamera.enabled = true;
         CinematicCamera.gameObject.SetActive(false);
-        StartGame();
+        FadeStartImage.SetActive(false);
+        AudioManager.Instance.StartMainMenuMusic();
+        // StartGame();
     }
     IEnumerator UpdateAlphaSize(int index)
     {
