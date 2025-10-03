@@ -75,8 +75,8 @@ public class Cinematic : MonoBehaviour
     {
         FadeAnimator.SetBool("Fade", true);
         AnimatorStateInfo stateInfo = FadeAnimator.GetCurrentAnimatorStateInfo(0);
-        Invoke("SetupCinematic", stateInfo.length);
-        StartCoroutine(PassFrame());
+        Invoke("SetupCinematic", 1.9f);
+        // StartCoroutine(PassFrame());
         AudioManager.Instance.PlayClip(AudioManager.AudioList.Cinematic);
     }
     void NextFrame()
@@ -92,6 +92,7 @@ public class Cinematic : MonoBehaviour
         CinematicCamera.gameObject.SetActive(true);
         MainCamera.enabled = false;
         CinematicStarted = true;
+        StartCoroutine(PassFrame());
         UpdateCameraPositionCoroutine = StartCoroutine(UpdateCameraPosition(Index));
         UpdateMovieFrames(Index);
         Index++;

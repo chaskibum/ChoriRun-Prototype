@@ -8664,7 +8664,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f7df56570cc9064bbd74bfdc6387796, type: 3}
   - {fileID: 8300000, guid: 18f2d4cd21e0a324b903c9b71fe2c9eb, type: 3}
   - {fileID: 8300000, guid: 3cdf0304328a1dc45a7126f2b0cffe03, type: 3}
-  - {fileID: 8300000, guid: d7ceb3ec382105b4b9e33a31bfc2b0c8, type: 3}
+  - {fileID: 8300000, guid: 3e8b669464de0ea4b934793ec91f60d0, type: 3}
   fastLoopActivated: 0
 --- !u!4 &485398131
 Transform:
