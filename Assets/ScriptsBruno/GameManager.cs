@@ -22,16 +22,6 @@ public class GameManager : MonoBehaviour
         restartButton.SetActive(false);
     }
 
-    /*private void Update()
-    {
-        Move();
-    }
-    
-    private void Move()
-    {
-        transform.Translate(Vector3.left * (_moveSpeed * Time.deltaTime));
-    }*/
-
     public void RestartGame()
     {
         SceneManager.LoadScene("LevelFinal");
