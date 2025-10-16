@@ -86,11 +86,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnPlayButtonPresed()
     {
-        // CameraAnimator.SetBool("GameStarted", true);
+        CameraAnimator.SetBool("GameStarted", true);
         mainMenuPanel.gameObject.SetActive(false);
-        cinematic.OnPlayButtonPressed();
-        // AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
-        // Invoke("StartGame", stateInfo.length - 0.3f);
+        // cinematic.OnPlayButtonPressed();
+        AnimatorStateInfo stateInfo = CameraAnimator.GetCurrentAnimatorStateInfo(0);
+         Invoke("StartGame", stateInfo.length - 0.3f);
     } 
     public void StartGame()
     {

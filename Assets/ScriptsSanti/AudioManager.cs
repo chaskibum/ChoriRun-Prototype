@@ -56,6 +56,7 @@ public class AudioManager : MonoBehaviour
         
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        StartMainMenuMusic();
     }
 
     public void PlayClip(AudioList clip, bool changePitch = false, float volume = 1f, bool oneShot = true)
@@ -144,12 +145,12 @@ public class AudioManager : MonoBehaviour
 
     public void FadeInDogs()
     {
-        StartCoroutine(FadeMusic(dogsChasingSound, true, 0.001f));
+        StartCoroutine(FadeMusic(dogsChasingSound, true, 1f));
     }
 
-    public void FadeOutDogs()
+    public void FadeOutDogs(float fadeSpeed)
     {
-        StartCoroutine(FadeMusic(dogsChasingSound, false, 0.00003f));
+        StartCoroutine(FadeMusic(dogsChasingSound, false, fadeSpeed));
     }
 
     public void PlayFastLoop()
@@ -173,7 +174,6 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeMusic(mainMenuSong, false));
         
         if (!dogsChasingSound.isPlaying) dogsChasingSound.Play();
-        FadeInDogs();
         
         StartCoroutine(RealTimeCoroutine("StartSong", (startLoop.clip.length - startLoop.time) - 0.05f));
         StartCoroutine(RealTimeCoroutine("StartSongLoop", startSong.clip.length + (startLoop.clip.length - startLoop.time) - 0.05f));

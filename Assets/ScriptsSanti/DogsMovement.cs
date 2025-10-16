@@ -35,6 +35,7 @@ public class DogsMovement : MonoBehaviour
 
     public void StartChase()
     {
+        
         if (ChaseCoroutine != null)
         {
             StopCoroutine(ChaseCoroutine);
@@ -51,15 +52,18 @@ public class DogsMovement : MonoBehaviour
             StopCoroutine(StopChaseCoroutine);
             StopChaseCoroutine = StartCoroutine(WaitToStop());
         }
-
+        AudioManager.Instance.FadeInDogs();
         CanStopChase = true;
+        gameManager.dogsChasing = true;
     }
 
     public void StopChase(float SpeedMultiplier = 1, bool IgnoreBool = false)
     {
         if (!CanStopChase && !IgnoreBool) return;
+        AudioManager.Instance.FadeOutDogs(0.02f * SpeedMultiplier); 
         StopCoroutine(ChaseCoroutine);
         ChaseCoroutine = StartCoroutine(Chase(DistanceFromPlayerOnEnd, EndSpeed * SpeedMultiplier, false));
+        gameManager.dogsChasing = false;
         CanStopChase = false;
     }
 
@@ -77,8 +81,6 @@ public class DogsMovement : MonoBehaviour
 
             transform.position = TargetPosition;
             if (Mathf.Abs(transform.position.x - TargetPositionX) < 6f) boxCollider.enabled = ColliderActive;
-            if (Vector3.Distance(transform.position, PlayerPosition.position) < 6f) AudioManager.Instance.FadeInDogs();
-            else AudioManager.Instance.FadeOutDogs();
             yield return null;
         }
     }

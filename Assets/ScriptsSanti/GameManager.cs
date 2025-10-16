@@ -25,6 +25,7 @@ public class GameManagerBeta : MonoBehaviour
     float StartValueTimeTillIncrese;
 
     bool gameStarted = false;
+    public bool dogsChasing;
     public bool isGamePaused;
     public bool isGameOver;
 

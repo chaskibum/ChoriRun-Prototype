@@ -53,6 +53,7 @@ public class PauseMenu : MonoBehaviour
             AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value - 10f);
             AudioManager.Instance.motorbikeSound.volume = 0f;
             AudioManager.Instance.sfxSource.volume = 0f;
+            AudioManager.Instance.dogsChasingSound.volume = 0f;
             Time.timeScale = 0;
             gameManager.isGamePaused = true;
             canOpenMenu = false;
@@ -103,6 +104,7 @@ public class PauseMenu : MonoBehaviour
                 AudioManager.Instance.mixer.SetFloat("MusicVolume", AudioManager.Instance.musicSlider.value);
                 AudioManager.Instance.motorbikeSound.volume = 1f;
                 AudioManager.Instance.sfxSource.volume = 1f;
+                if(gameManager.dogsChasing) AudioManager.Instance.dogsChasingSound.volume = 1f;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 gameManager.upButton.SetActive(true);
