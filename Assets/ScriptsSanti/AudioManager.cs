@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -56,7 +57,7 @@ public class AudioManager : MonoBehaviour
         
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        StartMainMenuMusic();
+        // StartMainMenuMusic();
     }
 
     public void PlayClip(AudioList clip, bool changePitch = false, float volume = 1f, bool oneShot = true)
@@ -85,6 +86,7 @@ public class AudioManager : MonoBehaviour
     {
         _gameManager.GetOnstartEvent?.AddListener(OnStart);
         _gameManager.GetOnQuitButtonEvent?.AddListener(OnQuit);
+        StartMainMenuMusic();
     }
     
     public void ChangeMusicVolume()
